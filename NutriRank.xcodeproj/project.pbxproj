@@ -1,0 +1,895 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */; };
+		B98EEE512ACB4503001B1DD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE502ACB4503001B1DD3 /* ContentView.swift */; };
+		B98EEE532ACB4504001B1DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B98EEE522ACB4504001B1DD3 /* Assets.xcassets */; };
+		B98EEE562ACB4504001B1DD3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B98EEE552ACB4504001B1DD3 /* Preview Assets.xcassets */; };
+		B98EEE602ACB4504001B1DD3 /* NutriRankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE5F2ACB4504001B1DD3 /* NutriRankTests.swift */; };
+		B98EEE6A2ACB4504001B1DD3 /* NutriRankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE692ACB4504001B1DD3 /* NutriRankUITests.swift */; };
+		B98EEE6C2ACB4504001B1DD3 /* NutriRankUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE6B2ACB4504001B1DD3 /* NutriRankUITestsLaunchTests.swift */; };
+		B98EEE7C2ACB4569001B1DD3 /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = B98EEE7B2ACB4569001B1DD3 /* Nuvem */; };
+		B98EEE7F2ACB45C5001B1DD3 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = B98EEE7E2ACB45C5001B1DD3 /* Mixpanel */; };
+		B98EEEAC2ACC5C53001B1DD3 /* ChallengeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEA82ACC5C53001B1DD3 /* ChallengeGroup.swift */; };
+		B98EEEAD2ACC5C53001B1DD3 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEA92ACC5C53001B1DD3 /* PostComment.swift */; };
+		B98EEEAE2ACC5C53001B1DD3 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEAA2ACC5C53001B1DD3 /* Member.swift */; };
+		B98EEEAF2ACC5C53001B1DD3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEAB2ACC5C53001B1DD3 /* Post.swift */; };
+		B98EEEC62ACC5F05001B1DD3 /* ChallengeGroupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEC52ACC5ED9001B1DD3 /* ChallengeGroupFactory.swift */; };
+		B98EEEC72ACC5F0B001B1DD3 /* NutriRankClientPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE842ACB4665001B1DD3 /* NutriRankClientPosts.swift */; };
+		B98EEEC82ACC5F0F001B1DD3 /* NutriRankClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE852ACB4665001B1DD3 /* NutriRankClient.swift */; };
+		B98EEEC92ACC5F11001B1DD3 /* FeedGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE8F2ACB46BB001B1DD3 /* FeedGroupView.swift */; };
+		B98EEECA2ACC5F14001B1DD3 /* FeedGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE8D2ACB46BB001B1DD3 /* FeedGroupViewModel.swift */; };
+		B98EEECB2ACC5F18001B1DD3 /* ChallengeGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE882ACB4686001B1DD3 /* ChallengeGroupViewModel.swift */; };
+		B98EEECC2ACC5F1A001B1DD3 /* ChallengeGroupUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE8A2ACB4686001B1DD3 /* ChallengeGroupUIModel.swift */; };
+		B98EEECD2ACC5F24001B1DD3 /* ChallengeGroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEB82ACC5C94001B1DD3 /* ChallengeGroupRepository.swift */; };
+		B98EEECE2ACC5F27001B1DD3 /* ChallengePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEB92ACC5C94001B1DD3 /* ChallengePostRepository.swift */; };
+		B98EEECF2ACC5F2A001B1DD3 /* DeleteChallengePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEBC2ACC5C94001B1DD3 /* DeleteChallengePostUseCase.swift */; };
+		B98EEED02ACC5F2C001B1DD3 /* CreateChallengePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEBD2ACC5C94001B1DD3 /* CreateChallengePostUseCase.swift */; };
+		B98EEED12ACC5F2F001B1DD3 /* GetChallengePostsByOwnerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEBE2ACC5C94001B1DD3 /* GetChallengePostsByOwnerUseCase.swift */; };
+		B98EEED22ACC5F31001B1DD3 /* FetchChallengePostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEBF2ACC5C94001B1DD3 /* FetchChallengePostsUseCase.swift */; };
+		B98EEED32ACC5F34001B1DD3 /* CreateChallengeGroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEC12ACC5C94001B1DD3 /* CreateChallengeGroupUseCase.swift */; };
+		B98EEED42ACC5F37001B1DD3 /* DeleteChallengeGroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEC22ACC5C94001B1DD3 /* DeleteChallengeGroupUseCase.swift */; };
+		B98EEED52ACC5F3A001B1DD3 /* FetchGroupsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEC32ACC5C94001B1DD3 /* FetchGroupsUseCase.swift */; };
+		B98EEEDA2ACC62A7001B1DD3 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */; };
+		B98EEEDB2ACC62A7001B1DD3 /* CreateGroupSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED72ACC62A6001B1DD3 /* CreateGroupSheet.swift */; };
+		B98EEEDC2ACC62A7001B1DD3 /* CoordinatorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED82ACC62A6001B1DD3 /* CoordinatorPicker.swift */; };
+		B98EEEDD2ACC62A7001B1DD3 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */; };
+		B9EF0C1E2ACEEB7900CA8CF6 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1B2ACEEB7900CA8CF6 /* EmptyStateView.swift */; };
+		B9EF0C1F2ACEEB7900CA8CF6 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */; };
+		B9EF0C202ACEEB7900CA8CF6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */; };
+		B9EF0C222ACEEB9300CA8CF6 /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C212ACEEB9300CA8CF6 /* CreateGroupView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B98EEE5C2ACB4504001B1DD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B98EEE432ACB4503001B1DD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B98EEE4A2ACB4503001B1DD3;
+			remoteInfo = NutriRank;
+		};
+		B98EEE662ACB4504001B1DD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B98EEE432ACB4503001B1DD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B98EEE4A2ACB4503001B1DD3;
+			remoteInfo = NutriRank;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutriRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankApp.swift; sourceTree = "<group>"; };
+		B98EEE502ACB4503001B1DD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B98EEE522ACB4504001B1DD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B98EEE552ACB4504001B1DD3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B98EEE5B2ACB4504001B1DD3 /* NutriRankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutriRankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98EEE5F2ACB4504001B1DD3 /* NutriRankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankTests.swift; sourceTree = "<group>"; };
+		B98EEE652ACB4504001B1DD3 /* NutriRankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutriRankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98EEE692ACB4504001B1DD3 /* NutriRankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankUITests.swift; sourceTree = "<group>"; };
+		B98EEE6B2ACB4504001B1DD3 /* NutriRankUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B98EEE782ACB4530001B1DD3 /* NutriRank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NutriRank.entitlements; sourceTree = "<group>"; };
+		B98EEE842ACB4665001B1DD3 /* NutriRankClientPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankClientPosts.swift; sourceTree = "<group>"; };
+		B98EEE852ACB4665001B1DD3 /* NutriRankClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankClient.swift; sourceTree = "<group>"; };
+		B98EEE882ACB4686001B1DD3 /* ChallengeGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGroupViewModel.swift; sourceTree = "<group>"; };
+		B98EEE8A2ACB4686001B1DD3 /* ChallengeGroupUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGroupUIModel.swift; sourceTree = "<group>"; };
+		B98EEE8D2ACB46BB001B1DD3 /* FeedGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGroupViewModel.swift; sourceTree = "<group>"; };
+		B98EEE8F2ACB46BB001B1DD3 /* FeedGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGroupView.swift; sourceTree = "<group>"; };
+		B98EEEA82ACC5C53001B1DD3 /* ChallengeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGroup.swift; sourceTree = "<group>"; };
+		B98EEEA92ACC5C53001B1DD3 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
+		B98EEEAA2ACC5C53001B1DD3 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		B98EEEAB2ACC5C53001B1DD3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		B98EEEB82ACC5C94001B1DD3 /* ChallengeGroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGroupRepository.swift; sourceTree = "<group>"; };
+		B98EEEB92ACC5C94001B1DD3 /* ChallengePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePostRepository.swift; sourceTree = "<group>"; };
+		B98EEEBC2ACC5C94001B1DD3 /* DeleteChallengePostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChallengePostUseCase.swift; sourceTree = "<group>"; };
+		B98EEEBD2ACC5C94001B1DD3 /* CreateChallengePostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallengePostUseCase.swift; sourceTree = "<group>"; };
+		B98EEEBE2ACC5C94001B1DD3 /* GetChallengePostsByOwnerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChallengePostsByOwnerUseCase.swift; sourceTree = "<group>"; };
+		B98EEEBF2ACC5C94001B1DD3 /* FetchChallengePostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChallengePostsUseCase.swift; sourceTree = "<group>"; };
+		B98EEEC12ACC5C94001B1DD3 /* CreateChallengeGroupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallengeGroupUseCase.swift; sourceTree = "<group>"; };
+		B98EEEC22ACC5C94001B1DD3 /* DeleteChallengeGroupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChallengeGroupUseCase.swift; sourceTree = "<group>"; };
+		B98EEEC32ACC5C94001B1DD3 /* FetchGroupsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGroupsUseCase.swift; sourceTree = "<group>"; };
+		B98EEEC52ACC5ED9001B1DD3 /* ChallengeGroupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGroupFactory.swift; sourceTree = "<group>"; };
+		B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		B98EEED72ACC62A6001B1DD3 /* CreateGroupSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupSheet.swift; sourceTree = "<group>"; };
+		B98EEED82ACC62A6001B1DD3 /* CoordinatorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorPicker.swift; sourceTree = "<group>"; };
+		B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
+		B9EF0C1B2ACEEB7900CA8CF6 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B9EF0C212ACEEB9300CA8CF6 /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B98EEE482ACB4503001B1DD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98EEE7F2ACB45C5001B1DD3 /* Mixpanel in Frameworks */,
+				B98EEE7C2ACB4569001B1DD3 /* Nuvem in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98EEE582ACB4504001B1DD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98EEE622ACB4504001B1DD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B98EEE422ACB4503001B1DD3 = {
+			isa = PBXGroup;
+			children = (
+				B98EEE4D2ACB4503001B1DD3 /* NutriRank */,
+				B98EEE5E2ACB4504001B1DD3 /* NutriRankTests */,
+				B98EEE682ACB4504001B1DD3 /* NutriRankUITests */,
+				B98EEE4C2ACB4503001B1DD3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B98EEE4C2ACB4503001B1DD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */,
+				B98EEE5B2ACB4504001B1DD3 /* NutriRankTests.xctest */,
+				B98EEE652ACB4504001B1DD3 /* NutriRankUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B98EEE4D2ACB4503001B1DD3 /* NutriRank */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE782ACB4530001B1DD3 /* NutriRank.entitlements */,
+				B98EEEC42ACC5ED9001B1DD3 /* Factory */,
+				B98EEE832ACB4665001B1DD3 /* Data */,
+				B98EEE802ACB45CD001B1DD3 /* Domain */,
+				B98EEE822ACB45D8001B1DD3 /* Presentation */,
+				B98EEE502ACB4503001B1DD3 /* ContentView.swift */,
+				B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */,
+				B98EEE522ACB4504001B1DD3 /* Assets.xcassets */,
+				B98EEE542ACB4504001B1DD3 /* Preview Content */,
+			);
+			path = NutriRank;
+			sourceTree = "<group>";
+		};
+		B98EEE542ACB4504001B1DD3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE552ACB4504001B1DD3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B98EEE5E2ACB4504001B1DD3 /* NutriRankTests */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE5F2ACB4504001B1DD3 /* NutriRankTests.swift */,
+			);
+			path = NutriRankTests;
+			sourceTree = "<group>";
+		};
+		B98EEE682ACB4504001B1DD3 /* NutriRankUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE692ACB4504001B1DD3 /* NutriRankUITests.swift */,
+				B98EEE6B2ACB4504001B1DD3 /* NutriRankUITestsLaunchTests.swift */,
+			);
+			path = NutriRankUITests;
+			sourceTree = "<group>";
+		};
+		B98EEE802ACB45CD001B1DD3 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEEB12ACC5C94001B1DD3 /* Entities */,
+				B98EEEB72ACC5C94001B1DD3 /* Repositories */,
+				B98EEEBA2ACC5C94001B1DD3 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		B98EEE822ACB45D8001B1DD3 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE8E2ACB46BB001B1DD3 /* View */,
+				B98EEE8C2ACB46BB001B1DD3 /* ViewModel */,
+				B98EEE862ACB4686001B1DD3 /* ChallengeGroup */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		B98EEE832ACB4665001B1DD3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE842ACB4665001B1DD3 /* NutriRankClientPosts.swift */,
+				B98EEE852ACB4665001B1DD3 /* NutriRankClient.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		B98EEE862ACB4686001B1DD3 /* ChallengeGroup */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE872ACB4686001B1DD3 /* ViewModels */,
+				B98EEE892ACB4686001B1DD3 /* Models */,
+				B98EEE8B2ACB4686001B1DD3 /* Views */,
+			);
+			path = ChallengeGroup;
+			sourceTree = "<group>";
+		};
+		B98EEE872ACB4686001B1DD3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE882ACB4686001B1DD3 /* ChallengeGroupViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B98EEE892ACB4686001B1DD3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE8A2ACB4686001B1DD3 /* ChallengeGroupUIModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B98EEE8B2ACB4686001B1DD3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B9EF0C212ACEEB9300CA8CF6 /* CreateGroupView.swift */,
+				B9EF0C1B2ACEEB7900CA8CF6 /* EmptyStateView.swift */,
+				B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */,
+				B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */,
+				B98EEED82ACC62A6001B1DD3 /* CoordinatorPicker.swift */,
+				B98EEED72ACC62A6001B1DD3 /* CreateGroupSheet.swift */,
+				B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */,
+				B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B98EEE8C2ACB46BB001B1DD3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE8D2ACB46BB001B1DD3 /* FeedGroupViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B98EEE8E2ACB46BB001B1DD3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEE8F2ACB46BB001B1DD3 /* FeedGroupView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B98EEEB12ACC5C94001B1DD3 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEEB22ACC5C94001B1DD3 /* ChallengeGroup */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		B98EEEB22ACC5C94001B1DD3 /* ChallengeGroup */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEEA82ACC5C53001B1DD3 /* ChallengeGroup.swift */,
+				B98EEEAA2ACC5C53001B1DD3 /* Member.swift */,
+				B98EEEAB2ACC5C53001B1DD3 /* Post.swift */,
+				B98EEEA92ACC5C53001B1DD3 /* PostComment.swift */,
+			);
+			path = ChallengeGroup;
+			sourceTree = "<group>";
+		};
+		B98EEEB72ACC5C94001B1DD3 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEEB82ACC5C94001B1DD3 /* ChallengeGroupRepository.swift */,
+				B98EEEB92ACC5C94001B1DD3 /* ChallengePostRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		B98EEEBA2ACC5C94001B1DD3 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEEBB2ACC5C94001B1DD3 /* Post */,
+				B98EEEC02ACC5C94001B1DD3 /* Group */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		B98EEEBB2ACC5C94001B1DD3 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEEBC2ACC5C94001B1DD3 /* DeleteChallengePostUseCase.swift */,
+				B98EEEBD2ACC5C94001B1DD3 /* CreateChallengePostUseCase.swift */,
+				B98EEEBE2ACC5C94001B1DD3 /* GetChallengePostsByOwnerUseCase.swift */,
+				B98EEEBF2ACC5C94001B1DD3 /* FetchChallengePostsUseCase.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		B98EEEC02ACC5C94001B1DD3 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEEC12ACC5C94001B1DD3 /* CreateChallengeGroupUseCase.swift */,
+				B98EEEC22ACC5C94001B1DD3 /* DeleteChallengeGroupUseCase.swift */,
+				B98EEEC32ACC5C94001B1DD3 /* FetchGroupsUseCase.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		B98EEEC42ACC5ED9001B1DD3 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEEC52ACC5ED9001B1DD3 /* ChallengeGroupFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B98EEE4A2ACB4503001B1DD3 /* NutriRank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B98EEE6F2ACB4504001B1DD3 /* Build configuration list for PBXNativeTarget "NutriRank" */;
+			buildPhases = (
+				B98EEE472ACB4503001B1DD3 /* Sources */,
+				B98EEE482ACB4503001B1DD3 /* Frameworks */,
+				B98EEE492ACB4503001B1DD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NutriRank;
+			packageProductDependencies = (
+				B98EEE7B2ACB4569001B1DD3 /* Nuvem */,
+				B98EEE7E2ACB45C5001B1DD3 /* Mixpanel */,
+			);
+			productName = NutriRank;
+			productReference = B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B98EEE5A2ACB4504001B1DD3 /* NutriRankTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B98EEE722ACB4504001B1DD3 /* Build configuration list for PBXNativeTarget "NutriRankTests" */;
+			buildPhases = (
+				B98EEE572ACB4504001B1DD3 /* Sources */,
+				B98EEE582ACB4504001B1DD3 /* Frameworks */,
+				B98EEE592ACB4504001B1DD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B98EEE5D2ACB4504001B1DD3 /* PBXTargetDependency */,
+			);
+			name = NutriRankTests;
+			productName = NutriRankTests;
+			productReference = B98EEE5B2ACB4504001B1DD3 /* NutriRankTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B98EEE642ACB4504001B1DD3 /* NutriRankUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B98EEE752ACB4504001B1DD3 /* Build configuration list for PBXNativeTarget "NutriRankUITests" */;
+			buildPhases = (
+				B98EEE612ACB4504001B1DD3 /* Sources */,
+				B98EEE622ACB4504001B1DD3 /* Frameworks */,
+				B98EEE632ACB4504001B1DD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B98EEE672ACB4504001B1DD3 /* PBXTargetDependency */,
+			);
+			name = NutriRankUITests;
+			productName = NutriRankUITests;
+			productReference = B98EEE652ACB4504001B1DD3 /* NutriRankUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B98EEE432ACB4503001B1DD3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					B98EEE4A2ACB4503001B1DD3 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					B98EEE5A2ACB4504001B1DD3 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = B98EEE4A2ACB4503001B1DD3;
+					};
+					B98EEE642ACB4504001B1DD3 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = B98EEE4A2ACB4503001B1DD3;
+					};
+				};
+			};
+			buildConfigurationList = B98EEE462ACB4503001B1DD3 /* Build configuration list for PBXProject "NutriRank" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B98EEE422ACB4503001B1DD3;
+			packageReferences = (
+				B98EEE7A2ACB4569001B1DD3 /* XCRemoteSwiftPackageReference "nuvem" */,
+				B98EEE7D2ACB45C5001B1DD3 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+			);
+			productRefGroup = B98EEE4C2ACB4503001B1DD3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B98EEE4A2ACB4503001B1DD3 /* NutriRank */,
+				B98EEE5A2ACB4504001B1DD3 /* NutriRankTests */,
+				B98EEE642ACB4504001B1DD3 /* NutriRankUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B98EEE492ACB4503001B1DD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98EEE562ACB4504001B1DD3 /* Preview Assets.xcassets in Resources */,
+				B98EEE532ACB4504001B1DD3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98EEE592ACB4504001B1DD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98EEE632ACB4504001B1DD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B98EEE472ACB4503001B1DD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9EF0C222ACEEB9300CA8CF6 /* CreateGroupView.swift in Sources */,
+				B9EF0C1E2ACEEB7900CA8CF6 /* EmptyStateView.swift in Sources */,
+				B9EF0C1F2ACEEB7900CA8CF6 /* GroupView.swift in Sources */,
+				B9EF0C202ACEEB7900CA8CF6 /* OnboardingView.swift in Sources */,
+				B98EEEDA2ACC62A7001B1DD3 /* ImagePickerView.swift in Sources */,
+				B98EEEDB2ACC62A7001B1DD3 /* CreateGroupSheet.swift in Sources */,
+				B98EEEDC2ACC62A7001B1DD3 /* CoordinatorPicker.swift in Sources */,
+				B98EEEDD2ACC62A7001B1DD3 /* ExtensionView.swift in Sources */,
+				B98EEECF2ACC5F2A001B1DD3 /* DeleteChallengePostUseCase.swift in Sources */,
+				B98EEECB2ACC5F18001B1DD3 /* ChallengeGroupViewModel.swift in Sources */,
+				B98EEEAC2ACC5C53001B1DD3 /* ChallengeGroup.swift in Sources */,
+				B98EEEC82ACC5F0F001B1DD3 /* NutriRankClient.swift in Sources */,
+				B98EEECA2ACC5F14001B1DD3 /* FeedGroupViewModel.swift in Sources */,
+				B98EEEC92ACC5F11001B1DD3 /* FeedGroupView.swift in Sources */,
+				B98EEECD2ACC5F24001B1DD3 /* ChallengeGroupRepository.swift in Sources */,
+				B98EEEC62ACC5F05001B1DD3 /* ChallengeGroupFactory.swift in Sources */,
+				B98EEED02ACC5F2C001B1DD3 /* CreateChallengePostUseCase.swift in Sources */,
+				B98EEEAD2ACC5C53001B1DD3 /* PostComment.swift in Sources */,
+				B98EEEC72ACC5F0B001B1DD3 /* NutriRankClientPosts.swift in Sources */,
+				B98EEED22ACC5F31001B1DD3 /* FetchChallengePostsUseCase.swift in Sources */,
+				B98EEEAE2ACC5C53001B1DD3 /* Member.swift in Sources */,
+				B98EEEAF2ACC5C53001B1DD3 /* Post.swift in Sources */,
+				B98EEE512ACB4503001B1DD3 /* ContentView.swift in Sources */,
+				B98EEED32ACC5F34001B1DD3 /* CreateChallengeGroupUseCase.swift in Sources */,
+				B98EEECE2ACC5F27001B1DD3 /* ChallengePostRepository.swift in Sources */,
+				B98EEED42ACC5F37001B1DD3 /* DeleteChallengeGroupUseCase.swift in Sources */,
+				B98EEED12ACC5F2F001B1DD3 /* GetChallengePostsByOwnerUseCase.swift in Sources */,
+				B98EEECC2ACC5F1A001B1DD3 /* ChallengeGroupUIModel.swift in Sources */,
+				B98EEED52ACC5F3A001B1DD3 /* FetchGroupsUseCase.swift in Sources */,
+				B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98EEE572ACB4504001B1DD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98EEE602ACB4504001B1DD3 /* NutriRankTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98EEE612ACB4504001B1DD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98EEE6A2ACB4504001B1DD3 /* NutriRankUITests.swift in Sources */,
+				B98EEE6C2ACB4504001B1DD3 /* NutriRankUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B98EEE5D2ACB4504001B1DD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B98EEE4A2ACB4503001B1DD3 /* NutriRank */;
+			targetProxy = B98EEE5C2ACB4504001B1DD3 /* PBXContainerItemProxy */;
+		};
+		B98EEE672ACB4504001B1DD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B98EEE4A2ACB4503001B1DD3 /* NutriRank */;
+			targetProxy = B98EEE662ACB4504001B1DD3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B98EEE6D2ACB4504001B1DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B98EEE6E2ACB4504001B1DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B98EEE702ACB4504001B1DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NutriRank/NutriRank.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NutriRank/Preview Content\"";
+				DEVELOPMENT_TEAM = 949BRFMFQG;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NutriRank/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NutriRank;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merendeers.NutriRank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B98EEE712ACB4504001B1DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NutriRank/NutriRank.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NutriRank/Preview Content\"";
+				DEVELOPMENT_TEAM = 949BRFMFQG;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NutriRank/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NutriRank;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merendeers.NutriRank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B98EEE732ACB4504001B1DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 949BRFMFQG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merendeers.NutriRankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NutriRank.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NutriRank";
+			};
+			name = Debug;
+		};
+		B98EEE742ACB4504001B1DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 949BRFMFQG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merendeers.NutriRankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NutriRank.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NutriRank";
+			};
+			name = Release;
+		};
+		B98EEE762ACB4504001B1DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 949BRFMFQG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merendeers.NutriRankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NutriRank;
+			};
+			name = Debug;
+		};
+		B98EEE772ACB4504001B1DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 949BRFMFQG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.merendeers.NutriRankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NutriRank;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B98EEE462ACB4503001B1DD3 /* Build configuration list for PBXProject "NutriRank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B98EEE6D2ACB4504001B1DD3 /* Debug */,
+				B98EEE6E2ACB4504001B1DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B98EEE6F2ACB4504001B1DD3 /* Build configuration list for PBXNativeTarget "NutriRank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B98EEE702ACB4504001B1DD3 /* Debug */,
+				B98EEE712ACB4504001B1DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B98EEE722ACB4504001B1DD3 /* Build configuration list for PBXNativeTarget "NutriRankTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B98EEE732ACB4504001B1DD3 /* Debug */,
+				B98EEE742ACB4504001B1DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B98EEE752ACB4504001B1DD3 /* Build configuration list for PBXNativeTarget "NutriRankUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B98EEE762ACB4504001B1DD3 /* Debug */,
+				B98EEE772ACB4504001B1DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B98EEE7A2ACB4569001B1DD3 /* XCRemoteSwiftPackageReference "nuvem" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AcademyIFCE/nuvem";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		B98EEE7D2ACB45C5001B1DD3 /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B98EEE7B2ACB4569001B1DD3 /* Nuvem */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B98EEE7A2ACB4569001B1DD3 /* XCRemoteSwiftPackageReference "nuvem" */;
+			productName = Nuvem;
+		};
+		B98EEE7E2ACB45C5001B1DD3 /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B98EEE7D2ACB45C5001B1DD3 /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B98EEE432ACB4503001B1DD3 /* Project object */;
+}
