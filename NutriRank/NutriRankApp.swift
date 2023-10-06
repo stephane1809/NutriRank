@@ -12,7 +12,8 @@ struct NutriRankApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            ChallengeGroupFactory.make()
+//            ChallengeGroupFactory.make()
+            CreateGroupView()
         }
     }
 }
