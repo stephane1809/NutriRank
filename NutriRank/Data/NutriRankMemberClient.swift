@@ -11,10 +11,7 @@ import CloudKit
 
 public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
     public func createChallengeMember(member: Member) async -> Result<Member, Error> {
-        var memberToSave = Member()
-        memberToSave.name = member.name
-        memberToSave.avatar = member.avatar
-        memberToSave.score = member.score
+        var memberToSave = member
         let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
         do {
             try await memberToSave.save(on: database)
@@ -23,4 +20,16 @@ public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
             return .failure(error)
         }
     }
+
+    public func updateChallengeMember(member: Member) async -> Result<Member, Error> {
+        var memberToUpdate = member
+        let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
+        do {
+            try await memberToUpdate.save(on: database)
+            return .success(member)
+        } catch {
+            return .failure(error)
+        }
+    }
+
 }

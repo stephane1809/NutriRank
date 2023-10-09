@@ -11,7 +11,6 @@ struct MockedView: View {
 
     @ObservedObject var viewmodel: FeedGroupViewModel
 
-
     init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
         

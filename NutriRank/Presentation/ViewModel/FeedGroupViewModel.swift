@@ -12,19 +12,23 @@ public class FeedGroupViewModel: ObservableObject {
     @Published var groups: [ChallengeGroup] = []
     @Published var posts: [Post] = []
     @Published var members: [Member] = []
+    @Published var member: Member = Member()
 
     let createUseCase: CreateChallengeGroupUseCase
     let createPostUseCase: CreateChallengePostUseCase
     let fetchUseCase: FetchChallengeGroupsUseCase
     let deleteUseCase: DeleteChallengeGroupUseCase
     let createMemberUseCase: CreateChallengeMemberUseCase
+    let updateMemberUseCase: UpdateChallengeMemberUseCase
 
-    public init(createUseCase: CreateChallengeGroupUseCase, createPostUseCase: CreateChallengePostUseCase, fetchUseCase: FetchChallengeGroupsUseCase, deleteUseCase: DeleteChallengeGroupUseCase, createMemberUseCase: CreateChallengeMemberUseCase) {
+    public init(createUseCase: CreateChallengeGroupUseCase, createPostUseCase: CreateChallengePostUseCase, fetchUseCase: FetchChallengeGroupsUseCase, deleteUseCase: DeleteChallengeGroupUseCase, createMemberUseCase: CreateChallengeMemberUseCase, updateMemberUseCase: UpdateChallengeMemberUseCase) {
+
         self.createUseCase = createUseCase
         self.createPostUseCase = createPostUseCase
         self.fetchUseCase = fetchUseCase
         self.deleteUseCase = deleteUseCase
         self.createMemberUseCase = createMemberUseCase
+        self.updateMemberUseCase = updateMemberUseCase
     }
 
     func createGroup(groupName: String, description: String) async {
@@ -94,7 +98,22 @@ public class FeedGroupViewModel: ObservableObject {
         switch result {
         case .success(let member):
             DispatchQueue.main.async {
-                self.members.append(member)
+                self.member = member
+            }
+        case .failure(let error):
+            print(error)
+        }
+
+    }
+
+    func updateChallengeMember(score: Int) async {
+        self.member.score = score
+        let result = await updateMemberUseCase.execute(requestValue: self.member)
+        
+        switch result {
+        case .success(let member):
+            DispatchQueue.main.async {
+                self.member = member
             }
         case .failure(let error):
             print(error)
