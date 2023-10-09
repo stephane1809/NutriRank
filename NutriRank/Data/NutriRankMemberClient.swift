@@ -32,4 +32,14 @@ public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
         }
     }
 
+    public func fetchChallengeMember(member:Member) async -> Result<Member, Error> {
+        var memberToFetch = member
+        let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
+        do {
+
+        } catch {
+            return.failure(error)
+        }
+    }
+
 }
