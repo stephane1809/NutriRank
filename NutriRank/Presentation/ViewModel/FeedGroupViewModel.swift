@@ -11,20 +11,20 @@ import Foundation
 public class FeedGroupViewModel: ObservableObject {
     @Published var groups: [ChallengeGroup] = []
     @Published var posts: [Post] = []
+    @Published var members: [Member] = []
 
     let createUseCase: CreateChallengeGroupUseCase
     let createPostUseCase: CreateChallengePostUseCase
     let fetchUseCase: FetchChallengeGroupsUseCase
     let deleteUseCase: DeleteChallengeGroupUseCase
+    let createMemberUseCase: CreateChallengeMemberUseCase
 
-    public init(createUseCase: CreateChallengeGroupUseCase,
-                createPostUseCase: CreateChallengePostUseCase,
-                fetchUseCase: FetchChallengeGroupsUseCase,
-                deleteUseCase: DeleteChallengeGroupUseCase) {
+    public init(createUseCase: CreateChallengeGroupUseCase, createPostUseCase: CreateChallengePostUseCase, fetchUseCase: FetchChallengeGroupsUseCase, deleteUseCase: DeleteChallengeGroupUseCase, createMemberUseCase: CreateChallengeMemberUseCase) {
         self.createUseCase = createUseCase
         self.createPostUseCase = createPostUseCase
         self.fetchUseCase = fetchUseCase
         self.deleteUseCase = deleteUseCase
+        self.createMemberUseCase = createMemberUseCase
     }
 
     func createGroup(groupName: String, description: String) async {
@@ -81,5 +81,24 @@ public class FeedGroupViewModel: ObservableObject {
         case .failure(let error):
             print(error)
         }
+    }
+
+    func createChallengeMember(name: String, avatar: String, score: Int ) async {
+        var member = Member()
+        member.name = name
+        member.avatar = avatar
+        member.score = score
+
+        let result = await createMemberUseCase.execute(requestValue: member)
+
+        switch result {
+        case .success(let member):
+            DispatchQueue.main.async {
+                self.members.append(member)
+            }
+        case .failure(let error):
+            print(error)
+        }
+
     }
 }
