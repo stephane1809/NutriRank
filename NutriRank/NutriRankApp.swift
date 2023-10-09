@@ -14,10 +14,11 @@ struct NutriRankApp: App {
 //            ContentView()
 //            ChallengeGroupFactory.make()
 //            CreateGroupView()
-            CreateProfileView()
+//            CreateProfileView()
 //            EmptyStateView()
 //            GroupView()
 //            RankingView()
+            FeedPostView()
         }
     }
 }

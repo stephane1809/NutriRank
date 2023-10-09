@@ -12,6 +12,8 @@
 		363300F12ACF4DBF0083D5B8 /* RankingCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363300F02ACF4DBF0083D5B8 /* RankingCardComponent.swift */; };
 		363300F32ACF4EE70083D5B8 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363300F22ACF4EE70083D5B8 /* RankingView.swift */; };
 		4B5478BA2AD03EDC0029AF65 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */; };
+		4B5478BC2AD42C060029AF65 /* CardPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BB2AD42C060029AF65 /* CardPostView.swift */; };
+		4B5478BE2AD42D510029AF65 /* FeedPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BD2AD42D510029AF65 /* FeedPostView.swift */; };
 		B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */; };
 		B98EEE512ACB4503001B1DD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE502ACB4503001B1DD3 /* ContentView.swift */; };
 		B98EEE532ACB4504001B1DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B98EEE522ACB4504001B1DD3 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 		363300F02ACF4DBF0083D5B8 /* RankingCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCardComponent.swift; sourceTree = "<group>"; };
 		363300F22ACF4EE70083D5B8 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
+		4B5478BB2AD42C060029AF65 /* CardPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPostView.swift; sourceTree = "<group>"; };
+		4B5478BD2AD42D510029AF65 /* FeedPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostView.swift; sourceTree = "<group>"; };
 		B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutriRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankApp.swift; sourceTree = "<group>"; };
 		B98EEE502ACB4503001B1DD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 				B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */,
 				B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */,
 				4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */,
+				4B5478BB2AD42C060029AF65 /* CardPostView.swift */,
+				4B5478BD2AD42D510029AF65 /* FeedPostView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B5478BC2AD42C060029AF65 /* CardPostView.swift in Sources */,
 				B9EF0C222ACEEB9300CA8CF6 /* CreateGroupView.swift in Sources */,
 				B9EF0C1E2ACEEB7900CA8CF6 /* EmptyStateView.swift in Sources */,
 				B9EF0C1F2ACEEB7900CA8CF6 /* GroupView.swift in Sources */,
@@ -536,6 +543,7 @@
 				B98EEECC2ACC5F1A001B1DD3 /* ChallengeGroupUIModel.swift in Sources */,
 				363300F32ACF4EE70083D5B8 /* RankingView.swift in Sources */,
 				B98EEED52ACC5F3A001B1DD3 /* FetchGroupsUseCase.swift in Sources */,
+				4B5478BE2AD42D510029AF65 /* FeedPostView.swift in Sources */,
 				B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -701,7 +709,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NutriRank/Preview Content\"";
-				DEVELOPMENT_TEAM = 949BRFMFQG;
+				DEVELOPMENT_TEAM = 826U5T47TW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NutriRank/Info.plist;
@@ -738,7 +746,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NutriRank/Preview Content\"";
-				DEVELOPMENT_TEAM = 949BRFMFQG;
+				DEVELOPMENT_TEAM = 826U5T47TW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NutriRank/Info.plist;
