@@ -18,8 +18,9 @@ struct NutriRankApp: App {
 //            EmptyStateView()
 //            GroupView()
 //            RankingView()
-            FeedPostView()
+//            FeedPostView()
 //            SheetCreatePostView()
+            OnboardingView()
         }
     }
 }

@@ -9,10 +9,11 @@ import Foundation
 import SwiftUI
 
 public struct SheetCreatePostView: View {
-    public init() {}
+
+
 
     @Environment(\.dismiss) var dismiss
-    @State private var selectedImage: UIImage?
+    let selectedImage: UIImage?
     @State private var title = ""
     @State private var description = ""
 
@@ -43,10 +44,10 @@ public struct SheetCreatePostView: View {
                 if selectedImage != nil {
                     Image(uiImage: selectedImage!)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: .fill)
                         .clipShape(Rectangle())
                         .scaledToFill()
-                        .frame(width: 250, height: 35)
+                        .frame(width: 330, height: 150)
                         .cornerRadius(10)
 
                 } else {

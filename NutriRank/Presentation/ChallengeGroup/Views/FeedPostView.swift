@@ -129,7 +129,7 @@ public struct FeedPostView: View {
                     .sheet(item: $sheet) { sheet in
                         switch sheet {
                             case .image:
-                            SheetCreatePostView()
+                            SheetCreatePostView(selectedImage: selectedImage)
                             case .selection:
                             ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
                         }
