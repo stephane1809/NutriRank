@@ -18,15 +18,17 @@ struct ChallengeGroupFactory {
         let repository = DefaultChallengeGroupRepository(data: data)
         let postRepository = DefaultChallengePostRepository(data: dataPost)
         let createUseCase = DefaultCreateChallengeGroupUseCase(challengeGroupRepository: repository)
-        let createMemberRepository = DefaultChallengeMemberRepository(data: memberData)
+        let memberRepository = DefaultChallengeMemberRepository(data: memberData)
 
 
         let fetchUseCase = DefaultFetchGroupsUseCase(challengeGroupRepository: repository)
         let deleteUseCase = DefaultDeleteChallengeGroupUseCase(challengeGroupRepository: repository)
         let postUseCase = DefaultCreateChallengePostUseCase(repository: postRepository)
-        let createMemberUseCase = DefaultChallengeCreateMemberUseCase(challengeMemberRepository: createMemberRepository)
+        let createMemberUseCase = DefaultChallengeCreateMemberUseCase(challengeMemberRepository: memberRepository)
+        let updateMemberUseCase = DefaultUpdateChallengeMemberUseCase(challengeMemberRepository: memberRepository)
+        let fetchMemberUseCase = DefaultFetchChallengeMember(challengeMemberRepository: memberRepository)
 
-        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase)
+        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase)
 //        return FeedGroupView(viewmodel: viewmodel)
         return MockedView(viewmodel: viewmodel)
     }

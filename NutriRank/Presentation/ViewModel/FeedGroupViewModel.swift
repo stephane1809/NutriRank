@@ -20,15 +20,16 @@ public class FeedGroupViewModel: ObservableObject {
     let deleteUseCase: DeleteChallengeGroupUseCase
     let createMemberUseCase: CreateChallengeMemberUseCase
     let updateMemberUseCase: UpdateChallengeMemberUseCase
+    let fetchMemberUseCase: FetchChallengeMemberUseCase
 
-    public init(createUseCase: CreateChallengeGroupUseCase, createPostUseCase: CreateChallengePostUseCase, fetchUseCase: FetchChallengeGroupsUseCase, deleteUseCase: DeleteChallengeGroupUseCase, createMemberUseCase: CreateChallengeMemberUseCase, updateMemberUseCase: UpdateChallengeMemberUseCase) {
-
+    public init(createUseCase: CreateChallengeGroupUseCase, createPostUseCase: CreateChallengePostUseCase, fetchUseCase: FetchChallengeGroupsUseCase, deleteUseCase: DeleteChallengeGroupUseCase, createMemberUseCase: CreateChallengeMemberUseCase, updateMemberUseCase: UpdateChallengeMemberUseCase, fetchMemberUseCase: FetchChallengeMemberUseCase) {
         self.createUseCase = createUseCase
         self.createPostUseCase = createPostUseCase
         self.fetchUseCase = fetchUseCase
         self.deleteUseCase = deleteUseCase
         self.createMemberUseCase = createMemberUseCase
         self.updateMemberUseCase = updateMemberUseCase
+        self.fetchMemberUseCase = fetchMemberUseCase
     }
 
     func createGroup(groupName: String, description: String) async {
@@ -99,6 +100,7 @@ public class FeedGroupViewModel: ObservableObject {
         case .success(let member):
             DispatchQueue.main.async {
                 self.member = member
+                UserDefaults.standard.set(member.id, forKey: "localMemberId")
             }
         case .failure(let error):
             print(error)
@@ -119,5 +121,21 @@ public class FeedGroupViewModel: ObservableObject {
             print(error)
         }
 
+    }
+
+    func fetchChallengeMember() async {
+        let id = UserDefaults.standard.string(forKey: "localMemberId")
+
+        guard let unwrappedId = id else {return}
+
+        let result = await fetchMemberUseCase.execute(requestValue:unwrappedId)
+        switch result {
+        case .success(let member):
+            DispatchQueue.main.async {
+                self.member = member
+            }
+        case .failure(let error):
+            print(error)
+        }
     }
 }

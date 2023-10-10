@@ -7,6 +7,7 @@
 
 import Foundation
 import CloudKit
+import Nuvem
 
 
 public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
@@ -32,10 +33,11 @@ public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
         }
     }
 
-    public func fetchChallengeMember(member:Member) async -> Result<Member, Error> {
-        var memberToFetch = member
+    public func fetchChallengeMember(id: String) async -> Result<Member, Error> {
         let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
         do {
+            let fetchResult = try await Member.find(id: CKRecord.ID(recordName: id), on: database)
+            return .success(fetchResult)
 
         } catch {
             return.failure(error)

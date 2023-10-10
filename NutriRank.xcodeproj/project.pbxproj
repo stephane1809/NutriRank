@@ -16,6 +16,7 @@
 		365B12242AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12232AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift */; };
 		365B12282AD4293400FD6713 /* MockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12272AD4293400FD6713 /* MockedView.swift */; };
 		365B122A2AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12292AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift */; };
+		365B122C2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B122B2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift */; };
 		B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */; };
 		B98EEE512ACB4503001B1DD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE502ACB4503001B1DD3 /* ContentView.swift */; };
 		B98EEE532ACB4504001B1DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B98EEE522ACB4504001B1DD3 /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		365B12232AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallengeMemberUseCase.swift; sourceTree = "<group>"; };
 		365B12272AD4293400FD6713 /* MockedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedView.swift; sourceTree = "<group>"; };
 		365B12292AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChallengeMemberUseCase.swift; sourceTree = "<group>"; };
+		365B122B2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChallengeMemberUseCase.swift; sourceTree = "<group>"; };
 		B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutriRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankApp.swift; sourceTree = "<group>"; };
 		B98EEE502ACB4503001B1DD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			children = (
 				365B12232AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift */,
 				365B12292AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift */,
+				365B122B2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift */,
 			);
 			path = Member;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				365B12212AD41CE100FD6713 /* ChallengeMemberRepository.swift in Sources */,
 				B98EEE512ACB4503001B1DD3 /* ContentView.swift in Sources */,
 				363300F12ACF4DBF0083D5B8 /* RankingCardComponent.swift in Sources */,
+				365B122C2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift in Sources */,
 				B98EEED32ACC5F34001B1DD3 /* CreateChallengeGroupUseCase.swift in Sources */,
 				B98EEECE2ACC5F27001B1DD3 /* ChallengePostRepository.swift in Sources */,
 				B98EEED42ACC5F37001B1DD3 /* DeleteChallengeGroupUseCase.swift in Sources */,

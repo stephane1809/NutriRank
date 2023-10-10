@@ -1,5 +1,5 @@
 //
-//  UpdateMemberUseCase.swift
+//  FetchChallengeMemberUseCase.swift
 //  NutriRank
 //
 //  Created by Gabriel Santiago on 09/10/23.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-public protocol UpdateChallengeMemberUseCase {
-    func execute(requestValue: Member) async -> Result<Member, Error>
+public protocol FetchChallengeMemberUseCase {
+    func execute(requestValue: String) async -> Result<Member, Error>
 }
 
-public class DefaultUpdateChallengeMemberUseCase: UpdateChallengeMemberUseCase {
+public class DefaultFetchChallengeMember: FetchChallengeMemberUseCase {
 
     var challengeMemberRepository: ChallengeMemberRepositoryProtocol
 
@@ -19,8 +19,8 @@ public class DefaultUpdateChallengeMemberUseCase: UpdateChallengeMemberUseCase {
         self.challengeMemberRepository = challengeMemberRepository
     }
 
-    public func execute(requestValue: Member) async -> Result<Member, Error> {
-        let result = await challengeMemberRepository.updateChallengeMember(member: requestValue)
+    public func execute(requestValue: String) async -> Result<Member, Error> {
+        let result = await challengeMemberRepository.fetchChallengeMember(id: requestValue)
         switch result {
             case .success(let member):
                 return .success(member)
@@ -28,5 +28,6 @@ public class DefaultUpdateChallengeMemberUseCase: UpdateChallengeMemberUseCase {
                 return .failure(error)
         }
     }
+
     
 }
