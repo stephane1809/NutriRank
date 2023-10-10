@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import UIKit
 import Nuvem
 
 public struct Post: CKModel {
@@ -27,8 +28,8 @@ public struct Post: CKModel {
     @CKField("downVote")
     public var downVote: Int
 
-    @CKField("image")
-    public var image: String
+    @CKAssetField("postImage")
+    public var postImage: UIImage?
 
     @CKReferenceField("owner")
     public var owner: Member?

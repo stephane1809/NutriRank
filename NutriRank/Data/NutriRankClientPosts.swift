@@ -19,12 +19,7 @@ public class NutriRankClientPosts: ChallengePostRepositoryProtocol {
     public func createChallengePost(_ post: Post) async -> Result<Post, Error> {
         do {
             let database = CKContainer(identifier: identifier).publicCloudDatabase
-            var postToSave = Post()
-            postToSave.description = post.description
-            postToSave.downVote = post.downVote
-            postToSave.upVote = post.upVote
-            postToSave.image = post.image
-            postToSave.owner = post.owner
+            var postToSave = post
             try await postToSave.save(on: database)
             return .success(postToSave)
         } catch {

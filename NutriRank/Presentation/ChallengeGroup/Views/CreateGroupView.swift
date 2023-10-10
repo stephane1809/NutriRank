@@ -14,17 +14,21 @@ import UIKit
 
 public struct CreateGroupView: View {
 
-    public init() {}
+    @ObservedObject var viewmodel: FeedGroupViewModel
+
     
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
     @State private var isImagePickerDisplay2 = false
-    @State private var nameGroup = ""
-    @State private var descrptionGroup = ""
-    @State private var rulesGroup = ""
+    @State private var groupName: String = ""
+    @State private var description: String = ""
     @State private var selectDateInit: Date = Date()
     @State private var selectDateFinal: Date = Date()
+
+    init(viewmodel: FeedGroupViewModel) {
+        self.viewmodel = viewmodel
+    }
 
 
     public var body: some View {
@@ -48,11 +52,11 @@ public struct CreateGroupView: View {
                                         .aspectRatio(contentMode: .fit)
                                         .scaledToFill()
                                         .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
-                                        .background(Color("Green"))
+//                                        .background(Color("Green"))
                                         .cornerRadius(10)
                                 }
 
-                                Button("Editar imagem") {
+                                Button("Adicionar imagem") {
                                     self.isImagePickerDisplay.toggle()
                                 }
                                 .padding()
@@ -95,13 +99,13 @@ public struct CreateGroupView: View {
                                         Spacer()
                                     }
 
-                                    TextField("Nome do grupo", text: $nameGroup)
+                                    TextField("Nome do grupo", text: $groupName)
                                 }
 
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                                .background(.white)
+                                .background(.background)
                                 .cornerRadius(10)
                                 .shadow(radius: 1, x: 0, y: 1)
 
@@ -113,12 +117,12 @@ public struct CreateGroupView: View {
                                         Spacer()
                                     }
 
-                                    TextField("Descrição do grupo", text: $descrptionGroup)
+                                    TextField("Descrição do grupo", text: $description)
                                 }
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                                .background(.white)
+                                .background(.background)
                                 .cornerRadius(10)
                                 .shadow(radius: 1, x: 0, y: 1)
 
@@ -137,7 +141,7 @@ public struct CreateGroupView: View {
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                                .background(.white)
+                                .background(.background)
                                 .cornerRadius(10)
                                 .shadow(radius: 1, x: 0, y: 1)
 
@@ -148,21 +152,23 @@ public struct CreateGroupView: View {
                                         Text("Regras")
                                         Spacer()
                                     }
-
-                                    TextField("Regras do grupo", text: $rulesGroup, axis: .vertical)
-                                        .lineLimit(1...10)
+//                                    TextField("Regras do grupo", text: $rulesGroup, axis: .vertical)
+//                                        .lineLimit(1...10)
                                 }
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                                .background(.white)
+                                .background(.background)
                                 .cornerRadius(10)
                                 .shadow(radius: 1, x: 0, y: 1)
 
                                 Spacer()
 
                                 Button {
-
+                                    Task {
+                                        await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage)
+                                        print("Time interval: \(selectDateFinal.timeIntervalSince(selectDateInit))")
+                                    }
                                 } label: {
                                     Text("Criar grupo")
                                         .font(.headline)
@@ -195,8 +201,8 @@ public struct CreateGroupView: View {
 }
 
 
-struct CreateGroupView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateGroupView()
-    }
-}
+//struct CreateGroupView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChallengeGroupFactory.make()
+//    }
+//}

@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 public class FeedGroupViewModel: ObservableObject {
     @Published var groups: [ChallengeGroup] = []
+    @Published var group: ChallengeGroup = ChallengeGroup()
     @Published var posts: [Post] = []
+    @Published var groupIDToAddMember: String?
 
     let createUseCase: CreateChallengeGroupUseCase
     let createPostUseCase: CreateChallengePostUseCase
@@ -27,17 +30,39 @@ public class FeedGroupViewModel: ObservableObject {
         self.deleteUseCase = deleteUseCase
     }
 
-    func createGroup(groupName: String, description: String) async {
+    func handle(url: URL) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+              let scheme = components.scheme, scheme == "nutrirank",
+              let action = components.host,
+              let params = components.queryItems else {
+            print("Invalid URL")
+            return
+        }
+
+        switch action {
+        case "enter":
+            if let firstParam = params.first, let id = firstParam.value, firstParam.name == "id" {
+                print("add new member to group \(id)")
+                groupIDToAddMember = id
+            }
+        default:
+            print("Unhandled action: \(url)")
+        }
+    }
+
+    func createGroup(groupName: String, description: String, image: UIImage?) async {
         print("chegou na viewmodel")
         var group = ChallengeGroup()
         group.groupName = groupName
         group.description = description
+        group.groupImage = image
         let result = await createUseCase.execute(requestValue: group)
         switch result {
         case .success(let group):
             DispatchQueue.main.async {
-                self.groups.append(group)
+                self.group = group
             }
+            print("Operação realizada com sucesso.")
         case .failure(let error):
             print(error)
         }
@@ -50,7 +75,7 @@ public class FeedGroupViewModel: ObservableObject {
             case .success(let groupList):
                 DispatchQueue.main.async {
                     self.groups = groupList
-                    print(self.groups[0].id)
+                    self.group = self.groups[0]
                 }
             case .failure(let error):
                 print(error)

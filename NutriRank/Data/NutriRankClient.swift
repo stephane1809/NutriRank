@@ -10,6 +10,7 @@
 
 import Foundation
 import CloudKit
+import Nuvem
 
 public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
 
@@ -21,6 +22,7 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
         var groupToSave = ChallengeGroup()
         groupToSave.groupName = group.groupName
         groupToSave.description = group.description
+        groupToSave.groupImage = group.groupImage
         let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
         do {
             try await groupToSave.save(on: database)
@@ -34,7 +36,10 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
         print("fetch chegou no cliente")
         let database = CKContainer(identifier:"iCloud.NutriRankContainer").publicCloudDatabase
         do{
-            let result = try await ChallengeGroup.query(on: database).all()
+            let result = try await ChallengeGroup
+                .query(on: database)
+                .filter(\.$groupName == "Gatos desnutridos")
+                .all()
             return(.success(result))
 
         } catch {

@@ -20,6 +20,7 @@ struct ChallengeGroupFactory {
         let deleteUseCase = DefaultDeleteChallengeGroupUseCase(challengeGroupRepository: repository)
         let postUseCase = DefaultCreateChallengePostUseCase(repository: postRepository)
         let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase)
-        return FeedGroupView(viewmodel: viewmodel)
+//        return CreateGroupView(viewmodel: viewmodel)
+        return GroupView(viewmodel: viewmodel)
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import UIKit
 import Nuvem
 
 public struct ChallengeGroup: CKModel {
@@ -20,4 +21,7 @@ public struct ChallengeGroup: CKModel {
 
     @CKField("description")
     public var description: String
+
+    @CKAssetField("groupImage")
+    var groupImage: UIImage?
 }
