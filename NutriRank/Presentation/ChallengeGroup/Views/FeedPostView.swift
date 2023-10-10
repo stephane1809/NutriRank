@@ -10,6 +10,14 @@ import SwiftUI
 
 public struct FeedPostView: View {
 
+    enum Sheet: Identifiable {
+        case selection
+        case image
+
+        var id: Sheet { self }
+
+    }
+
     public init() {}
 
     @State var card = CardPostView()
@@ -17,6 +25,10 @@ public struct FeedPostView: View {
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isImagePickerDisplay2 = false
+    @State private var isPostCardDisplay = false
+    @State private var isImageExist = false
+
+    @State private var sheet: Sheet?
 
     public var body: some View {
         GeometryReader { metrics in
@@ -24,7 +36,7 @@ public struct FeedPostView: View {
                 ZStack {
                     Color(.defaultBackground)
                         .ignoresSafeArea()
-                    VStack (alignment: .center){
+                    VStack (alignment: .center, spacing: 20){
                         ZStack{
                                     RoundedRectangle(cornerRadius: 10)
                                         .frame(width: 350, height: 137)
@@ -63,6 +75,7 @@ public struct FeedPostView: View {
                                 }
                         Button {
                             self.isImagePickerDisplay.toggle()
+//                            sheet = .selection
                         } label: {
                             Text("+ Nova Postagem")
                                 .font(.headline)
@@ -73,9 +86,16 @@ public struct FeedPostView: View {
                         .cornerRadius(10)
                         .buttonStyle(.bordered)
 
-                        Text("Postagens")
-                        ScrollView {
-                            card
+                        VStack {
+                            Text("Postagens")
+                            ScrollView {
+                                Button {
+                                    self.isPostCardDisplay.toggle()
+                                } label: {
+                                    card
+                                }
+
+                            }
                         }
 
                     }
@@ -87,22 +107,32 @@ public struct FeedPostView: View {
                                     Text("Câmera"),
                                     action: {
                                         self.sourceType = .camera
-                                        self.isImagePickerDisplay2 = true
+                                        self.sheet = .selection
                                     }
                                 ),
                                 .default(
                                     Text("Galeria"),
                                     action: {
                                         self.sourceType = .photoLibrary
-                                        self.isImagePickerDisplay2 = true
+                                        self.sheet = .selection
                                     }
                                 ),
                                 .cancel()
                             ]
                         )
                     }
-                    .sheet(isPresented: self.$isImagePickerDisplay2) {
-                        ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
+                    .onChange(of: selectedImage) { selectedImage in
+                        if selectedImage != nil {
+                            sheet = .image
+                        }
+                    }
+                    .sheet(item: $sheet) { sheet in
+                        switch sheet {
+                            case .image:
+                            SheetCreatePostView()
+                            case .selection:
+                            ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
+                        }
                     }
                 }
             }

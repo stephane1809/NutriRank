@@ -17,13 +17,16 @@ public struct CardPostView: View {
             HStack {
                 VStack (alignment: .leading) {
                     Text("Título do post")
+                        .foregroundColor(.black)
                         .bold()
                     HStack {
                         Circle()
                             .foregroundColor(Color("FirstPlaceRanking"))
                             .frame(width: 27, height: 27)
                         Text("Nome do usuário")
+                            .foregroundColor(.black)
                         Text("- 09/10")
+                            .foregroundColor(.black)
                     }
                 }
                 Spacer()
