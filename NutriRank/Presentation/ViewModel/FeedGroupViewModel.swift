@@ -69,13 +69,11 @@ public class FeedGroupViewModel: ObservableObject {
     }
 
     func fetchGroup() async {
-        print("o fetch chegou na viewmodel")
         let result = await fetchUseCase.execute()
         switch result {
             case .success(let groupList):
                 DispatchQueue.main.async {
                     self.groups = groupList
-                    self.group = self.groups[0]
                 }
             case .failure(let error):
                 print(error)

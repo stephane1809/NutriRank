@@ -34,4 +34,7 @@ public struct Post: CKModel {
     @CKReferenceField("owner")
     public var owner: Member?
 
+    @CKReferenceListField("comments")
+    var comments: [PostComment]?
+
 }

@@ -167,7 +167,6 @@ public struct CreateGroupView: View {
                                 Button {
                                     Task {
                                         await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage)
-                                        print("Time interval: \(selectDateFinal.timeIntervalSince(selectDateInit))")
                                     }
                                 } label: {
                                     Text("Criar grupo")
