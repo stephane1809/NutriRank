@@ -109,7 +109,9 @@ public class FeedGroupViewModel: ObservableObject {
     }
 
     func updateChallengeMember(score: Int) async {
-        self.member.score = score
+        await MainActor.run {
+            self.member.score = score
+        }
         let result = await updateMemberUseCase.execute(requestValue: self.member)
         
         switch result {
