@@ -29,7 +29,6 @@ struct ChallengeGroupFactory {
         let fetchMemberUseCase = DefaultFetchChallengeMember(challengeMemberRepository: memberRepository)
 
         let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase)
-//        return FeedGroupView(viewmodel: viewmodel)
-        return MockedView(viewmodel: viewmodel)
+        return FeedGroupView(viewmodel: viewmodel)
     }
 }

@@ -14,7 +14,6 @@
 		365B121F2AD41C2B00FD6713 /* NutriRankMemberClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B121E2AD41C2B00FD6713 /* NutriRankMemberClient.swift */; };
 		365B12212AD41CE100FD6713 /* ChallengeMemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12202AD41CE100FD6713 /* ChallengeMemberRepository.swift */; };
 		365B12242AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12232AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift */; };
-		365B12282AD4293400FD6713 /* MockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12272AD4293400FD6713 /* MockedView.swift */; };
 		365B122A2AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12292AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift */; };
 		365B122C2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B122B2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift */; };
 		B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */; };
@@ -81,7 +80,6 @@
 		365B121E2AD41C2B00FD6713 /* NutriRankMemberClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankMemberClient.swift; sourceTree = "<group>"; };
 		365B12202AD41CE100FD6713 /* ChallengeMemberRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMemberRepository.swift; sourceTree = "<group>"; };
 		365B12232AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallengeMemberUseCase.swift; sourceTree = "<group>"; };
-		365B12272AD4293400FD6713 /* MockedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedView.swift; sourceTree = "<group>"; };
 		365B12292AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChallengeMemberUseCase.swift; sourceTree = "<group>"; };
 		365B122B2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChallengeMemberUseCase.swift; sourceTree = "<group>"; };
 		B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutriRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,7 +316,6 @@
 			isa = PBXGroup;
 			children = (
 				B98EEE8F2ACB46BB001B1DD3 /* FeedGroupView.swift */,
-				365B12272AD4293400FD6713 /* MockedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -568,7 +565,6 @@
 				363300F32ACF4EE70083D5B8 /* RankingView.swift in Sources */,
 				B98EEED52ACC5F3A001B1DD3 /* FetchGroupsUseCase.swift in Sources */,
 				B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */,
-				365B12282AD4293400FD6713 /* MockedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
