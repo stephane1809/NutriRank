@@ -17,6 +17,9 @@
 		365B122A2AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12292AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift */; };
 		365B122C2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B122B2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift */; };
 		4B5478BA2AD03EDC0029AF65 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */; };
+		4B5478BC2AD42C060029AF65 /* CardPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BB2AD42C060029AF65 /* CardPostView.swift */; };
+		4B5478BE2AD42D510029AF65 /* FeedPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BD2AD42D510029AF65 /* FeedPostView.swift */; };
+		4B5478C02AD5710D0029AF65 /* SheetCreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */; };
 		B92519542AD579250097E11D /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = B92519532AD579250097E11D /* Nuvem */; };
 		B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */; };
 		B98EEE512ACB4503001B1DD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE502ACB4503001B1DD3 /* ContentView.swift */; };
@@ -83,6 +86,9 @@
 		365B12292AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChallengeMemberUseCase.swift; sourceTree = "<group>"; };
 		365B122B2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChallengeMemberUseCase.swift; sourceTree = "<group>"; };
 		4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
+		4B5478BB2AD42C060029AF65 /* CardPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPostView.swift; sourceTree = "<group>"; };
+		4B5478BD2AD42D510029AF65 /* FeedPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostView.swift; sourceTree = "<group>"; };
+		4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCreatePostView.swift; sourceTree = "<group>"; };
 		B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutriRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankApp.swift; sourceTree = "<group>"; };
 		B98EEE502ACB4503001B1DD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -300,6 +306,9 @@
 				B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */,
 				B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */,
 				4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */,
+				4B5478BB2AD42C060029AF65 /* CardPostView.swift */,
+				4B5478BD2AD42D510029AF65 /* FeedPostView.swift */,
+				4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -527,6 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B5478BC2AD42C060029AF65 /* CardPostView.swift in Sources */,
 				B9EF0C222ACEEB9300CA8CF6 /* CreateGroupView.swift in Sources */,
 				B9EF0C1E2ACEEB7900CA8CF6 /* EmptyStateView.swift in Sources */,
 				B9EF0C1F2ACEEB7900CA8CF6 /* GroupView.swift in Sources */,
@@ -543,6 +553,7 @@
 				B98EEEC92ACC5F11001B1DD3 /* FeedGroupView.swift in Sources */,
 				365B121F2AD41C2B00FD6713 /* NutriRankMemberClient.swift in Sources */,
 				B98EEECD2ACC5F24001B1DD3 /* ChallengeGroupRepository.swift in Sources */,
+				4B5478C02AD5710D0029AF65 /* SheetCreatePostView.swift in Sources */,
 				B98EEEC62ACC5F05001B1DD3 /* ChallengeGroupFactory.swift in Sources */,
 				B98EEED02ACC5F2C001B1DD3 /* CreateChallengePostUseCase.swift in Sources */,
 				365B122A2AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift in Sources */,
@@ -565,6 +576,7 @@
 				B98EEECC2ACC5F1A001B1DD3 /* ChallengeGroupUIModel.swift in Sources */,
 				363300F32ACF4EE70083D5B8 /* RankingView.swift in Sources */,
 				B98EEED52ACC5F3A001B1DD3 /* FetchGroupsUseCase.swift in Sources */,
+				4B5478BE2AD42D510029AF65 /* FeedPostView.swift in Sources */,
 				B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,7 +742,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NutriRank/Preview Content\"";
-				DEVELOPMENT_TEAM = 949BRFMFQG;
+				DEVELOPMENT_TEAM = 826U5T47TW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NutriRank/Info.plist;
@@ -767,7 +779,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NutriRank/Preview Content\"";
-				DEVELOPMENT_TEAM = 949BRFMFQG;
+				DEVELOPMENT_TEAM = 826U5T47TW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NutriRank/Info.plist;
