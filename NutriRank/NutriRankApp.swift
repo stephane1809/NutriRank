@@ -11,14 +11,7 @@ import SwiftUI
 struct NutriRankApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//            ChallengeGroupFactory.make()
-////            CreateGroupView()
-            ChallengeGroupFactory.make()
-            // CreateProfileView()
-//            EmptyStateView()
-//            GroupView()
-//            RankingView()
+            OnboardingView()
         }
     }
 }
