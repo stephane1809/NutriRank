@@ -11,7 +11,11 @@ import SwiftUI
 
 public struct EmptyStateView: View {
 
-    public init() {}
+    @ObservedObject var viewmodel: FeedGroupViewModel
+
+    public init(viewmodel: FeedGroupViewModel) {
+        self.viewmodel = viewmodel
+    }
 
     public var body: some View {
         GeometryReader { metrics in
@@ -71,12 +75,14 @@ public struct EmptyStateView: View {
 
                     }
                 }
-
-
             }
 
         }
-
+        .onOpenURL(perform: { url in
+            Task {
+                await viewmodel.handle(url: url)
+            }
+        })
     }
 
 }
