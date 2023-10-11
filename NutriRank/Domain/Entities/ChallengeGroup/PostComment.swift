@@ -20,7 +20,4 @@ public struct PostComment: CKModel {
 
     @CKField("comment")
     var comment: String
-
-    @CKReferenceField("post")
-    var post: Post?
 }
