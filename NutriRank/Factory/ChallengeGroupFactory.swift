@@ -27,8 +27,10 @@ struct ChallengeGroupFactory {
         let createMemberUseCase = DefaultChallengeCreateMemberUseCase(challengeMemberRepository: memberRepository)
         let updateMemberUseCase = DefaultUpdateChallengeMemberUseCase(challengeMemberRepository: memberRepository)
         let fetchMemberUseCase = DefaultFetchChallengeMember(challengeMemberRepository: memberRepository)
+        let addMemberUseCase = DefaultAddMemberToGroupUseCase(repository: memberRepository)
+        let fetchGroupById = DefaultFetchGroupByIdUsecase(repository: repository)
 
-        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase)
+        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase, fetchGroupByIDUseCase: fetchGroupById, addMemberUseCase: addMemberUseCase)
 //        return CreateGroupView(viewmodel: viewmodel)
         return CreateGroupView(viewmodel: viewmodel)
     }

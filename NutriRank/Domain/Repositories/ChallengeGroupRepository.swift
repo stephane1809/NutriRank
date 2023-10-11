@@ -13,6 +13,7 @@ public protocol ChallengeGroupRepositoryProtocol {
     func createChallengeGroup(group: ChallengeGroup) async -> Result<ChallengeGroup, Error>
     func deleteChallengeRepository(group: ChallengeGroup) async -> Result<Bool, Error>
     func fetchGroupByMember(member: Member) async -> Result<ChallengeGroup, Error>
+    func fetchGroupByID(id: String) async -> Result<ChallengeGroup, Error>
 }
 
 public class DefaultChallengeGroupRepository: ChallengeGroupRepositoryProtocol {
@@ -64,7 +65,16 @@ public class DefaultChallengeGroupRepository: ChallengeGroupRepositoryProtocol {
         case .failure(let error):
             return .failure(error)
         }
+    }
 
+    public func fetchGroupByID(id: String) async -> Result<ChallengeGroup, Error> {
+        let result = await data.fetchGroupByID(id: id)
+        switch result {
+        case .success(let group):
+            return .success(group)
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }
 

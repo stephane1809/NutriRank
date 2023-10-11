@@ -11,6 +11,22 @@ import Nuvem
 
 
 public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
+
+    let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
+
+    public func addMemberToGroup(member: Member, group: ChallengeGroup) async -> Result<AddMemberRequestedValues, Error> {
+        do {
+            var groupToSave = group
+            var memberToSave = member
+            try await groupToSave.save(on: database)
+            try await memberToSave.save(on: database)
+            let values = AddMemberRequestedValues(memberToSave, groupToSave)
+            return .success(values)
+        } catch {
+            return .failure(error)
+        }
+    }
+    
     public func createChallengeMember(member: Member) async -> Result<Member, Error> {
         var memberToSave = member
         let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
