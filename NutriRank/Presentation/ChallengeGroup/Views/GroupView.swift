@@ -11,8 +11,11 @@ import SwiftUI
 
 public struct GroupView: View {
 
-    public init() {}
+    @ObservedObject var viewmodel: FeedGroupViewModel
 
+    public init(viewmodel: FeedGroupViewModel) {
+        self.viewmodel = viewmodel
+    }
 
     public var body: some View {
         
@@ -24,21 +27,20 @@ public struct GroupView: View {
                             .aspectRatio(contentMode: .fit)
                             .scaledToFill()
                             .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
-                            .background(Color("Green"))
+//                            .background(Color("Green"))
                             .cornerRadius(10)
 
                         VStack (alignment: .leading, spacing: 3){
-                            Text ("Nome do grupo")
+                            Text (viewmodel.groups.first?.groupName ?? "")
                                 .font(.title2)
                                 .bold()
-                            Text("Descrição do grupo bubiubuibuibui isdjncisdncisnducbnsoiudbcusdocisnodicnosidncoisndcinsdiocnincoinsdocnosidnci")
+                            Text(viewmodel.groups.first?.description ?? "")
                                 .lineLimit(1...10)
-
                         }
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
                         .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(.white)
+                        .background(.background)
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
 
@@ -59,7 +61,7 @@ public struct GroupView: View {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
                         .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(.white)
+                        .background(.background)
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
 
@@ -72,14 +74,14 @@ public struct GroupView: View {
                                 Spacer()
                             }
 
-                            Text("Regras do grupo wnxubwubxuybdcuybeduycbuebcybuycbrue")
-                                .lineLimit(1...10)
+//                            Text("Regras do grupo wnxubwubxuybdcuybeduycbuebcybuycbrue")
+//                                .lineLimit(1...10)
 
                         }
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
                         .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(.white)
+                        .background(.background)
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
 
@@ -96,8 +98,8 @@ public struct GroupView: View {
                             Spacer()
 
                             HStack {
-                                Text("Link")
-                                    .foregroundColor(.blue)
+//                                Text("Link")
+//                                    .foregroundColor(.blue)
                                 Button {
 
                                 } label: {
@@ -116,7 +118,7 @@ public struct GroupView: View {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
                         .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(.white)
+                        .background(.background)
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
 
@@ -138,6 +140,11 @@ public struct GroupView: View {
                         }
                         .padding(.vertical,20)
 
+                    }
+                }
+                .onAppear {
+                    Task {
+                        await viewmodel.fetchGroup()
                     }
                 }
                 .frame(maxWidth: .infinity)

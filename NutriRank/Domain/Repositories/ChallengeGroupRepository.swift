@@ -12,6 +12,7 @@ public protocol ChallengeGroupRepositoryProtocol {
     func fetchChallengeGroups() async -> Result<[ChallengeGroup], Error>
     func createChallengeGroup(group: ChallengeGroup) async -> Result<ChallengeGroup, Error>
     func deleteChallengeRepository(group: ChallengeGroup) async -> Result<Bool, Error>
+    func fetchGroupByMember(member: Member) async -> Result<ChallengeGroup, Error>
 }
 
 public class DefaultChallengeGroupRepository: ChallengeGroupRepositoryProtocol {
@@ -23,7 +24,6 @@ public class DefaultChallengeGroupRepository: ChallengeGroupRepositoryProtocol {
     }
 
     public func fetchChallengeGroups() async -> Result<[ChallengeGroup], Error> {
-        print("fetch chegou no repository")
         let result = await data.fetchChallengeGroups()
         switch result {
             case .success(let groupList):
@@ -54,6 +54,17 @@ public class DefaultChallengeGroupRepository: ChallengeGroupRepositoryProtocol {
             case .failure(let error):
                 return .failure(error)
         }
+    }
+
+    public func fetchGroupByMember(member: Member) async -> Result<ChallengeGroup, Error> {
+        let result = await data.fetchChallengeGroups()
+        switch result {
+        case .success(let groups):
+            return .success(ChallengeGroup())
+        case .failure(let error):
+            return .failure(error)
+        }
+
     }
 }
 

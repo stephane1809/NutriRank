@@ -109,7 +109,7 @@ struct CreateGroupSheet: View {
         TextField("Descrição do grupo", text: $description)
         Button {
             Task {
-                await viewModel.createGroup(groupName: groupName, description: description)
+//                await viewModel.createGroup(groupName: groupName, description: description, )
             }
             dismiss()
         } label: {
