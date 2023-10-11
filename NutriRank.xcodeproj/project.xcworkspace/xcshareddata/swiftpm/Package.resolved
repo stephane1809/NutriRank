@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "nuvem",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mtsrodrigues/nuvem",
+      "state" : {
+        "branch" : "main",
+        "revision" : "2e50a9c2a3c0e8b55268c32c7f191eadabacc4fc"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -52,6 +52,7 @@
 		B98EEEDA2ACC62A7001B1DD3 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */; };
 		B98EEEDC2ACC62A7001B1DD3 /* CoordinatorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED82ACC62A6001B1DD3 /* CoordinatorPicker.swift */; };
 		B98EEEDD2ACC62A7001B1DD3 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */; };
+		B9B318FF2AD6200C003F6E11 /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = B9B318FE2AD6200C003F6E11 /* Nuvem */; };
 		B9EF0C1E2ACEEB7900CA8CF6 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1B2ACEEB7900CA8CF6 /* EmptyStateView.swift */; };
 		B9EF0C1F2ACEEB7900CA8CF6 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */; };
 		B9EF0C202ACEEB7900CA8CF6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */; };
@@ -415,7 +416,7 @@
 			name = NutriRank;
 			packageProductDependencies = (
 				B98EEE7E2ACB45C5001B1DD3 /* Mixpanel */,
-				B92519532AD579250097E11D /* Nuvem */,
+				B9B318FE2AD6200C003F6E11 /* Nuvem */,
 			);
 			productName = NutriRank;
 			productReference = B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */;
@@ -492,7 +493,7 @@
 			mainGroup = B98EEE422ACB4503001B1DD3;
 			packageReferences = (
 				B98EEE7D2ACB45C5001B1DD3 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
-				B92519522AD579250097E11D /* XCRemoteSwiftPackageReference "nuvem" */,
+				B9B318FD2AD6200C003F6E11 /* XCRemoteSwiftPackageReference "nuvem" */,
 			);
 			productRefGroup = B98EEE4C2ACB4503001B1DD3 /* Products */;
 			projectDirPath = "";
@@ -929,15 +930,15 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mtsrodrigues/nuvem";
 			requirement = {
-				branch = main;
+				branch = master;
 				kind = branch;
 			};
 		};
-		B98EEE7D2ACB45C5001B1DD3 /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+		B9B318FD2AD6200C003F6E11 /* XCRemoteSwiftPackageReference "nuvem" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			repositoryURL = "https://github.com/mtsrodrigues/nuvem";
 			requirement = {
-				branch = master;
+				branch = main;
 				kind = branch;
 			};
 		};
@@ -953,6 +954,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B98EEE7D2ACB45C5001B1DD3 /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
 			productName = Mixpanel;
+		};
+		B9B318FE2AD6200C003F6E11 /* Nuvem */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9B318FD2AD6200C003F6E11 /* XCRemoteSwiftPackageReference "nuvem" */;
+			productName = Nuvem;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
