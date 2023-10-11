@@ -70,7 +70,6 @@ public struct EmptyStateView: View {
                             .background(Color("FirstPlaceRanking"))
                             .cornerRadius(10)
                             .buttonStyle(.bordered)
-
                         }
                     }
                 }
