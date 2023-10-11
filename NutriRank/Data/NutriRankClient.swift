@@ -10,20 +10,18 @@
 
 import Foundation
 import CloudKit
+import Nuvem
 
 public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
-
+    
+    let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
 
     public init() {}
 
     public func createChallengeGroup(group: ChallengeGroup) async -> Result<ChallengeGroup, Error> {
-        print("chegou no cliente")
-        var groupToSave = ChallengeGroup()
-        groupToSave.groupName = group.groupName
-        groupToSave.description = group.description
-        let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
+        var groupToSave = group
         do {
-            try await groupToSave.save(on: database)
+            try await groupToSave.save(on: self.database)
             return .success(groupToSave)
         } catch {
             return .failure(error)
@@ -31,10 +29,8 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
     }
 
     public func fetchChallengeGroups() async -> Result<[ChallengeGroup], Error> {
-        print("fetch chegou no cliente")
-        let database = CKContainer(identifier:"iCloud.NutriRankContainer").publicCloudDatabase
-        do{
-            let result = try await ChallengeGroup.query(on: database).all()
+        do {
+            let result = try await ChallengeGroup.query(on: self.database).all()
             return(.success(result))
 
         } catch {
@@ -43,16 +39,21 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
     }
 
     public func deleteChallengeRepository(group: ChallengeGroup) async -> Result<Bool, Error> {
-        print("delete chegou no client")
-        let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
         do {
-            try await group.delete(on: database)
+            try await group.delete(on: self.database)
             return .success(true)
         } catch {
             return .failure(error)
         }
     }
 
-
+    public func fetchGroupByMember(member: Member) async -> Result<ChallengeGroup, Error> {
+        do {
+            let result = try await ChallengeGroup.query(on: self.database).all()
+            return .success(ChallengeGroup())
+        } catch {
+            return .failure(error)
+        }
+    }
 
 }

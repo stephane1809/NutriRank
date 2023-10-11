@@ -4,7 +4,16 @@
 <dict>
 	<key>CFBundleURLTypes</key>
 	<array>
-		<dict/>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>com.merendeers.nutrirank</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>nutrirank</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>
