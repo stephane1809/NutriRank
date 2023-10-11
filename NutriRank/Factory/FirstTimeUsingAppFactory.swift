@@ -1,15 +1,14 @@
 //
-//  ChallengeGroupFactory.swift
+//  FirstTimeUsingAppFactory.swift
 //  NutriRank
 //
-//  Created by Paulo Henrique Gomes da Silva on 19/09/23.
-//  Copyright © 2023 Merendeers. All rights reserved.
+//  Created by Gabriel Santiago on 10/10/23.
 //
 
 import Foundation
 import SwiftUI
 
-struct ChallengeGroupFactory {
+struct FirstTimeUsingAppFactory {
     static func make() -> some View {
         let data = NutriRankNuvemClient()
         let dataPost = NutriRankClientPosts()
@@ -30,6 +29,7 @@ struct ChallengeGroupFactory {
 
         let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase)
 
-        return EmptyStateView(viewModel: viewmodel)
+        return OnboardingView(viewModel: viewmodel)
     }
 }
+

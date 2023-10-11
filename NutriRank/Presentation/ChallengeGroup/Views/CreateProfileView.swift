@@ -9,14 +9,21 @@ import Foundation
 import SwiftUI
 
 public struct CreateProfileView: View {
-    
-    public init() {}
+
+
+    let viewModel: FeedGroupViewModel
+
+    init(viewModel: FeedGroupViewModel) {
+        self.viewModel = viewModel
+    }
 
     @State private var selectedImageProfile: UIImage?
     @State private var isImagePickerDisplay = false
     @State private var isImagePickerDisplay2 = false
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var nickName = ""
+
+    @State private var performNavigation: Bool = false
 
     public var body: some View {
 
@@ -100,7 +107,11 @@ public struct CreateProfileView: View {
 
 
                         Button {
-
+                            Task{
+                                await viewModel.createChallengeMember(name:nickName,avatar: selectedImageProfile!,score:0)
+                                UserDefaults.standard.set(true, forKey: "isFirstTimeUsingApp")
+                                self.performNavigation = true
+                            }
                         } label: {
                             Text("Continuar")
                                 .font(.headline)
@@ -110,9 +121,13 @@ public struct CreateProfileView: View {
                         .background(Color("FirstPlaceRanking"))
                         .cornerRadius(10)
                         .buttonStyle(.bordered)
+
+                        NavigationLink("", destination: EmptyStateView(viewModel: viewModel), isActive: $performNavigation)
+                            .hidden()
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

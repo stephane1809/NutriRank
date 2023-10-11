@@ -11,7 +11,11 @@ import SwiftUI
 
 public struct EmptyStateView: View {
 
-    public init() {}
+    let viewmodel: FeedGroupViewModel
+
+    init(viewModel: FeedGroupViewModel) {
+        self.viewmodel = viewModel
+    }
 
     public var body: some View {
         GeometryReader { metrics in
@@ -50,9 +54,8 @@ public struct EmptyStateView: View {
 
 
                         VStack {
-                            Button {
 
-                            } label: {
+                            NavigationLink(destination: CreateGroupView(viewmodel: viewmodel)) {
                                 HStack (alignment: .center){
                                     Image(systemName: "person.crop.circle.fill.badge.plus")
                                         .foregroundColor(.white)
@@ -64,16 +67,15 @@ public struct EmptyStateView: View {
                                 }
                                 .frame(width: 150, height: 35)
                             }
-                            .background(Color("Red"))
+                            .background(Color("FirstPlaceRanking"))
                             .cornerRadius(10)
                             .buttonStyle(.bordered)
-                        }
 
+                        }
                     }
                 }
-
-
             }
+            .navigationBarBackButtonHidden(true)
 
         }
 

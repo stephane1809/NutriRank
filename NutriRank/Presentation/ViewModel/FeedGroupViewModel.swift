@@ -111,7 +111,7 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func createChallengeMember(name: String, avatar: String, score: Int ) async {
+    func createChallengeMember(name: String, avatar: UIImage, score: Int ) async {
         var member = Member()
         member.name = name
         member.avatar = avatar

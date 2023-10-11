@@ -34,7 +34,7 @@ public struct FeedPostView: View {
         GeometryReader { metrics in
             NavigationView  {
                 ZStack {
-                    Color(.defaultBackground)
+                    Color("DefaultBackgroundColor")
                         .ignoresSafeArea()
                     VStack (alignment: .center, spacing: 20){
                         ZStack{
