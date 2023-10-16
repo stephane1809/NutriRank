@@ -15,7 +15,6 @@ public class FeedGroupViewModel: ObservableObject {
     @Published var posts: [Post] = []
     @Published var members: [Member] = []
     @Published var member: Member = Member()
-    @Published var groupIDToAddMember: String?
 
     let createUseCase: CreateChallengeGroupUseCase
     let createPostUseCase: CreateChallengePostUseCase
@@ -24,8 +23,18 @@ public class FeedGroupViewModel: ObservableObject {
     let createMemberUseCase: CreateChallengeMemberUseCase
     let updateMemberUseCase: UpdateChallengeMemberUseCase
     let fetchMemberUseCase: FetchChallengeMemberUseCase
+    let fetchGroupByIDUseCase: FetchGroupByIdUseCaseProtocol
+    let addMemberUseCase: AddMemberToGroupUseCaseProtocol
 
-    public init(createUseCase: CreateChallengeGroupUseCase, createPostUseCase: CreateChallengePostUseCase, fetchUseCase: FetchChallengeGroupsUseCase, deleteUseCase: DeleteChallengeGroupUseCase, createMemberUseCase: CreateChallengeMemberUseCase, updateMemberUseCase: UpdateChallengeMemberUseCase, fetchMemberUseCase: FetchChallengeMemberUseCase) {
+    public init(createUseCase: CreateChallengeGroupUseCase, 
+                createPostUseCase: CreateChallengePostUseCase,
+                fetchUseCase: FetchChallengeGroupsUseCase,
+                deleteUseCase: DeleteChallengeGroupUseCase,
+                createMemberUseCase: CreateChallengeMemberUseCase,
+                updateMemberUseCase: UpdateChallengeMemberUseCase,
+                fetchMemberUseCase: FetchChallengeMemberUseCase,
+                fetchGroupByIDUseCase: FetchGroupByIdUseCaseProtocol,
+                addMemberUseCase: AddMemberToGroupUseCaseProtocol) {
         self.createUseCase = createUseCase
         self.createPostUseCase = createPostUseCase
         self.fetchUseCase = fetchUseCase
@@ -33,9 +42,11 @@ public class FeedGroupViewModel: ObservableObject {
         self.createMemberUseCase = createMemberUseCase
         self.updateMemberUseCase = updateMemberUseCase
         self.fetchMemberUseCase = fetchMemberUseCase
+        self.fetchGroupByIDUseCase = fetchGroupByIDUseCase
+        self.addMemberUseCase = addMemberUseCase
     }
 
-    func handle(url: URL) {
+    func handle(url: URL) async {
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
               let scheme = components.scheme, scheme == "nutrirank",
               let action = components.host,
@@ -48,10 +59,21 @@ public class FeedGroupViewModel: ObservableObject {
         case "enter":
             if let firstParam = params.first, let id = firstParam.value, firstParam.name == "id" {
                 print("add new member to group \(id)")
-                groupIDToAddMember = id
+                await fetchGroupByID(id: id)
             }
         default:
             print("Unhandled action: \(url)")
+        }
+    }
+
+    func addMemberToGroup(member: Member, group: ChallengeGroup) async {
+        let result = await addMemberUseCase.execute(requestValue: AddMemberRequestedValues(member, group))
+        switch result {
+        case .success(let values):
+            self.group = values.group
+            self.member = values.member
+        case .failure(let error):
+            print(error)
         }
     }
 
@@ -85,6 +107,16 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
+    func fetchGroupByID(id: String) async {
+        let result = await fetchGroupByIDUseCase.execute(requestValue: id)
+        switch result {
+        case .success(let group):
+            self.group = group
+        case .failure(let error):
+            print(error)
+        }
+    }
+
     func deleteGroup(group: ChallengeGroup) async {
         print("o delete chegou na viewmodel")
         let result = await deleteUseCase.execute(group: group)
@@ -95,7 +127,7 @@ public class FeedGroupViewModel: ObservableObject {
                 print(error)
         }
     }
-    
+
     func createPost(title: String, description: String) async {
         var post = Post()
         post.description = description
@@ -111,7 +143,7 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func createChallengeMember(name: String, avatar: UIImage, score: Int ) async {
+    func createChallengeMember(name: String, avatar: UIImage?, score: Int ) async {
         var member = Member()
         member.name = name
         member.avatar = avatar

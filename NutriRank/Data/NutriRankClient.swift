@@ -56,4 +56,13 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
         }
     }
 
+    public func fetchGroupByID(id: String) async -> Result<ChallengeGroup, Error> {
+        do {
+            let CKID = CKRecord.ID(recordName: id)
+            let result = try await ChallengeGroup.find(id: CKID, on: database)
+            return .success(result)
+        } catch {
+            return .failure(error)
+        }
+    }
 }

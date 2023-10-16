@@ -11,10 +11,10 @@ import SwiftUI
 
 public struct EmptyStateView: View {
 
-    let viewmodel: FeedGroupViewModel
+    @ObservedObject var viewmodel: FeedGroupViewModel
 
-    init(viewModel: FeedGroupViewModel) {
-        self.viewmodel = viewModel
+    public init(viewmodel: FeedGroupViewModel) {
+        self.viewmodel = viewmodel
     }
 
     public var body: some View {
@@ -77,7 +77,11 @@ public struct EmptyStateView: View {
             .navigationBarBackButtonHidden(true)
 
         }
-
+        .onOpenURL(perform: { url in
+            Task {
+                await viewmodel.handle(url: url)
+            }
+        })
     }
 
 }
