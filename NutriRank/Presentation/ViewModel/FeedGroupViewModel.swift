@@ -60,6 +60,7 @@ public class FeedGroupViewModel: ObservableObject {
             if let firstParam = params.first, let id = firstParam.value, firstParam.name == "id" {
                 print("add new member to group \(id)")
                 await fetchGroupByID(id: id)
+                await addMemberToGroup(member: self.member, group: self.group)
             }
         default:
             print("Unhandled action: \(url)")
