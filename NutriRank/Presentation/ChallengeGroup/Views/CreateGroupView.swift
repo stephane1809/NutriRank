@@ -198,10 +198,3 @@ public struct CreateGroupView: View {
     }
 
 }
-
-
-//struct CreateGroupView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChallengeGroupFactory.make()
-//    }
-//}

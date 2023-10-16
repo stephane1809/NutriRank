@@ -1,15 +1,14 @@
 //
-//  ChallengeGroupFactory.swift
+//  FirstTimeUsingAppFactory.swift
 //  NutriRank
 //
-//  Created by Paulo Henrique Gomes da Silva on 19/09/23.
-//  Copyright © 2023 Merendeers. All rights reserved.
+//  Created by Gabriel Santiago on 10/10/23.
 //
 
 import Foundation
 import SwiftUI
 
-struct ChallengeGroupFactory {
+struct FirstTimeUsingAppFactory {
     static func make() -> some View {
         let data = NutriRankNuvemClient()
         let dataPost = NutriRankClientPosts()
@@ -28,10 +27,11 @@ struct ChallengeGroupFactory {
         let updateMemberUseCase = DefaultUpdateChallengeMemberUseCase(challengeMemberRepository: memberRepository)
         let fetchMemberUseCase = DefaultFetchChallengeMember(challengeMemberRepository: memberRepository)
         let addMemberUseCase = DefaultAddMemberToGroupUseCase(repository: memberRepository)
-        let fetchGroupById = DefaultFetchGroupByIdUsecase(repository: repository)
+        let fetchGroupByIDUseCase = DefaultFetchGroupByIdUsecase(repository: repository)
 
-        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase, fetchGroupByIDUseCase: fetchGroupById, addMemberUseCase: addMemberUseCase)
+        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase, fetchGroupByIDUseCase: fetchGroupByIDUseCase, addMemberUseCase: addMemberUseCase)
 
-        return EmptyStateView(viewmodel: viewmodel)
+        return OnboardingView(viewModel: viewmodel)
     }
 }
+
