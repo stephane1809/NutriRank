@@ -19,4 +19,4 @@ struct NutriRankApp: App {
             }
         }
     }
-}
+}git 
