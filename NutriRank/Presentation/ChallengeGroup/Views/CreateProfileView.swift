@@ -11,7 +11,7 @@ import SwiftUI
 public struct CreateProfileView: View {
 
 
-    let viewModel: FeedGroupViewModel
+    @ObservedObject var viewModel: FeedGroupViewModel
 
     init(viewModel: FeedGroupViewModel) {
         self.viewModel = viewModel
@@ -122,7 +122,7 @@ public struct CreateProfileView: View {
                         .cornerRadius(10)
                         .buttonStyle(.bordered)
 
-                        NavigationLink("", destination: EmptyStateView(viewModel: viewModel), isActive: $performNavigation)
+                        NavigationLink("", destination: EmptyStateView(viewmodel: viewModel), isActive: $performNavigation)
                             .hidden()
                     }
                 }
