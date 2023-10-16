@@ -114,8 +114,8 @@ public struct CreateProfileView: View {
                                     self.showFailAlert = true
 
                                 } else {
-                                    await viewModel.createChallengeMember(name:nickName,avatar: selectedImageProfile!,score:0)
                                     UserDefaults.standard.set(true, forKey: "isFirstTimeUsingApp")
+                                    await viewModel.createChallengeMember(name:nickName,avatar: selectedImageProfile!,score:0)
                                     self.performNavigation = true
                                 }
                             }
