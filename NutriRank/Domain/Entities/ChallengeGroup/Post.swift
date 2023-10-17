@@ -37,4 +37,6 @@ public struct Post: CKModel {
     @CKReferenceListField("comments")
     var comments: [PostComment]?
 
+    @CKReferenceField("challengeGroup")
+    var challengeGroup: ChallengeGroup?
 }

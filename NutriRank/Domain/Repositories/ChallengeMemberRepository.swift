@@ -33,7 +33,9 @@ public class DefaultChallengeMemberRepository: ChallengeMemberRepositoryProtocol
     }
 
     public func updateChallengeMember(member: Member) async -> Result<Member, Error> {
-        let result = await data.updateChallengeMember(member: member)
+        var memberToSave = member
+        memberToSave.score += 1
+        let result = await data.updateChallengeMember(member: memberToSave)
         switch result {
         case .success(let member):
             return .success(member)
