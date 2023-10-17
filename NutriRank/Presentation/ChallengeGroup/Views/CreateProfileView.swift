@@ -23,6 +23,8 @@ public struct CreateProfileView: View {
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var nickName = ""
 
+    @State private var showFailAlert = false
+
     @State private var performNavigation: Bool = false
 
     public var body: some View {
@@ -108,9 +110,14 @@ public struct CreateProfileView: View {
 
                         Button {
                             Task{
-                                await viewModel.createChallengeMember(name:nickName,avatar: selectedImageProfile!,score:0)
-                                UserDefaults.standard.set(true, forKey: "isFirstTimeUsingApp")
-                                self.performNavigation = true
+                                if nickName == "" || selectedImageProfile == nil {
+                                    self.showFailAlert = true
+
+                                } else {
+                                    UserDefaults.standard.set(true, forKey: "isFirstTimeUsingApp")
+                                    await viewModel.createChallengeMember(name:nickName,avatar: selectedImageProfile!,score:0)
+                                    self.performNavigation = true
+                                }
                             }
                         } label: {
                             Text("Continuar")
@@ -121,6 +128,9 @@ public struct CreateProfileView: View {
                         .background(Color("FirstPlaceRanking"))
                         .cornerRadius(10)
                         .buttonStyle(.bordered)
+                        .alert("Insira uma imagem e um nome para criar seu usuário", isPresented: $showFailAlert) {
+                            Button("Ok", role: .cancel) {}
+                        }
 
                         NavigationLink("", destination: EmptyStateView(viewmodel: viewModel), isActive: $performNavigation)
                             .hidden()

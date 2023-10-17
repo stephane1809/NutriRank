@@ -31,10 +31,10 @@ public struct GroupView: View {
                             .cornerRadius(10)
 
                         VStack (alignment: .leading, spacing: 3){
-                            Text (viewmodel.groups.first?.groupName ?? "")
+                            Text (viewmodel.group.groupName)
                                 .font(.title2)
                                 .bold()
-                            Text(viewmodel.groups.first?.description ?? "")
+                            Text(viewmodel.group.description)
                                 .lineLimit(1...10)
                         }
                         .padding(.horizontal, 20)
@@ -101,7 +101,8 @@ public struct GroupView: View {
 //                                Text("Link")
 //                                    .foregroundColor(.blue)
                                 Button {
-
+                                    UIPasteboard.general.string = "nutrirank://enter?id=\(viewmodel.group.id)"
+                                    print("link copiado")
                                 } label: {
                                     Text("Copiar link")
                                         .font(.headline)
@@ -140,11 +141,6 @@ public struct GroupView: View {
                         }
                         .padding(.vertical,20)
 
-                    }
-                }
-                .onAppear {
-                    Task {
-                        await viewmodel.fetchGroup()
                     }
                 }
                 .frame(maxWidth: .infinity)

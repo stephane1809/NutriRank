@@ -26,6 +26,8 @@ public struct CreateGroupView: View {
     @State private var selectDateInit: Date = Date()
     @State private var selectDateFinal: Date = Date()
     @State private var performNavigation: Bool = false
+    @State var showFailAlert: Bool = false
+
 
     init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
@@ -150,9 +152,13 @@ public struct CreateGroupView: View {
                                 Spacer()
 
                                 Button {
+
                                     Task {
-                                        await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage)
-                                        self.performNavigation = true
+                                        if groupName == "" || description == "" || selectedImage == nil {
+                                            self.showFailAlert = true
+                                        } else{
+                                            await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage)
+                                        }
                                     }
                                 } label: {
                                     Text("Criar grupo")
@@ -163,8 +169,9 @@ public struct CreateGroupView: View {
                                 .background(Color("FirstPlaceRanking"))
                                 .cornerRadius(10)
                                 .buttonStyle(.bordered)
-//                                NavigationLink("", destination: FeedGroupView(viewmodel: viewmodel), isActive: $performNavigation)
-//                                    .hidden()
+                                .alert("Preencha todos os campos para criar seu grupo", isPresented: $showFailAlert) {
+                                    Button("Ok", role: .cancel) {}
+                                }
 
                             }
                             .frame(maxWidth: .infinity)
