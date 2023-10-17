@@ -24,7 +24,7 @@ struct RankingView: View {
                 }
             }
         }
-        .background(Color("DefaultBackgroundColor"))
+        .background(Color(.defaultBackground))
     }
 }
 

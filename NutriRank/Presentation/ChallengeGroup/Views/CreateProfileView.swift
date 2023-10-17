@@ -33,7 +33,7 @@ public struct CreateProfileView: View {
             NavigationView {
                 ZStack {
 
-                    Color("lightBlue")
+                    Color(.defaultBackground)
                         .ignoresSafeArea()
 
                     VStack (spacing: 70) {
