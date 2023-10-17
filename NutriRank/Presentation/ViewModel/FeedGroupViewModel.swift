@@ -135,18 +135,23 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func createPost(title: String, description: String) async {
+    func createPost(title: String, description: String, postImage: UIImage?) async -> Bool {
         var post = Post()
         post.description = description
         post.title = title
+        post.postImage = postImage
+        post.owner = self.member
+        post.challengeGroup = self.group
         let result = await createPostUseCase.execute(post)
         switch result {
         case .success(let post):
             DispatchQueue.main.async {
                 self.posts.append(post)
             }
+            return true
         case .failure(let error):
             print(error)
+            return false
         }
     }
 
@@ -170,12 +175,11 @@ public class FeedGroupViewModel: ObservableObject {
 
     }
 
-    func updateChallengeMember(score: Int) async {
-        await MainActor.run {
-            self.member.score = score
-        }
+    func updateChallengeMember() async {
+//        await MainActor.run {
+//            self.member.score = score
+//        }
         let result = await updateMemberUseCase.execute(requestValue: self.member)
-        
         switch result {
         case .success(let member):
             DispatchQueue.main.async {
@@ -193,6 +197,18 @@ public class FeedGroupViewModel: ObservableObject {
         guard let unwrappedId = id else {return}
 
         let result = await fetchMemberUseCase.execute(requestValue:unwrappedId)
+        switch result {
+        case .success(let member):
+            DispatchQueue.main.async {
+                self.member = member
+            }
+        case .failure(let error):
+            print(error)
+        }
+    }
+
+    func fetchMemberByID(id: String) async {
+        let result = await fetchMemberUseCase.execute(requestValue: id)
         switch result {
         case .success(let member):
             DispatchQueue.main.async {

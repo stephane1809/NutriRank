@@ -32,6 +32,6 @@ struct ChallengeGroupFactory {
 
         let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase, fetchGroupByIDUseCase: fetchGroupById, addMemberUseCase: addMemberUseCase)
 
-        return GroupView(viewmodel: viewmodel)
+        return FeedPostView(viewmodel: viewmodel)
     }
 }
