@@ -21,6 +21,7 @@
 		4B5478BC2AD42C060029AF65 /* CardPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BB2AD42C060029AF65 /* CardPostView.swift */; };
 		4B5478BE2AD42D510029AF65 /* FeedPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BD2AD42D510029AF65 /* FeedPostView.swift */; };
 		4B5478C02AD5710D0029AF65 /* SheetCreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */; };
+		4B5478C52ADE2A210029AF65 /* SheetPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478C42ADE2A210029AF65 /* SheetPostView.swift */; };
 		B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */; };
 		B98EEE512ACB4503001B1DD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE502ACB4503001B1DD3 /* ContentView.swift */; };
 		B98EEE532ACB4504001B1DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B98EEE522ACB4504001B1DD3 /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 		4B5478BB2AD42C060029AF65 /* CardPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPostView.swift; sourceTree = "<group>"; };
 		4B5478BD2AD42D510029AF65 /* FeedPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostView.swift; sourceTree = "<group>"; };
 		4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCreatePostView.swift; sourceTree = "<group>"; };
+		4B5478C42ADE2A210029AF65 /* SheetPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPostView.swift; sourceTree = "<group>"; };
 		B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutriRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankApp.swift; sourceTree = "<group>"; };
 		B98EEE502ACB4503001B1DD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				4B5478BB2AD42C060029AF65 /* CardPostView.swift */,
 				4B5478BD2AD42D510029AF65 /* FeedPostView.swift */,
 				4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */,
+				4B5478C42ADE2A210029AF65 /* SheetPostView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				B98EEECF2ACC5F2A001B1DD3 /* DeleteChallengePostUseCase.swift in Sources */,
 				365B12242AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift in Sources */,
 				B9B319022AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift in Sources */,
+				4B5478C52ADE2A210029AF65 /* SheetPostView.swift in Sources */,
 				B98EEECB2ACC5F18001B1DD3 /* ChallengeGroupViewModel.swift in Sources */,
 				B98EEEAC2ACC5C53001B1DD3 /* ChallengeGroup.swift in Sources */,
 				B98EEEC82ACC5F0F001B1DD3 /* NutriRankClient.swift in Sources */,

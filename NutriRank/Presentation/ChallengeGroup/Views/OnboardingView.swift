@@ -16,72 +16,42 @@ public struct OnboardingView: View {
 
     public var body: some View {
 
-        NavigationView {
             GeometryReader { metrics in
                 NavigationView {
-                    VStack (spacing: 110) {
-                        VStack {
-                            Image("logo")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Rectangle())
-                                .scaledToFill()
-                                .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.25)
-                            Text("O desafio perfeito para sua saúde.")
+                    ZStack {
+                        Color(.defaultBackground)
+                            .ignoresSafeArea()
 
-                        }
-
-                        VStack {
-
-                            NavigationLink(destination: CreateProfileView(viewModel: viewModel)){
-                                Text("Começar")
-                                    .font(.headline)
-                                    .frame(width: 250, height: 35)
-                                    .foregroundColor(.white)
+                        VStack (spacing: 110) {
+                            VStack {
+                                Image("logo")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(Rectangle())
+                                    .scaledToFill()
+                                    .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.25)
+                                Text("O desafio perfeito para sua saúde.")
 
                             }
-                            .background(Color("FirstPlaceRanking"))
-                            .cornerRadius(10)
-                            .buttonStyle(.bordered)
 
+                            VStack {
 
+                                NavigationLink(destination: CreateProfileView(viewModel: viewModel)){
+                                    Text("Começar")
+                                        .font(.headline)
+                                        .frame(width: 250, height: 35)
+                                        .foregroundColor(.white)
+
+                                }
+                                .background(Color("FirstPlaceRanking"))
+                                .cornerRadius(10)
+                                .buttonStyle(.bordered)
+
+                            }
                         }
                     }
-
                 }
             }
 
-        }
-//        GeometryReader { metrics in
-//            NavigationView {
-//                VStack (spacing: 110) {
-//                    VStack {
-//                        Image("logo")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .clipShape(Rectangle())
-//                            .scaledToFill()
-//                            .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.25)
-//                        Text("O desafio perfeito para sua saúde.")
-//
-//                    }
-//
-//                    VStack {
-//                        Button {
-//
-//                        } label: {
-//                            Text("Começar")
-//                                .font(.headline)
-//                                .frame(width: 250, height: 35)
-//                                .foregroundColor(.white)
-//                        }
-//                        .background(Color("FirstPlaceRanking"))
-//                        .cornerRadius(10)
-//                        .buttonStyle(.bordered)
-//                    }
-//                }
-//
-//            }
-//        }
     }
 }

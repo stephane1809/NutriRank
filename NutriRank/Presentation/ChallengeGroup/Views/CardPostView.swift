@@ -37,7 +37,7 @@ public struct CardPostView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
             .frame(width: 365, height: 85)
-            .background(.white)
+            .background(Color("DefaultCardColor"))
             .cornerRadius(10)
             .shadow(radius: 1, x: 0, y: 1)
 

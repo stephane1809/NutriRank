@@ -29,6 +29,7 @@ public struct CreateGroupView: View {
     @State private var showFailAlert: Bool = false
     @State private var showCloudPermissionAlert = false
 
+
     init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
     }
@@ -37,9 +38,9 @@ public struct CreateGroupView: View {
     public var body: some View {
 
         GeometryReader { metrics in
-            NavigationView {
-                    ScrollView {
-                        VStack (spacing: 40) {
+                ScrollView {
+                        VStack (spacing: 30) {
+
                             VStack(spacing: 1) {
                                 if selectedImage != nil {
                                     Image(uiImage: selectedImage!)
@@ -55,7 +56,7 @@ public struct CreateGroupView: View {
                                         .aspectRatio(contentMode: .fit)
                                         .scaledToFill()
                                         .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
-//                                        .background(Color("Green"))
+                                        .background(Color("DefaultCardColor"))
                                         .cornerRadius(10)
                                 }
 
@@ -66,6 +67,7 @@ public struct CreateGroupView: View {
                                 .font(.headline)
 
                             }
+                            .padding(.top, 10)
                             .actionSheet(isPresented: $isImagePickerDisplay) {
                                 ActionSheet(
                                     title: Text("Escolha uma opção"),
@@ -115,12 +117,12 @@ public struct CreateGroupView: View {
                                 VStack (spacing: 2) {
 
                                     HStack {
-                                        Image(systemName: "pencil")
-                                        Text("Descrição")
+                                        Image(systemName: "flame.fill")
+                                        Text("Desafio")
                                         Spacer()
                                     }
 
-                                    TextField("Descrição do grupo", text: $description)
+                                    TextField("Ex: comer uma fruta todo dia..", text: $description)
                                 }
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 12)
@@ -136,27 +138,10 @@ public struct CreateGroupView: View {
                                         Text("Duração")
                                         Spacer()
                                     }
-                                    DatePicker("Início:", selection: $selectDateInit)
+                                    DatePicker("Início:", selection: $selectDateInit, displayedComponents: [.date])
                                     Spacer()
-                                    DatePicker("Fim:", selection: $selectDateFinal)
+                                    DatePicker("Fim:", selection: $selectDateFinal, displayedComponents: [.date])
 
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 12)
-                                .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                                .background(.background)
-                                .cornerRadius(10)
-                                .shadow(radius: 1, x: 0, y: 1)
-
-                                VStack (spacing: 2){
-
-                                    HStack {
-                                        Image(systemName: "flame.fill")
-                                        Text("Regras")
-                                        Spacer()
-                                    }
-//                                    TextField("Regras do grupo", text: $rulesGroup, axis: .vertical)
-//                                        .lineLimit(1...10)
                                 }
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 12)
@@ -170,7 +155,6 @@ public struct CreateGroupView: View {
                                 Button {
 
                                     Task {
-
                                         if groupName == "" || description == "" || selectedImage == nil {
                                             self.showFailAlert = true
                                         } else{
@@ -188,7 +172,7 @@ public struct CreateGroupView: View {
                                         .frame(width: 125, height: 35)
                                         .foregroundColor(.white)
                                 }
-                                .background(.blue)
+                                .background(Color("FirstPlaceRanking"))
                                 .cornerRadius(10)
                                 .buttonStyle(.bordered)
                                 .alert("Preencha todos os campos para criar seu grupo", isPresented: $showFailAlert) {
@@ -205,12 +189,13 @@ public struct CreateGroupView: View {
 
                     }
                     .frame(maxWidth: .infinity)
-                    .background(Color("Light blue"))
+
+                    .background(Color(.defaultBackground))
                     .onTapGesture {
                         self.hideKeyboard()
                     }
-                    .navigationTitle("Criar grupo")
-                }
+
+            .navigationTitle("Criar grupo")
         }
 
         .navigationViewStyle(.stack)

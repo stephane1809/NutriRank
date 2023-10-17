@@ -21,7 +21,7 @@ public struct EmptyStateView: View {
         GeometryReader { metrics in
             NavigationView {
                 ZStack {
-                    Color("Light blue")
+                    Color(.defaultBackground)
                         .ignoresSafeArea()
 
                     VStack (spacing: 50) {
