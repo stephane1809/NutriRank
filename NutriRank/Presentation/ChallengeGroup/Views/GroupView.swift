@@ -148,7 +148,7 @@ public struct GroupView: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .background(Color("Light blue"))
+                .background(Color(.defaultBackground))
                 .navigationTitle("Grupo")
             }
         }

@@ -19,7 +19,7 @@ public struct SheetCreatePostView: View {
 
     public var body: some View {
         ZStack (alignment: .top) {
-            Color(.secondarySystemBackground)
+            Color(.defaultBackground)
                 .ignoresSafeArea()
             VStack (spacing: 20) {
                 HStack (spacing: 33) {
