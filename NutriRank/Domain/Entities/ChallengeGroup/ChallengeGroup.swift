@@ -22,6 +22,15 @@ public struct ChallengeGroup: CKModel {
     @CKField("description")
     public var description: String
 
+    @CKField("startDate")
+    public var startDate: Date
+
+    @CKField("endDate")
+    public var endDate: Date
+
+    @CKField("duration")
+    public var duration: Int
+
     @CKAssetField("groupImage")
     var groupImage: UIImage?
 

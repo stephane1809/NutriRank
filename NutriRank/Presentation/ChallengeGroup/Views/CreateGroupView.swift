@@ -23,11 +23,13 @@ public struct CreateGroupView: View {
     @State private var isImagePickerDisplay2 = false
     @State private var groupName: String = ""
     @State private var description: String = ""
-    @State private var selectDateInit: Date = Date()
-    @State private var selectDateFinal: Date = Date()
-
+    @State private var startDate: Date = Date()
+    @State private var endDate: Date = Date()
+    @State private var duration: Int = 0
+    @State private var calendar: Calendar = Calendar(identifier: .gregorian)
     @State private var showFailAlert: Bool = false
     @State private var showCloudPermissionAlert = false
+
 
 
     init(viewmodel: FeedGroupViewModel) {
@@ -50,7 +52,6 @@ public struct CreateGroupView: View {
                                         .scaledToFill()
                                         .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
                                         .cornerRadius(10)
-//                                        .containerRelativeFrame([.horizontal])
                                 } else {
                                     Image(systemName: "camera.fill").font(.system(size: 37, weight: .regular))
                                         .aspectRatio(contentMode: .fit)
@@ -138,9 +139,9 @@ public struct CreateGroupView: View {
                                         Text("Duração")
                                         Spacer()
                                     }
-                                    DatePicker("Início:", selection: $selectDateInit, displayedComponents: [.date])
+                                    DatePicker("Início:", selection: $startDate, displayedComponents: [.date])
                                     Spacer()
-                                    DatePicker("Fim:", selection: $selectDateFinal, displayedComponents: [.date])
+                                    DatePicker("Fim:", selection: $endDate, displayedComponents: [.date])
 
                                 }
                                 .padding(.horizontal, 20)
@@ -155,10 +156,12 @@ public struct CreateGroupView: View {
                                 Button {
 
                                     Task {
+
+                                        duration = calendar.numberOfDaysBetween(start: startDate, end: endDate)
                                         if groupName == "" || description == "" || selectedImage == nil {
                                             self.showFailAlert = true
                                         } else{
-                                            if await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage) {
+                                            if await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage, startDate: startDate, endDate: endDate, duration: duration) {
                                                 print("essa funcão precisa ser substituida por logica depois")
                                             } else {
 
