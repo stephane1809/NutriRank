@@ -23,6 +23,7 @@
 		4B5478C02AD5710D0029AF65 /* SheetCreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */; };
 		4B5478C52ADE2A210029AF65 /* SheetPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478C42ADE2A210029AF65 /* SheetPostView.swift */; };
 		4B5478C82ADEB7AE0029AF65 /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5478C72ADEB7AE0029AF65 /* Nuvem */; };
+		4B5478CA2ADEC9D60029AF65 /* ExtensionCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478C92ADEC9D60029AF65 /* ExtensionCalendar.swift */; };
 		B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */; };
 		B98EEE512ACB4503001B1DD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE502ACB4503001B1DD3 /* ContentView.swift */; };
 		B98EEE532ACB4504001B1DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B98EEE522ACB4504001B1DD3 /* Assets.xcassets */; };
@@ -95,6 +96,7 @@
 		4B5478BD2AD42D510029AF65 /* FeedPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostView.swift; sourceTree = "<group>"; };
 		4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCreatePostView.swift; sourceTree = "<group>"; };
 		4B5478C42ADE2A210029AF65 /* SheetPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPostView.swift; sourceTree = "<group>"; };
+		4B5478C92ADEC9D60029AF65 /* ExtensionCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCalendar.swift; sourceTree = "<group>"; };
 		B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutriRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankApp.swift; sourceTree = "<group>"; };
 		B98EEE502ACB4503001B1DD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				4B5478BD2AD42D510029AF65 /* FeedPostView.swift */,
 				4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */,
 				4B5478C42ADE2A210029AF65 /* SheetPostView.swift */,
+				4B5478C92ADEC9D60029AF65 /* ExtensionCalendar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B5478CA2ADEC9D60029AF65 /* ExtensionCalendar.swift in Sources */,
 				4B5478BC2AD42C060029AF65 /* CardPostView.swift in Sources */,
 				B9EF0C222ACEEB9300CA8CF6 /* CreateGroupView.swift in Sources */,
 				365B122E2AD6300300FD6713 /* FirstTimeUsingAppFactory.swift in Sources */,
