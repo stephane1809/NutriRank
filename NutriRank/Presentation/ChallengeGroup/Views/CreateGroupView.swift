@@ -27,8 +27,9 @@ public struct CreateGroupView: View {
     @State private var endDate: Date = Date()
     @State private var duration: Int = 0
     @State private var calendar: Calendar = Calendar(identifier: .gregorian)
-    @State private var performNavigation: Bool = false
-    @State var showFailAlert: Bool = false
+    @State private var showFailAlert: Bool = false
+    @State private var showCloudPermissionAlert = false
+
 
 
     init(viewmodel: FeedGroupViewModel) {
@@ -160,7 +161,12 @@ public struct CreateGroupView: View {
                                         if groupName == "" || description == "" || selectedImage == nil {
                                             self.showFailAlert = true
                                         } else{
-                                            await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage, startDate: startDate, endDate: endDate, duration: duration)
+                                            if await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage, startDate: startDate, endDate: endDate, duration: duration) {
+                                                print("essa funcão precisa ser substituida por logica depois")
+                                            } else {
+
+                                                self.showCloudPermissionAlert = true
+                                            }
                                         }
                                     }
                                 } label: {
@@ -173,6 +179,9 @@ public struct CreateGroupView: View {
                                 .cornerRadius(10)
                                 .buttonStyle(.bordered)
                                 .alert("Preencha todos os campos para criar seu grupo", isPresented: $showFailAlert) {
+                                    Button("Ok", role: .cancel) {}
+                                }
+                                .alert("Entre com sua conta Apple, nas configurações do seu aparelho, para prosseguir com a criação de grupo", isPresented: $showCloudPermissionAlert) {
                                     Button("Ok", role: .cancel) {}
                                 }
 

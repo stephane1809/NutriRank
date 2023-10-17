@@ -36,7 +36,4 @@ public struct ChallengeGroup: CKModel {
 
     @CKReferenceListField("members")
     var members: [Member]?
-
-    @CKReferenceListField("posts")
-    var posts: [Post]?
 }
