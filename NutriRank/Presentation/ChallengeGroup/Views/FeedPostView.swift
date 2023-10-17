@@ -18,6 +18,12 @@ public struct FeedPostView: View {
 
     }
 
+//    @ObservedObject var viewmodel: FeedGroupViewModel
+//
+//    public init(viewmodel: FeedGroupViewModel) {
+//        self.viewmodel = viewmodel
+//    }
+
     public init() {}
 
     @State var card = CardPostView()
@@ -133,6 +139,9 @@ public struct FeedPostView: View {
                             case .selection:
                             ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
                         }
+                    }
+                    .sheet(isPresented: $isPostCardDisplay){
+                        SheetPostView( selectedImage: selectedImage)
                     }
                 }
             }
