@@ -25,7 +25,9 @@ public struct CreateGroupView: View {
     @State private var description: String = ""
     @State private var selectDateInit: Date = Date()
     @State private var selectDateFinal: Date = Date()
-    @State var showFailAlert: Bool = false
+
+    @State private var showFailAlert: Bool = false
+    @State private var showCloudPermissionAlert = false
 
     init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
@@ -172,7 +174,12 @@ public struct CreateGroupView: View {
                                         if groupName == "" || description == "" || selectedImage == nil {
                                             self.showFailAlert = true
                                         } else{
-                                            await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage)
+                                            if await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage) {
+                                                print("essa funcão precisa ser substituida por logica depois")
+                                            } else {
+
+                                                self.showCloudPermissionAlert = true
+                                            }
                                         }
                                     }
                                 } label: {
@@ -185,6 +192,9 @@ public struct CreateGroupView: View {
                                 .cornerRadius(10)
                                 .buttonStyle(.bordered)
                                 .alert("Preencha todos os campos para criar seu grupo", isPresented: $showFailAlert) {
+                                    Button("Ok", role: .cancel) {}
+                                }
+                                .alert("Entre com sua conta Apple, nas configurações do seu aparelho, para prosseguir com a criação de grupo", isPresented: $showCloudPermissionAlert) {
                                     Button("Ok", role: .cancel) {}
                                 }
 

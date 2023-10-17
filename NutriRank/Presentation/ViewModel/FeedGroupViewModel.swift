@@ -82,7 +82,7 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func createGroup(groupName: String, description: String, image: UIImage?) async {
+    func createGroup(groupName: String, description: String, image: UIImage?) async -> Bool{
         print("chegou na viewmodel")
         var group = ChallengeGroup()
         group.groupName = groupName
@@ -94,9 +94,10 @@ public class FeedGroupViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.group = group
             }
-            print("Operação realizada com sucesso.")
+                return true
         case .failure(let error):
             print(error)
+                return false
         }
     }
 
@@ -150,7 +151,7 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func createChallengeMember(name: String, avatar: UIImage?, score: Int ) async {
+    func createChallengeMember(name: String, avatar: UIImage?, score: Int ) async -> Bool{
         var member = Member()
         member.name = name
         member.avatar = avatar
@@ -164,8 +165,10 @@ public class FeedGroupViewModel: ObservableObject {
                 self.member = member
                 UserDefaults.standard.set(member.id, forKey: "localMemberId")
             }
+                return true
         case .failure(let error):
             print(error)
+                return false
         }
 
     }
