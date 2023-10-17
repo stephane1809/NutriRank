@@ -22,6 +22,7 @@
 		4B5478BE2AD42D510029AF65 /* FeedPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BD2AD42D510029AF65 /* FeedPostView.swift */; };
 		4B5478C02AD5710D0029AF65 /* SheetCreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */; };
 		4B5478C52ADE2A210029AF65 /* SheetPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478C42ADE2A210029AF65 /* SheetPostView.swift */; };
+		4B5478C82ADEB7AE0029AF65 /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5478C72ADEB7AE0029AF65 /* Nuvem */; };
 		B98EEE4F2ACB4503001B1DD3 /* NutriRankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE4E2ACB4503001B1DD3 /* NutriRankApp.swift */; };
 		B98EEE512ACB4503001B1DD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE502ACB4503001B1DD3 /* ContentView.swift */; };
 		B98EEE532ACB4504001B1DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B98EEE522ACB4504001B1DD3 /* Assets.xcassets */; };
@@ -55,7 +56,6 @@
 		B9B319022AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B319012AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift */; };
 		B9B319042AD6D93A003F6E11 /* AddMemberToGroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B319032AD6D93A003F6E11 /* AddMemberToGroupUseCase.swift */; };
 		B9E0D1912ADD6EEF001661DD /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = B9E0D1902ADD6EEF001661DD /* Mixpanel */; };
-		B9E0D1942ADD6EFF001661DD /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = B9E0D1932ADD6EFF001661DD /* Nuvem */; };
 		B9EF0C1E2ACEEB7900CA8CF6 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1B2ACEEB7900CA8CF6 /* EmptyStateView.swift */; };
 		B9EF0C1F2ACEEB7900CA8CF6 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */; };
 		B9EF0C202ACEEB7900CA8CF6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */; };
@@ -142,7 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9E0D1942ADD6EFF001661DD /* Nuvem in Frameworks */,
+				4B5478C82ADEB7AE0029AF65 /* Nuvem in Frameworks */,
 				B9E0D1912ADD6EEF001661DD /* Mixpanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +435,7 @@
 			name = NutriRank;
 			packageProductDependencies = (
 				B9E0D1902ADD6EEF001661DD /* Mixpanel */,
-				B9E0D1932ADD6EFF001661DD /* Nuvem */,
+				4B5478C72ADEB7AE0029AF65 /* Nuvem */,
 			);
 			productName = NutriRank;
 			productReference = B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */;
@@ -512,7 +512,7 @@
 			mainGroup = B98EEE422ACB4503001B1DD3;
 			packageReferences = (
 				B9E0D18C2ADD6EB9001661DD /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
-				B9E0D1922ADD6EFF001661DD /* XCRemoteSwiftPackageReference "nuvem" */,
+				4B5478C62ADEB7AE0029AF65 /* XCRemoteSwiftPackageReference "nuvem" */,
 			);
 			productRefGroup = B98EEE4C2ACB4503001B1DD3 /* Products */;
 			projectDirPath = "";
@@ -949,6 +949,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4B5478C62ADEB7AE0029AF65 /* XCRemoteSwiftPackageReference "nuvem" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mtsrodrigues/nuvem";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		B9E0D18C2ADD6EB9001661DD /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
@@ -957,26 +965,18 @@
 				kind = branch;
 			};
 		};
-		B9E0D1922ADD6EFF001661DD /* XCRemoteSwiftPackageReference "nuvem" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mtsrodrigues/nuvem";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4B5478C72ADEB7AE0029AF65 /* Nuvem */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B5478C62ADEB7AE0029AF65 /* XCRemoteSwiftPackageReference "nuvem" */;
+			productName = Nuvem;
+		};
 		B9E0D1902ADD6EEF001661DD /* Mixpanel */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B9E0D18C2ADD6EB9001661DD /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
 			productName = Mixpanel;
-		};
-		B9E0D1932ADD6EFF001661DD /* Nuvem */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B9E0D1922ADD6EFF001661DD /* XCRemoteSwiftPackageReference "nuvem" */;
-			productName = Nuvem;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -23,8 +23,10 @@ public struct CreateGroupView: View {
     @State private var isImagePickerDisplay2 = false
     @State private var groupName: String = ""
     @State private var description: String = ""
-    @State private var selectDateInit: Date = Date()
-    @State private var selectDateFinal: Date = Date()
+    @State private var startDate: Date = Date()
+    @State private var endDate: Date = Date()
+    @State private var duration: Int = 0
+    @State private var calendar: Calendar = Calendar(identifier: .gregorian)
     @State private var performNavigation: Bool = false
     @State var showFailAlert: Bool = false
 
@@ -49,7 +51,6 @@ public struct CreateGroupView: View {
                                         .scaledToFill()
                                         .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
                                         .cornerRadius(10)
-//                                        .containerRelativeFrame([.horizontal])
                                 } else {
                                     Image(systemName: "camera.fill").font(.system(size: 37, weight: .regular))
                                         .aspectRatio(contentMode: .fit)
@@ -137,9 +138,9 @@ public struct CreateGroupView: View {
                                         Text("Duração")
                                         Spacer()
                                     }
-                                    DatePicker("Início:", selection: $selectDateInit, displayedComponents: [.date])
+                                    DatePicker("Início:", selection: $startDate, displayedComponents: [.date])
                                     Spacer()
-                                    DatePicker("Fim:", selection: $selectDateFinal, displayedComponents: [.date])
+                                    DatePicker("Fim:", selection: $endDate, displayedComponents: [.date])
 
                                 }
                                 .padding(.horizontal, 20)
@@ -154,10 +155,12 @@ public struct CreateGroupView: View {
                                 Button {
 
                                     Task {
+
+                                        duration = calendar.numberOfDaysBetween(start: startDate, end: endDate)
                                         if groupName == "" || description == "" || selectedImage == nil {
                                             self.showFailAlert = true
                                         } else{
-                                            await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage)
+                                            await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage, startDate: startDate, endDate: endDate, duration: duration)
                                         }
                                     }
                                 } label: {
@@ -193,4 +196,14 @@ public struct CreateGroupView: View {
 
     }
 
+}
+
+extension Calendar {
+    func numberOfDaysBetween(start from: Date, end to: Date) -> Int {
+        let fromDate = startOfDay(for: from) // <1>
+        let toDate = startOfDay(for: to) // <2>
+        let numberOfDays = dateComponents([.day], from: fromDate, to: toDate) // <3>
+
+        return numberOfDays.day!
+    }
 }

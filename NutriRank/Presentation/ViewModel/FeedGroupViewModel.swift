@@ -82,12 +82,15 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func createGroup(groupName: String, description: String, image: UIImage?) async {
+    func createGroup(groupName: String, description: String, image: UIImage?, startDate: Date, endDate: Date, duration: Int) async {
         print("chegou na viewmodel")
         var group = ChallengeGroup()
         group.groupName = groupName
         group.description = description
         group.groupImage = image
+        group.startDate = startDate
+        group.endDate = endDate
+        group.duration = duration
         let result = await createUseCase.execute(requestValue: group)
         switch result {
         case .success(let group):
