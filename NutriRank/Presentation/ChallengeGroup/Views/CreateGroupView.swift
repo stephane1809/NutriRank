@@ -197,5 +197,3 @@ public struct CreateGroupView: View {
     }
 
 }
-
-
