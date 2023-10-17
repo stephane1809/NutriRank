@@ -24,6 +24,7 @@ public struct CreateProfileView: View {
     @State private var nickName = ""
 
     @State private var showFailAlert = false
+    @State private var showCloudPermissionAlert = false
 
     @State private var performNavigation: Bool = false
 
@@ -114,9 +115,12 @@ public struct CreateProfileView: View {
                                     self.showFailAlert = true
 
                                 } else {
-                                    UserDefaults.standard.set(true, forKey: "isFirstTimeUsingApp")
-                                    await viewModel.createChallengeMember(name:nickName,avatar: selectedImageProfile!,score:0)
-                                    self.performNavigation = true
+                                    if await viewModel.createChallengeMember(name:nickName,avatar: selectedImageProfile!,score:0) {
+                                        UserDefaults.standard.set(true, forKey: "isFirstTimeUsingApp")
+                                        self.performNavigation = true
+                                    } else {
+                                        self.showCloudPermissionAlert = true
+                                    }
                                 }
                             }
                         } label: {
@@ -129,6 +133,9 @@ public struct CreateProfileView: View {
                         .cornerRadius(10)
                         .buttonStyle(.bordered)
                         .alert("Insira uma imagem e um nome para criar seu usuário", isPresented: $showFailAlert) {
+                            Button("Ok", role: .cancel) {}
+                        }
+                        .alert("Entre com sua conta Apple nas configurações do seu aparelho para prosseguir com a criação de usuário", isPresented: $showCloudPermissionAlert) {
                             Button("Ok", role: .cancel) {}
                         }
 
