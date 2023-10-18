@@ -18,135 +18,135 @@ public struct GroupView: View {
     }
 
     public var body: some View {
-        
+
         GeometryReader { metrics in
-            NavigationView {
-                ScrollView {
-                    VStack (spacing: 20) {
-                        Image(systemName: "camera.fill").font(.system(size: 37, weight: .regular))
-                            .aspectRatio(contentMode: .fit)
-                            .scaledToFill()
-                            .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
-//                            .background(Color("Green"))
-                            .cornerRadius(10)
+            ScrollView {
+                VStack (spacing: 20) {
+                    Image(uiImage: viewmodel.group.groupImage!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(Rectangle())
+                        .scaledToFill()
+                        .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
+                        .cornerRadius(10)
 
-                        VStack (alignment: .leading, spacing: 3){
-                            Text (viewmodel.group.groupName)
-                                .font(.title2)
+                    VStack (alignment: .leading, spacing: 3){
+                        Text (viewmodel.group.groupName)
+                            .font(.title2)
+                            .bold()
+//                        Text(viewmodel.group.description)
+//                            .lineLimit(1...10)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
+                    .background(Color("DefaultCardColor"))
+                    .cornerRadius(10)
+                    .shadow(radius: 1, x: 0, y: 1)
+
+                    VStack (alignment: .leading, spacing: 3){
+
+                        HStack {
+                            Image(systemName: "stopwatch.fill")
+                            Text("Duração")
                                 .bold()
-                            Text(viewmodel.group.description)
-                                .lineLimit(1...10)
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
-                        .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(.background)
-                        .cornerRadius(10)
-                        .shadow(radius: 1, x: 0, y: 1)
-
-                        VStack (alignment: .leading, spacing: 3){
-
-                            HStack {
-                                Image(systemName: "stopwatch.fill")
-                                Text("Duração")
-                                    .bold()
-                                Spacer()
-                            }
-
-                            Text("De tal dia a tal dia")
-                                .lineLimit(1...10)
-
-
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
-                        .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(.background)
-                        .cornerRadius(10)
-                        .shadow(radius: 1, x: 0, y: 1)
-
-                        VStack (alignment: .leading, spacing: 3){
-
-                            HStack {
-                                Image(systemName: "flame.fill")
-                                Text("Regras")
-                                    .bold()
-                                Spacer()
-                            }
-
-//                            Text("Regras do grupo wnxubwubxuybdcuybeduycbuebcybuycbrue")
-//                                .lineLimit(1...10)
-
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
-                        .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(.background)
-                        .cornerRadius(10)
-                        .shadow(radius: 1, x: 0, y: 1)
-
-                        VStack (alignment: .leading, spacing: 2) {
-
-                            HStack {
-                                Image(systemName: "paperplane.fill")
-                                Text("Compartilhar")
-                                Spacer()
-                            }
-
-                            Text("Convide seus amigos para participar de seu grupo novo e comecei o desafio!")
-                                .lineLimit(1...10)
                             Spacer()
-
-                            HStack {
-//                                Text("Link")
-//                                    .foregroundColor(.blue)
-                                Button {
-                                    UIPasteboard.general.string = "nutrirank://enter?id=\(viewmodel.group.id)"
-                                    print("link copiado")
-                                } label: {
-                                    Text("Copiar link")
-                                        .font(.headline)
-                                        .frame(width: 110, height: 22)
-                                        .foregroundColor(.white)
-                                }
-                                .background(.blue)
-                                .cornerRadius(10)
-                                .buttonStyle(.bordered)
-                                Spacer()
-                            }
-
                         }
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
-                        .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(.background)
-                        .cornerRadius(10)
-                        .shadow(radius: 1, x: 0, y: 1)
 
-                        VStack {
-                            Button {
+                        Text("De \(viewmodel.group.startDate) a \(viewmodel.group.endDate)")
+                            .lineLimit(1...10)
 
-                            } label: {
-
-                                    Image(systemName: "trophy.fill").font(.system(size: 25, weight: .regular))
-                                        .foregroundColor(.white)
-                                    Text("Ranking")
-                                        .font(.title2)
-                                        .foregroundColor(.white)
-
-                            }
-                            .background(.blue)
-                            .cornerRadius(10)
-                            .buttonStyle(.bordered)
-                        }
-                        .padding(.vertical,20)
 
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
+                    .background(Color("DefaultCardColor"))
+                    .cornerRadius(10)
+                    .shadow(radius: 1, x: 0, y: 1)
+
+                    VStack (alignment: .leading, spacing: 3){
+
+                        HStack {
+                            Image(systemName: "flame.fill")
+                            Text("Regras")
+                                .bold()
+                            Spacer()
+                        }
+
+                        Text("\(viewmodel.group.description)")
+                            .lineLimit(1...10)
+
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
+                    .background(Color("DefaultCardColor"))
+                    .cornerRadius(10)
+                    .shadow(radius: 1, x: 0, y: 1)
+
+                    VStack (alignment: .leading, spacing: 2) {
+
+                        HStack {
+                            Image(systemName: "paperplane.fill")
+                            Text("Compartilhar")
+                            Spacer()
+                        }
+
+                        Text("Convide seus amigos para participar de seu grupo novo e comecei o desafio!")
+                            .lineLimit(1...10)
+                        Spacer()
+
+                        HStack {
+                            //                                Text("Link")
+                            //                                    .foregroundColor(.blue)
+                            Button {
+                                UIPasteboard.general.string = "nutrirank://enter?id=\(viewmodel.group.id)"
+                                print("link copiado")
+                            } label: {
+                                Text("Copiar link")
+                                    .font(.headline)
+                                    .frame(width: 110, height: 22)
+                                    .foregroundColor(.white)
+                            }
+                            .background(Color("FirstPlaceRanking"))
+                            .cornerRadius(10)
+                            .buttonStyle(.bordered)
+                            Spacer()
+                        }
+
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
+                    .background(Color("DefaultCardColor"))
+                    .cornerRadius(10)
+                    .shadow(radius: 1, x: 0, y: 1)
+
+                    VStack {
+                        Button {
+
+                        } label: {
+
+                            Image(systemName: "trophy.fill").font(.system(size: 23, weight: .regular))
+                                .foregroundColor(.white)
+                            Text("Ranking")
+                                .font(.title2)
+                                .foregroundColor(.white)
+
+                        }
+                        .background(Color("FirstPlaceRanking"))
+                        .cornerRadius(10)
+                        .buttonStyle(.bordered)
+                    }
+                    .padding(.vertical,20)
+
                 }
-                .frame(maxWidth: .infinity)
-                .background(Color(.defaultBackground))
-                .navigationTitle("Grupo")
             }
+            .frame(maxWidth: .infinity)
+            .background(Color(.defaultBackground))
+            .navigationTitle("Grupo")
+
         }
     }
 }
