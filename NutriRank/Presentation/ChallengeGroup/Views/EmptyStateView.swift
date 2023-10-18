@@ -19,7 +19,7 @@ public struct EmptyStateView: View {
 
     public var body: some View {
         GeometryReader { metrics in
-            NavigationView {
+            NavigationStack {
                 ZStack {
                     Color(.defaultBackground)
                         .ignoresSafeArea()
@@ -73,9 +73,8 @@ public struct EmptyStateView: View {
                         }
                     }
                 }
+                .navigationBarBackButtonHidden(true)
             }
-            .navigationBarBackButtonHidden(true)
-
         }
         .onOpenURL(perform: { url in
             Task {
