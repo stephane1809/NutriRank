@@ -101,7 +101,8 @@ public struct GroupView: View {
 //                                Text("Link")
 //                                    .foregroundColor(.blue)
                                 Button {
-                                    UIPasteboard.general.string = "nutrirank://enter?id=\(viewmodel.group.id)"
+                                    guard let url = URL(string: "nutrirank://enter?id=\(viewmodel.group.id)") else { return }
+                                    UIPasteboard.general.url = url
                                     print("link copiado")
                                 } label: {
                                     Text("Copiar link")

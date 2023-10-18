@@ -60,4 +60,16 @@ public class NutriRankClientPosts: ChallengePostRepositoryProtocol {
             return .failure(error)
         }
     }
+
+    public func fetchPostsByGroup(_ groupID: String) async -> Result<[Post], Error> {
+        let groupCKID = CKRecord.ID(recordName: groupID)
+        let database = CKContainer(identifier: identifier).publicCloudDatabase
+        do {
+            let group = try await ChallengeGroup.find(id: groupCKID, on: database)
+            let posts = try await Post.query(on: database).filter(\.$challengeGroup == group).all()
+            return .success(posts)
+        } catch {
+            return .failure(error)
+        }
+    }
 }

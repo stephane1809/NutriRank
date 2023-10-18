@@ -10,12 +10,16 @@ import SwiftUI
 
 public struct SheetPostView: View {
 
-
-
     @Environment(\.dismiss) var dismiss
-    let selectedImage: UIImage?
-    @State private var title = "Pão com ovo"
-    @State private var description = "Pão, ovo, suco, cafe, ejidnwewhebwhbcu jhbdwhbduywbdywebduywbeduywbedy"
+    @ObservedObject var viewmodel: FeedGroupViewModel
+    @Binding var selectedImage: UIImage?
+    @State var post: Post
+
+    init(viewmodel: FeedGroupViewModel, selectedImage: Binding<UIImage?>, post: Post) {
+        self.viewmodel = viewmodel
+        self._selectedImage = selectedImage
+        self._post = State<Post>(initialValue: post)
+    }
 
     public var body: some View {
         ZStack (alignment: .top) {
@@ -53,20 +57,20 @@ public struct SheetPostView: View {
                         .cornerRadius(10)
                 }
 
-                Text(title)
+                Text(post.title)
                     .font(.title2)
                     .bold()
 
-                Text(description)
+                Text(post.description)
                     .lineLimit(1...10)
 
                 HStack {
                     Circle()
                         .foregroundColor(Color("FirstPlaceRanking"))
                         .frame(width: 27, height: 27)
-                    Text("Nome do usuário")
+                    Text(post.owner!.name)
                         .foregroundColor(.black)
-                    Text("- 09/10")
+                    Text(post.creationDate!.description)
                         .foregroundColor(.black)
                 }
 
