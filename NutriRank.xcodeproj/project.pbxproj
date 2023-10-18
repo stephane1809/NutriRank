@@ -17,6 +17,7 @@
 		365B122A2AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12292AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift */; };
 		365B122C2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B122B2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift */; };
 		365B122E2AD6300300FD6713 /* FirstTimeUsingAppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B122D2AD6300300FD6713 /* FirstTimeUsingAppFactory.swift */; };
+		36D489A22ADFF98800A0144F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D489A12ADFF98800A0144F /* LoadingView.swift */; };
 		4B5478BA2AD03EDC0029AF65 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */; };
 		4B5478BC2AD42C060029AF65 /* CardPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BB2AD42C060029AF65 /* CardPostView.swift */; };
 		4B5478BE2AD42D510029AF65 /* FeedPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5478BD2AD42D510029AF65 /* FeedPostView.swift */; };
@@ -91,6 +92,7 @@
 		365B12292AD43F9A00FD6713 /* UpdateChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChallengeMemberUseCase.swift; sourceTree = "<group>"; };
 		365B122B2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChallengeMemberUseCase.swift; sourceTree = "<group>"; };
 		365B122D2AD6300300FD6713 /* FirstTimeUsingAppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeUsingAppFactory.swift; sourceTree = "<group>"; };
+		36D489A12ADFF98800A0144F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		4B5478BB2AD42C060029AF65 /* CardPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPostView.swift; sourceTree = "<group>"; };
 		4B5478BD2AD42D510029AF65 /* FeedPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostView.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */,
 				4B5478C42ADE2A210029AF65 /* SheetPostView.swift */,
 				4B5478C92ADEC9D60029AF65 /* ExtensionCalendar.swift */,
+				36D489A12ADFF98800A0144F /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				B9EF0C222ACEEB9300CA8CF6 /* CreateGroupView.swift in Sources */,
 				365B122E2AD6300300FD6713 /* FirstTimeUsingAppFactory.swift in Sources */,
 				B9EF0C1E2ACEEB7900CA8CF6 /* EmptyStateView.swift in Sources */,
+				36D489A22ADFF98800A0144F /* LoadingView.swift in Sources */,
 				B9EF0C1F2ACEEB7900CA8CF6 /* GroupView.swift in Sources */,
 				B9EF0C202ACEEB7900CA8CF6 /* OnboardingView.swift in Sources */,
 				B98EEEDA2ACC62A7001B1DD3 /* ImagePickerView.swift in Sources */,

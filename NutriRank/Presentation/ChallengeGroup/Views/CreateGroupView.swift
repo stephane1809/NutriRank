@@ -16,7 +16,6 @@ public struct CreateGroupView: View {
 
     @ObservedObject var viewmodel: FeedGroupViewModel
 
-    
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
@@ -28,7 +27,10 @@ public struct CreateGroupView: View {
     @State private var duration: Int = 0
     @State private var calendar: Calendar = Calendar(identifier: .gregorian)
     @State private var showFailAlert: Bool = false
-    @State private var showCloudPermissionAlert = false
+    @State private var showCloudPermissionAlert: Bool = false
+    @State private var isLoading: Bool = false
+
+    @State private var performNavigation: Bool = false
 
 
 
@@ -39,7 +41,15 @@ public struct CreateGroupView: View {
 
     public var body: some View {
 
+
         GeometryReader { metrics in
+
+            if isLoading {
+                LoadingView()
+                    .zIndex(1.0)
+                    .navigationBarBackButtonHidden(true)
+            }
+
                 ScrollView {
                         VStack (spacing: 30) {
 
@@ -161,10 +171,11 @@ public struct CreateGroupView: View {
                                         if groupName == "" || description == "" || selectedImage == nil {
                                             self.showFailAlert = true
                                         } else{
+                                            self.isLoading = true
                                             if await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage, startDate: startDate, endDate: endDate, duration: duration) {
-                                                print("essa funcão precisa ser substituida por logica depois")
+                                                self.performNavigation = true
                                             } else {
-
+                                                self.isLoading = false
                                                 self.showCloudPermissionAlert = true
                                             }
                                         }
@@ -184,6 +195,9 @@ public struct CreateGroupView: View {
                                 .alert("Entre com sua conta Apple, nas configurações do seu aparelho, para prosseguir com a criação de grupo", isPresented: $showCloudPermissionAlert) {
                                     Button("Ok", role: .cancel) {}
                                 }
+
+                                NavigationLink("", destination: FeedPostView(viewmodel: viewmodel), isActive: $performNavigation)
+                                    .hidden()
 
                             }
                             .frame(maxWidth: .infinity)
