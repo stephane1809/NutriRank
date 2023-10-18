@@ -13,20 +13,17 @@ public struct FeedPostView: View {
     enum Sheet: Identifiable {
         case selection
         case image
-
         var id: Sheet { self }
-
     }
 
     @ObservedObject var viewmodel: FeedGroupViewModel
-//
+
     public init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
     }
 
 //    public init() {}
 
-    @State var card = CardPostView()
     @State private var isImagePickerDisplay = false
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
@@ -94,13 +91,16 @@ public struct FeedPostView: View {
 
                         VStack {
                             Text("Postagens")
-                            ScrollView {
-                                Button {
-                                    self.isPostCardDisplay.toggle()
-                                } label: {
-                                    card
+                            if viewmodel.posts.isEmpty {
+                                Text("Não existem postagens no grupo.")
+                            } else {
+                                List(viewmodel.posts) { post in
+                                    Button {
+                                        self.isPostCardDisplay.toggle()
+                                    } label: {
+                                        CardPostView(title: post.title, memberName: post.owner!.name, createdDate: post.creationDate!)
+                                    }
                                 }
-
                             }
                         }
 
@@ -141,7 +141,7 @@ public struct FeedPostView: View {
                         }
                     }
                     .sheet(isPresented: $isPostCardDisplay){
-                        SheetPostView( selectedImage: selectedImage)
+                        SheetPostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage)
                     }
                 }
             }

@@ -13,9 +13,12 @@ public protocol ChallengePostRepositoryProtocol {
     func fetchAllPosts() async -> Result<[Post], Error>
     func getOwnersPost(_ member: Member) async -> Result<[Post], Error>
     func deleteChallengePost(_ post: Post) async -> Result<Bool, Error>
+    func fetchPostsByGroup(_ groupID: String) async -> Result<[Post], Error>
 }
 
 public class DefaultChallengePostRepository: ChallengePostRepositoryProtocol {
+
+    
     let data: ChallengePostRepositoryProtocol
 
     public init(data: ChallengePostRepositoryProtocol) {
@@ -62,4 +65,13 @@ public class DefaultChallengePostRepository: ChallengePostRepositoryProtocol {
         }
     }
 
+    public func fetchPostsByGroup(_ groupID: String) async -> Result<[Post], Error> {
+        let result = await data.fetchPostsByGroup(groupID)
+        switch result {
+        case .success(let posts):
+            return .success(posts)
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
 }

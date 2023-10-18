@@ -10,12 +10,16 @@ import SwiftUI
 
 public struct SheetPostView: View {
 
-
-
     @Environment(\.dismiss) var dismiss
-    let selectedImage: UIImage?
-    @State private var title = "Pão com ovo"
-    @State private var description = "Pão, ovo, suco, cafe, ejidnwewhebwhbcu jhbdwhbduywbdywebduywbeduywbedy"
+    @ObservedObject var viewmodel: FeedGroupViewModel
+    @Binding var selectedImage: UIImage?
+    @State private var title = ""
+    @State private var description = ""
+
+    init(viewmodel: FeedGroupViewModel, selectedImage: Binding<UIImage?>) {
+        self.viewmodel = viewmodel
+        self._selectedImage = selectedImage
+    }
 
     public var body: some View {
         ZStack (alignment: .top) {
