@@ -16,6 +16,13 @@ public class FeedGroupViewModel: ObservableObject {
     @Published var members: [Member] = []
     @Published var member: Member = Member()
 
+    var sortedRankingGroup: [Member] {
+        guard let unpackedArray = group.members else {return []}
+        
+        let unpackedSortedArray = unpackedArray.sorted {$0.score > $1.score }
+        return unpackedSortedArray
+    }
+
     let createUseCase: CreateChallengeGroupUseCase
     let createPostUseCase: CreateChallengePostUseCase
     let fetchUseCase: FetchChallengeGroupsUseCase
@@ -25,6 +32,7 @@ public class FeedGroupViewModel: ObservableObject {
     let fetchMemberUseCase: FetchChallengeMemberUseCase
     let fetchGroupByIDUseCase: FetchGroupByIdUseCaseProtocol
     let addMemberUseCase: AddMemberToGroupUseCaseProtocol
+    let fetchPostsByGroup: FetchChallengePostsUseCaseProtocol
 
     public init(createUseCase: CreateChallengeGroupUseCase, 
                 createPostUseCase: CreateChallengePostUseCase,
@@ -34,7 +42,8 @@ public class FeedGroupViewModel: ObservableObject {
                 updateMemberUseCase: UpdateChallengeMemberUseCase,
                 fetchMemberUseCase: FetchChallengeMemberUseCase,
                 fetchGroupByIDUseCase: FetchGroupByIdUseCaseProtocol,
-                addMemberUseCase: AddMemberToGroupUseCaseProtocol) {
+                addMemberUseCase: AddMemberToGroupUseCaseProtocol,
+                fetchPostsByGroup: FetchChallengePostsUseCaseProtocol) {
         self.createUseCase = createUseCase
         self.createPostUseCase = createPostUseCase
         self.fetchUseCase = fetchUseCase
@@ -44,6 +53,7 @@ public class FeedGroupViewModel: ObservableObject {
         self.fetchMemberUseCase = fetchMemberUseCase
         self.fetchGroupByIDUseCase = fetchGroupByIDUseCase
         self.addMemberUseCase = addMemberUseCase
+        self.fetchPostsByGroup = fetchPostsByGroup
         group.groupName = ""
         group.description = ""
     }
@@ -100,6 +110,18 @@ public class FeedGroupViewModel: ObservableObject {
         case .failure(let error):
             print(error)
                 return false
+        }
+    }
+
+    func fetchPosts() async {
+        let result = await fetchPostsByGroup.execute(requestValue: self.group.id)
+        switch result {
+        case .success(let posts):
+            DispatchQueue.main.async {
+                self.posts = posts
+            }
+        case .failure(let error):
+            print(error)
         }
     }
 

@@ -1,14 +1,14 @@
 //
-//  FirstTimeUsingAppFactory.swift
+//  FeedPostViewFactory.swift
 //  NutriRank
 //
-//  Created by Gabriel Santiago on 10/10/23.
+//  Created by Paulo Henrique Gomes da Silva on 18/10/23.
 //
 
 import Foundation
 import SwiftUI
 
-struct FirstTimeUsingAppFactory {
+struct FeedPostViewFactory {
     static func make() -> some View {
         let data = NutriRankNuvemClient()
         let dataPost = NutriRankClientPosts()
@@ -32,7 +32,6 @@ struct FirstTimeUsingAppFactory {
 
         let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase, fetchGroupByIDUseCase: fetchGroupByIDUseCase, addMemberUseCase: addMemberUseCase, fetchPostsByGroup: fetchPostsByGroupUseCase)
 
-        return OnboardingView(viewModel: viewmodel)
+        return FeedPostView(viewmodel: viewmodel)
     }
 }
-

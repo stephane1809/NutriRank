@@ -97,23 +97,24 @@ public struct GroupView: View {
                             .lineLimit(1...10)
                         Spacer()
 
-                        HStack {
-                            //                                Text("Link")
-                            //                                    .foregroundColor(.blue)
-                            Button {
-                                UIPasteboard.general.string = "nutrirank://enter?id=\(viewmodel.group.id)"
-                                print("link copiado")
-                            } label: {
-                                Text("Copiar link")
-                                    .font(.headline)
-                                    .frame(width: 110, height: 22)
-                                    .foregroundColor(.white)
+                            HStack {
+//                                Text("Link")
+//                                    .foregroundColor(.blue)
+                                Button {
+                                    guard let url = URL(string: "nutrirank://enter?id=\(viewmodel.group.id)") else { return }
+                                    UIPasteboard.general.url = url
+                                    print("link copiado")
+                                } label: {
+                                    Text("Copiar link")
+                                        .font(.headline)
+                                        .frame(width: 110, height: 22)
+                                        .foregroundColor(.white)
+                                }
+                                .background(.blue)
+                                .cornerRadius(10)
+                                .buttonStyle(.bordered)
+                                Spacer()
                             }
-                            .background(Color("FirstPlaceRanking"))
-                            .cornerRadius(10)
-                            .buttonStyle(.bordered)
-                            Spacer()
-                        }
 
                     }
                     .padding(.horizontal, 20)

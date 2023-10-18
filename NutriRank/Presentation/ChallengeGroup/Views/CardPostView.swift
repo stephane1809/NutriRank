@@ -10,22 +10,24 @@ import SwiftUI
 
 public struct CardPostView: View {
 
-    public init() {}
+    @State var title: String
+    @State var memberName: String
+    @State var createdDate: Date
 
     public var body: some View {
 
             HStack {
                 VStack (alignment: .leading) {
-                    Text("Título do post")
+                    Text(title)
                         .foregroundColor(.black)
                         .bold()
                     HStack {
                         Circle()
                             .foregroundColor(Color("FirstPlaceRanking"))
                             .frame(width: 27, height: 27)
-                        Text("Nome do usuário")
+                        Text(memberName)
                             .foregroundColor(.black)
-                        Text("- 09/10")
+                        Text(createdDate.description)
                             .foregroundColor(.black)
                     }
                 }

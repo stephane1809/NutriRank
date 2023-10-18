@@ -10,13 +10,13 @@ import SwiftUI
 struct RankingCellComponent: View {
 
     var rankingPosition: Int
-    var profileAvatar: String
+    var profileAvatar: UIImage
     var userName: String
     var mealCount: Int
 
     @State var cellColor: String = "DefaultRankingCellColor"
 
-    init(rankingPosition: Int, profileAvatar: String, userName: String, mealCount: Int) {
+    init(rankingPosition: Int, profileAvatar: UIImage, userName: String, mealCount: Int) {
         self.rankingPosition = rankingPosition
         self.profileAvatar = profileAvatar
         self.userName = userName
@@ -50,7 +50,7 @@ struct RankingCellComponent: View {
                     .font(.system(size: 18))
                     .padding(.trailing, 7)
                     .padding(.leading, 10)
-                Image(profileAvatar)
+                Image(uiImage: profileAvatar)
                     .resizable()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
@@ -63,13 +63,6 @@ struct RankingCellComponent: View {
                     Text("\(mealCount) refeiçoes")
                 }
                 Spacer()
-//                VStack{
-//                    Image("like")
-//                        .resizable().frame(width: 16, height: 16)
-//                        .padding(.bottom, -5)
-//                    Text("\(totalUpvotes)")
-//                }
-//                .padding(.trailing, 20)
             }
             .padding(.leading)
             .padding(.trailing)
@@ -77,8 +70,8 @@ struct RankingCellComponent: View {
     }
 }
 
-struct RankingCellComponent_Previews: PreviewProvider {
-    static var previews: some View {
-        RankingCellComponent(rankingPosition: 1, profileAvatar: "UserMockImage", userName: "Drake", mealCount: 26)
-    }
-}
+//struct RankingCellComponent_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RankingCellComponent(rankingPosition: 1, profileAvatar: "UserMockImage", userName: "Drake", mealCount: 26)
+//    }
+//}

@@ -9,27 +9,20 @@ import SwiftUI
 
 struct RankingView: View {
 
-    var viewmodel = MockedViewmodel()
+    var viewmodel: FeedGroupViewModel
 
     var body: some View {
         VStack{
-            RankingCardComponent(challengeSpan: 29, challengeDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis accumsan vulputate feugiat. Nam a sollicitudin neque, et bibendum nisl. Integer blandit semper tellus, suscipit lobortis metus. Nunc sit amet justo metus. Cras in egestas libero. Vestibulum in nunc quis ligula placerat laoreet in nec risus. Suspendisse eu purus lectus", groupTitle: "Aracnodactilia")
+            RankingCardComponent(challengeSpan: viewmodel.group.duration, challengeDescription: viewmodel.group.description, groupTitle: viewmodel.group.groupName)
                 .padding(.top, 20)
                 .padding(.bottom, 18)
             ScrollView{
-                ForEach(Array(self.viewmodel.sortedArray.enumerated()), id: \.element) {(index, item) in
-
-                    RankingCellComponent(rankingPosition: index, profileAvatar: item.profileAvatar, userName: item.name, mealCount: item.mealCount)
+                ForEach(Array(viewmodel.sortedRankingGroup.enumerated()), id: \.offset) { (index, item) in
+                    RankingCellComponent(rankingPosition: index, profileAvatar: item.avatar!, userName: item.name, mealCount: item.score)
                         .padding(.bottom, -2)
                 }
             }
         }
         .background(Color(.defaultBackground))
-    }
-}
-
-struct RankingView_Previews: PreviewProvider {
-    static var previews: some View {
-        RankingView()
     }
 }
