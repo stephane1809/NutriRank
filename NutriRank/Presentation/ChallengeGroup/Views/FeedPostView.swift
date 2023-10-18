@@ -33,6 +33,8 @@ public struct FeedPostView: View {
     @State private var isImagePickerDisplay2 = false
     @State private var isPostCardDisplay = false
     @State private var isImageExist = false
+    @State private var calendar: Calendar = Calendar(identifier: .gregorian)
+    @State private var todayDate = Date.now
 
     @State private var sheet: Sheet?
 
@@ -73,7 +75,7 @@ public struct FeedPostView: View {
 
                                     HStack{
                                         Image(systemName: "clock")
-                                        Text("32 dias restates")
+                                        Text("\(calendar.numberOfDaysBetween(start: todayDate, end: viewmodel.group.endDate)) dias restantes")
                                         Spacer()
                                     }
                                     .frame(width: 320)
