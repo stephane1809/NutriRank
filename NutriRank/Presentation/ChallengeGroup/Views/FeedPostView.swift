@@ -128,6 +128,8 @@ public struct FeedPostView: View {
                                 .cancel()
                             ]
                         )
+                    }.onAppear {
+                        print(viewmodel.group.groupName)
                     }
                     .onChange(of: selectedImage) { selectedImage in
                         if selectedImage != nil {

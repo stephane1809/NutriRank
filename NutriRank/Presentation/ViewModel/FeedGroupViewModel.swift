@@ -33,6 +33,7 @@ public class FeedGroupViewModel: ObservableObject {
     let fetchGroupByIDUseCase: FetchGroupByIdUseCaseProtocol
     let addMemberUseCase: AddMemberToGroupUseCaseProtocol
     let fetchPostsByGroup: FetchChallengePostsUseCaseProtocol
+    let fetchGroupByMember: FetchGroupByMemberUseCaseProtocol
 
     public init(createUseCase: CreateChallengeGroupUseCase, 
                 createPostUseCase: CreateChallengePostUseCase,
@@ -43,7 +44,8 @@ public class FeedGroupViewModel: ObservableObject {
                 fetchMemberUseCase: FetchChallengeMemberUseCase,
                 fetchGroupByIDUseCase: FetchGroupByIdUseCaseProtocol,
                 addMemberUseCase: AddMemberToGroupUseCaseProtocol,
-                fetchPostsByGroup: FetchChallengePostsUseCaseProtocol) {
+                fetchPostsByGroup: FetchChallengePostsUseCaseProtocol,
+                fetchGroupByMember: FetchGroupByMemberUseCaseProtocol) {
         self.createUseCase = createUseCase
         self.createPostUseCase = createPostUseCase
         self.fetchUseCase = fetchUseCase
@@ -54,6 +56,7 @@ public class FeedGroupViewModel: ObservableObject {
         self.fetchGroupByIDUseCase = fetchGroupByIDUseCase
         self.addMemberUseCase = addMemberUseCase
         self.fetchPostsByGroup = fetchPostsByGroup
+        self.fetchGroupByMember = fetchGroupByMember
         group.groupName = ""
         group.description = ""
     }
@@ -100,6 +103,8 @@ public class FeedGroupViewModel: ObservableObject {
         group.startDate = startDate
         group.endDate = endDate
         group.duration = duration
+        let members = [self.member]
+        group.members = members
         let result = await createUseCase.execute(requestValue: group)
         switch result {
         case .success(let group):
@@ -237,6 +242,18 @@ public class FeedGroupViewModel: ObservableObject {
         case .success(let member):
             DispatchQueue.main.async {
                 self.member = member
+            }
+        case .failure(let error):
+            print(error)
+        }
+    }
+
+    func fetchGroupByMember() async {
+        let result = await fetchGroupByMember.execute(requestValue: self.member)
+        switch result {
+        case .success(let group):
+            DispatchQueue.main.async {
+                self.group = group
             }
         case .failure(let error):
             print(error)
