@@ -73,8 +73,8 @@ public struct EmptyStateView: View {
                         }
                     }
                 }
-                .navigationBarBackButtonHidden(true)
             }
+            .navigationBarBackButtonHidden(true)
         }
         .onOpenURL(perform: { url in
             Task {
