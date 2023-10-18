@@ -16,6 +16,13 @@ public class FeedGroupViewModel: ObservableObject {
     @Published var members: [Member] = []
     @Published var member: Member = Member()
 
+    var sortedRankingGroup: [Member] {
+        guard let unpackedArray = group.members else {return []}
+        
+        let unpackedSortedArray = unpackedArray.sorted {$0.score > $1.score }
+        return unpackedSortedArray
+    }
+
     let createUseCase: CreateChallengeGroupUseCase
     let createPostUseCase: CreateChallengePostUseCase
     let fetchUseCase: FetchChallengeGroupsUseCase
