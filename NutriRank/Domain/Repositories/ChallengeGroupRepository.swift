@@ -58,10 +58,10 @@ public class DefaultChallengeGroupRepository: ChallengeGroupRepositoryProtocol {
     }
 
     public func fetchGroupByMember(member: Member) async -> Result<ChallengeGroup, Error> {
-        let result = await data.fetchChallengeGroups()
+        let result = await data.fetchGroupByMember(member: member)
         switch result {
-        case .success(let groups):
-            return .success(ChallengeGroup())
+        case .success(let group):
+            return .success(group)
         case .failure(let error):
             return .failure(error)
         }
@@ -76,6 +76,8 @@ public class DefaultChallengeGroupRepository: ChallengeGroupRepositoryProtocol {
             return .failure(error)
         }
     }
+
+
 }
 
 

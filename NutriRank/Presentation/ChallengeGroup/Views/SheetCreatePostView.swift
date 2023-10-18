@@ -90,6 +90,7 @@ public struct SheetCreatePostView: View {
                                     showAlert.toggle()
                                 }
                                 await viewmodel.updateChallengeMember()
+                                dismiss()
                             }
                         }.alert("Erro ao criar post!", isPresented: $showAlert) {
                             Button("cancelar", role: .cancel){}

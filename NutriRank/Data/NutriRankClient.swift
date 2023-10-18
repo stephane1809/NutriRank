@@ -49,8 +49,10 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
 
     public func fetchGroupByMember(member: Member) async -> Result<ChallengeGroup, Error> {
         do {
-            let result = try await ChallengeGroup.query(on: self.database).all()
-            return .success(ChallengeGroup())
+            let reference = CKRecord.Reference(recordID: .init(recordName: member.id), action: .none)
+            guard let result = try await ChallengeGroup.query(on: self.database).filter(.predicate(format: "members contains %@", reference)).first() else { return .failure(SaveErrors.guardError)}
+            print(result)
+            return .success(result)
         } catch {
             return .failure(error)
         }

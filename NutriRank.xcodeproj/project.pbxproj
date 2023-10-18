@@ -58,6 +58,7 @@
 		B9B319022AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B319012AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift */; };
 		B9B319042AD6D93A003F6E11 /* AddMemberToGroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B319032AD6D93A003F6E11 /* AddMemberToGroupUseCase.swift */; };
 		B9DDA8522AE0005E002BA0B6 /* FeedPostViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDA8512AE0005E002BA0B6 /* FeedPostViewFactory.swift */; };
+		B9DDA8542AE023B8002BA0B6 /* FetchGroupByMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDA8532AE023B8002BA0B6 /* FetchGroupByMemberUseCase.swift */; };
 		B9E0D1912ADD6EEF001661DD /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = B9E0D1902ADD6EEF001661DD /* Mixpanel */; };
 		B9EF0C1E2ACEEB7900CA8CF6 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1B2ACEEB7900CA8CF6 /* EmptyStateView.swift */; };
 		B9EF0C1F2ACEEB7900CA8CF6 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */; };
@@ -137,6 +138,7 @@
 		B9B319012AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGroupByIdUseCase.swift; sourceTree = "<group>"; };
 		B9B319032AD6D93A003F6E11 /* AddMemberToGroupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberToGroupUseCase.swift; sourceTree = "<group>"; };
 		B9DDA8512AE0005E002BA0B6 /* FeedPostViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostViewFactory.swift; sourceTree = "<group>"; };
+		B9DDA8532AE023B8002BA0B6 /* FetchGroupByMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGroupByMemberUseCase.swift; sourceTree = "<group>"; };
 		B9EF0C1B2ACEEB7900CA8CF6 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				B98EEEC22ACC5C94001B1DD3 /* DeleteChallengeGroupUseCase.swift */,
 				B98EEEC32ACC5C94001B1DD3 /* FetchGroupsUseCase.swift */,
 				B9B319012AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift */,
+				B9DDA8532AE023B8002BA0B6 /* FetchGroupByMemberUseCase.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				B98EEED42ACC5F37001B1DD3 /* DeleteChallengeGroupUseCase.swift in Sources */,
 				B98EEED12ACC5F2F001B1DD3 /* GetChallengePostsByOwnerUseCase.swift in Sources */,
 				B98EEECC2ACC5F1A001B1DD3 /* ChallengeGroupUIModel.swift in Sources */,
+				B9DDA8542AE023B8002BA0B6 /* FetchGroupByMemberUseCase.swift in Sources */,
 				363300F32ACF4EE70083D5B8 /* RankingView.swift in Sources */,
 				B98EEED52ACC5F3A001B1DD3 /* FetchGroupsUseCase.swift in Sources */,
 				4B5478BE2AD42D510029AF65 /* FeedPostView.swift in Sources */,
