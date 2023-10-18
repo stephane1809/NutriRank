@@ -99,6 +99,8 @@ public struct FeedPostView: View {
                                         self.isPostCardDisplay.toggle()
                                     } label: {
                                         CardPostView(title: post.title, memberName: post.owner!.name, createdDate: post.creationDate!)
+                                    }.sheet(isPresented: $isPostCardDisplay){
+                                        SheetPostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage, post: post)
                                     }
                                 }
                             }
@@ -140,9 +142,7 @@ public struct FeedPostView: View {
                             ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
                         }
                     }
-                    .sheet(isPresented: $isPostCardDisplay){
-                        SheetPostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage)
-                    }
+
                 }
             }
         }
