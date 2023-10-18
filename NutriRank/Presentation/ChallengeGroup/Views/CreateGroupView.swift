@@ -161,6 +161,8 @@ public struct CreateGroupView: View {
                                 .cornerRadius(10)
                                 .shadow(radius: 1, x: 0, y: 1)
 
+                                Text("\(calendar.numberOfDaysBetween(start: startDate, end: endDate)) dias de duração")
+
                                 Spacer()
 
                                 Button {

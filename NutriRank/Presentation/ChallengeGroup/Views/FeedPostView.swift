@@ -30,6 +30,9 @@ public struct FeedPostView: View {
     @State private var isImagePickerDisplay2 = false
     @State private var isPostCardDisplay = false
     @State private var isImageExist = false
+    @State private var calendar: Calendar = Calendar(identifier: .gregorian)
+    @State private var todayDate = Date.now
+    @State private var performNavigation: Bool = false
 
     @State private var sheet: Sheet?
 
@@ -39,43 +42,56 @@ public struct FeedPostView: View {
                 ZStack {
                     Color(.defaultBackground)
                         .ignoresSafeArea()
-                    VStack (alignment: .center, spacing: 20){
-                        ZStack{
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .frame(width: 350, height: 137)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 7)
-                                                .stroke(Color.black, lineWidth: 1.5)
-                                        )
-                                        .foregroundColor(.clear)
+                    VStack (alignment: .center, spacing: 20) {
 
-                                    HStack{
-                                        Text("Nutrirankers")
-                                            .fontWeight(.bold)
-                                            .lineLimit(1)
-                                        Spacer()
-                                    }
-                                    .frame(width: 320)
-                                    .offset(x: 0, y: -40)
+                        Button {
+                            self.performNavigation = true
+                        } label: {
+                            ZStack{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(width: 350, height: 137)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 7)
+                                                    .stroke(Color.black, lineWidth: 1.5)
+                                            )
+                                            .foregroundColor(.clear)
+                                            .shadow(radius: 1, x: 0, y: 1)
 
-                                    HStack{
-                                        Image(systemName: "flame.fill")
-                                        Text("Top 3:")
-                                            .bold()
-                                        Text("Marcos, levi, leticia")
-                                        Spacer()
-                                    }
-                                    .frame(width: 320)
-                                    .offset(x: 0, y: -3)
+                                        HStack{
+                                            Text(viewmodel.group.groupName)
+                                                .fontWeight(.bold)
+                                                .lineLimit(1)
+                                                .foregroundColor(.black)
+                                            Spacer()
+                                        }
+                                        .frame(width: 320)
+                                        .offset(x: 0, y: -40)
 
-                                    HStack{
-                                        Image(systemName: "clock")
-                                        Text("32 dias restates")
-                                        Spacer()
+                                        HStack{
+                                            Image(systemName: "flame.fill")
+                                                .foregroundColor(.black)
+                                            Text("Top 3:")
+                                                .bold()
+                                                .foregroundColor(.black)
+                                            Text("Marcos, levi, leticia")
+                                                .foregroundColor(.black)
+                                            Spacer()
+                                        }
+                                        .frame(width: 320)
+                                        .offset(x: 0, y: -3)
+
+                                        HStack{
+                                            Image(systemName: "clock")
+                                                .foregroundColor(.black)
+                                            Text("\(calendar.numberOfDaysBetween(start: todayDate, end: viewmodel.group.endDate)) dias restantes")
+                                                .foregroundColor(.black)
+                                            Spacer()
+                                        }
+                                        .frame(width: 320)
+                                        .offset(x: 0, y: 28)
                                     }
-                                    .frame(width: 320)
-                                    .offset(x: 0, y: 28)
-                                }
+                        }
+
                         Button {
                             self.isImagePickerDisplay.toggle()
 //                            sheet = .selection
@@ -106,6 +122,8 @@ public struct FeedPostView: View {
                             }
                         }
 
+                        NavigationLink("", destination: GroupView(viewmodel: viewmodel), isActive: $performNavigation)
+                            .hidden()
                     }
                     .actionSheet(isPresented: $isImagePickerDisplay) {
                         ActionSheet(
