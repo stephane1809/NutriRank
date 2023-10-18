@@ -25,6 +25,7 @@ public struct CreateProfileView: View {
 
     @State private var showFailAlert = false
     @State private var showCloudPermissionAlert = false
+    @State private var isLoading = false
 
     @State private var performNavigation: Bool = false
 
@@ -33,6 +34,12 @@ public struct CreateProfileView: View {
         GeometryReader { metrics in
             NavigationView {
                 ZStack {
+
+                    if isLoading{
+                        LoadingView()
+                            .zIndex(1.0)
+                    }
+
 
                     Color(.defaultBackground)
                         .ignoresSafeArea()
@@ -108,17 +115,18 @@ public struct CreateProfileView: View {
                         }
 
 
-
                         Button {
                             Task{
                                 if nickName == "" || selectedImageProfile == nil {
                                     self.showFailAlert = true
 
                                 } else {
+                                    self.isLoading = true
                                     if await viewModel.createChallengeMember(name:nickName,avatar: selectedImageProfile!,score:0) {
                                         UserDefaults.standard.set(true, forKey: "isFirstTimeUsingApp")
                                         self.performNavigation = true
                                     } else {
+                                        self.isLoading = false
                                         self.showCloudPermissionAlert = true
                                     }
                                 }

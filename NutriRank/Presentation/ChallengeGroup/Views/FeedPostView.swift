@@ -144,7 +144,7 @@ public struct FeedPostView: View {
                     }
 
                 }
-            }
+            }.navigationBarBackButtonHidden(true)
         }
     }
 }

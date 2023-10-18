@@ -86,7 +86,6 @@ public class FeedGroupViewModel: ObservableObject {
     }
 
     func createGroup(groupName: String, description: String, image: UIImage?, startDate: Date, endDate: Date, duration: Int) async -> Bool{
-        print("chegou na viewmodel")
         var group = ChallengeGroup()
         group.groupName = groupName
         group.description = description
