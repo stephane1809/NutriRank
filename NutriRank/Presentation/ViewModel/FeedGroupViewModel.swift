@@ -23,6 +23,20 @@ public class FeedGroupViewModel: ObservableObject {
         return unpackedSortedArray
     }
 
+    func getNamePersonRanking(index: Int) -> String {
+            var personRanking: String
+            var numberOfMembers: Int = sortedRankingGroup.count
+            var maxIndexPossible: Int = numberOfMembers - 1
+
+            if index <= maxIndexPossible {
+                personRanking = sortedRankingGroup[index].name
+            } else {
+                personRanking = "*"
+            }
+
+            return personRanking
+    }
+
     let createUseCase: CreateChallengeGroupUseCase
     let createPostUseCase: CreateChallengePostUseCase
     let fetchUseCase: FetchChallengeGroupsUseCase
