@@ -50,8 +50,9 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
     public func fetchGroupByMember(member: Member) async -> Result<ChallengeGroup, Error> {
         do {
             let reference = CKRecord.Reference(recordID: .init(recordName: member.id), action: .none)
-            guard let result = try await ChallengeGroup.query(on: self.database).filter(.predicate(format: "members contains %@", reference)).first() else { return .failure(SaveErrors.guardError)}
-            print(result)
+            guard let result = try await ChallengeGroup.query(on: self.database)
+                .with(\.$members)
+                .filter(.predicate(format: "members contains %@", reference)).first() else { return .failure(SaveErrors.guardError)}
             return .success(result)
         } catch {
             return .failure(error)
@@ -62,6 +63,7 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
         do {
             let CKID = CKRecord.ID(recordName: id)
             let result = try await ChallengeGroup.find(id: CKID, on: database)
+            try await result.$members.load(on: database)
             return .success(result)
         } catch {
             return .failure(error)
