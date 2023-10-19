@@ -12,6 +12,7 @@ import SwiftUI
 public struct EmptyStateView: View {
 
     @ObservedObject var viewmodel: FeedGroupViewModel
+    @State var performNavigation: Bool = false
 
     public init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
@@ -76,6 +77,7 @@ public struct EmptyStateView: View {
 
 
                 }
+                .navigationDestination(isPresented: $performNavigation, destination: {FeedPostView(viewmodel: viewmodel)})
             }
             .navigationBarBackButtonHidden(true)
         }
@@ -83,6 +85,7 @@ public struct EmptyStateView: View {
             Task {
                 await viewmodel.fetchChallengeMember()
                 await viewmodel.fetchGroupByMember()
+                self.performNavigation.toggle()
             }
         }
         .onOpenURL(perform: { url in

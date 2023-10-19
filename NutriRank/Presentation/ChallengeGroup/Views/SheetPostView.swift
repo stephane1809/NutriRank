@@ -22,62 +22,68 @@ public struct SheetPostView: View {
     }
 
     public var body: some View {
-        ZStack (alignment: .top) {
-            Color(.defaultBackground)
-                .ignoresSafeArea()
-            VStack (alignment: .leading, spacing: 20) {
-                HStack (spacing: 48) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Cancelar")
+        NavigationStack {
+            ZStack (alignment: .top) {
+                Color(.defaultBackground)
+                    .ignoresSafeArea()
+                VStack (alignment: .leading, spacing: 20) {
+    //                HStack (spacing: 48) {
+    //                    Button {
+    //                        dismiss()
+    //                    } label: {
+    //                        Text("Cancelar")
+    //                    }
+    //
+    //                    Text("Postagem")
+    //                        .fontWeight(.bold)
+    //                        .font(.system(size: 20))
+    //                }
+    //                .padding(.vertical, 18)
+
+                    if selectedImage != nil {
+                        Image(uiImage: selectedImage!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Rectangle())
+                            .scaledToFill()
+                            .frame(width: 330, height: 150)
+                            .cornerRadius(10)
+
+                    } else {
+                        Image(systemName: "camera.fill").font(.system(size: 37, weight: .regular))
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFill()
+                            .frame(width: 330, height: 150)
+                            .background(.blue)
+                            .cornerRadius(10)
                     }
 
-                    Text("Postagem")
-                        .fontWeight(.bold)
-                        .font(.system(size: 20))
-                }
-                .padding(.vertical, 18)
+                    Text(post.title)
+                        .font(.title2)
+                        .bold()
 
-                if selectedImage != nil {
-                    Image(uiImage: selectedImage!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Rectangle())
-                        .scaledToFill()
-                        .frame(width: 330, height: 150)
-                        .cornerRadius(10)
+                    Text(post.description)
+                        .lineLimit(1...10)
 
-                } else {
-                    Image(systemName: "camera.fill").font(.system(size: 37, weight: .regular))
-                        .aspectRatio(contentMode: .fit)
-                        .scaledToFill()
-                        .frame(width: 330, height: 150)
-                        .background(.blue)
-                        .cornerRadius(10)
+                    HStack {
+                        Circle()
+                            .foregroundColor(Color("FirstPlaceRanking"))
+                            .frame(width: 27, height: 27)
+                        Text(post.owner!.name)
+                            .foregroundColor(.black)
+                        Text(post.creationDate!.description)
+                            .foregroundColor(.black)
+                    }
+
                 }
 
-                Text(post.title)
-                    .font(.title2)
-                    .bold()
-
-                Text(post.description)
-                    .lineLimit(1...10)
-
-                HStack {
-                    Circle()
-                        .foregroundColor(Color("FirstPlaceRanking"))
-                        .frame(width: 27, height: 27)
-                    Text(post.owner!.name)
-                        .foregroundColor(.black)
-                    Text(post.creationDate!.description)
-                        .foregroundColor(.black)
+            }.toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancelar") { dismiss() }
                 }
-
             }
-
+            .navigationTitle("Postagem")
+            .navigationBarTitleDisplayMode(.inline)
         }
-
-
     }
 }
