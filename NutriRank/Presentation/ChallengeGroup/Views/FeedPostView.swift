@@ -73,7 +73,7 @@ public struct FeedPostView: View {
                                             Text("Top 3:")
                                                 .bold()
                                                 .foregroundColor(.black)
-                                            Text("Marcos, levi, leticia")
+                                            Text("\(viewmodel.getNamePersonRanking(index: 0)), \(viewmodel.getNamePersonRanking(index: 1)), \(viewmodel.getNamePersonRanking(index: 2))")
                                                 .foregroundColor(.black)
                                             Spacer()
                                         }
