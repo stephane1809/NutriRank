@@ -12,6 +12,7 @@ import SwiftUI
 public struct EmptyStateView: View {
 
     @ObservedObject var viewmodel: FeedGroupViewModel
+    @State var performNavigation: Bool = false
 
     public init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
@@ -21,61 +22,56 @@ public struct EmptyStateView: View {
         GeometryReader { metrics in
             NavigationStack {
                 ZStack {
-                    
-                        Color(.defaultBackground)
-                            .ignoresSafeArea()
+                    Color(.defaultBackground)
+                        .ignoresSafeArea()
 
-                        VStack (spacing: 50) {
-                            VStack {
-                                Image("logo")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .clipShape(Rectangle())
-                                    .scaledToFill()
-                                    .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.25)
-                            }
-
-                            VStack (alignment: .leading) {
-                                HStack {
-                                    Image(systemName: "person.crop.circle.fill.badge.plus").font(.system(size: 18, weight: .regular))
-                                        .aspectRatio(contentMode: .fit)
-                                        .scaledToFill()
-
-                                    Text ("Crie um grupo")
-                                        .font(.headline)
-                                }
-                                Text("Você não possui grupos no momento. Crie num novo grupo e inicie novos hábitos alimentares com seus amigos!")
-                            }
-                            .padding(.horizontal, 15)
-                            .padding(.vertical, 12)
-                            .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                            .background(.white)
-                            .cornerRadius(10)
-                            .shadow(radius: 1, x: 0, y: 1)
-
-
-                            VStack {
-
-                                NavigationLink(destination: CreateGroupView(viewmodel: viewmodel)) {
-                                    HStack (alignment: .center){
-                                        Image(systemName: "person.crop.circle.fill.badge.plus")
-                                            .foregroundColor(.white)
-
-                                        Text("Criar grupo")
-                                            .font(.headline)
-
-                                            .foregroundColor(.white)
-                                    }
-                                    .frame(width: 150, height: 35)
-                                }
-                                .background(Color("FirstPlaceRanking"))
-                                .cornerRadius(10)
-                                .buttonStyle(.bordered)
-                            }
+                    VStack (spacing: 50) {
+                        VStack {
+                            Image("logo")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(Rectangle())
+                                .scaledToFill()
+                                .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.25)
                         }
 
+                        VStack (alignment: .leading) {
+                            HStack {
+                                Image(systemName: "person.crop.circle.fill.badge.plus").font(.system(size: 18, weight: .regular))
+                                    .aspectRatio(contentMode: .fit)
+                                    .scaledToFill()
+                                Text ("Crie um grupo")
+                                    .font(.headline)
+                            }
+                            Text("Você não possui grupos no momento. Crie num novo grupo e inicie novos hábitos alimentares com seus amigos!")
+                        }
+                        .padding(.horizontal, 15)
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
+                        .background(.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 1, x: 0, y: 1)
+                        VStack {
 
+                            NavigationLink(destination: CreateGroupView(viewmodel: viewmodel)) {
+                                HStack (alignment: .center){
+                                    Image(systemName: "person.crop.circle.fill.badge.plus")
+                                        .foregroundColor(.white)
+
+                                    Text("Criar grupo")
+                                        .font(.headline)
+
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 150, height: 35)
+                            }
+                            .background(Color("FirstPlaceRanking"))
+                            .cornerRadius(10)
+                            .buttonStyle(.bordered)
+                        }
+                    }
                 }
+                .navigationDestination(isPresented: $performNavigation, destination: {FeedPostView(viewmodel: viewmodel)})
             }
             .navigationBarBackButtonHidden(true)
         }
@@ -83,6 +79,7 @@ public struct EmptyStateView: View {
             Task {
                 await viewmodel.fetchChallengeMember()
                 await viewmodel.fetchGroupByMember()
+                self.performNavigation.toggle()
             }
         }
         .onOpenURL(perform: { url in

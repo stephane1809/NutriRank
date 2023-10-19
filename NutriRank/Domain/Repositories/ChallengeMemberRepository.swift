@@ -62,7 +62,6 @@ public class DefaultChallengeMemberRepository: ChallengeMemberRepositoryProtocol
         }
         members.append(memberToSave)
         groupToSave.members = members
-        memberToSave.group = groupToSave
         let result = await data.addMemberToGroup(member: memberToSave, group: groupToSave)
         switch result {
         case .success(let values):
