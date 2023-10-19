@@ -125,20 +125,17 @@ public struct GroupView: View {
                     .shadow(radius: 1, x: 0, y: 1)
 
                     VStack {
-                        Button {
-
-                        } label: {
-
+                        NavigationLink(destination: RankingView(viewmodel: viewmodel)) {
                             Image(systemName: "trophy.fill").font(.system(size: 23, weight: .regular))
                                 .foregroundColor(.white)
                             Text("Ranking")
                                 .font(.title2)
                                 .foregroundColor(.white)
-
                         }
                         .background(Color("FirstPlaceRanking"))
                         .cornerRadius(10)
                         .buttonStyle(.bordered)
+
                     }
                     .padding(.vertical,20)
 
