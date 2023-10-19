@@ -73,6 +73,7 @@ public class FeedGroupViewModel: ObservableObject {
         self.fetchGroupByMember = fetchGroupByMember
         group.groupName = ""
         group.description = ""
+        group.members = []
     }
 
     func handle(url: URL) async {
@@ -89,14 +90,16 @@ public class FeedGroupViewModel: ObservableObject {
             if let firstParam = params.first, let id = firstParam.value, firstParam.name == "id" {
                 print("add new member to group \(id)")
                 await fetchGroupByID(id: id)
-                await addMemberToGroup(member: self.member, group: self.group)
+                if await addMemberToGroup(member: self.member, group: self.group) {
+                    print("success")
+                }
             }
         default:
             print("Unhandled action: \(url)")
         }
     }
 
-    func addMemberToGroup(member: Member, group: ChallengeGroup) async {
+    func addMemberToGroup(member: Member, group: ChallengeGroup) async -> Bool {
         let result = await addMemberUseCase.execute(requestValue: AddMemberRequestedValues(member, group))
         switch result {
         case .success(let values):
@@ -104,8 +107,10 @@ public class FeedGroupViewModel: ObservableObject {
                 self.group = values.group
                 self.member = values.member
             }
+            return true
         case .failure(let error):
             print(error)
+            return false
         }
     }
 

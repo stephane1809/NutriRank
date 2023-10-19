@@ -197,10 +197,7 @@ public struct CreateGroupView: View {
                                 .alert("Entre com sua conta Apple, nas configurações do seu aparelho, para prosseguir com a criação de grupo", isPresented: $showCloudPermissionAlert) {
                                     Button("Ok", role: .cancel) {}
                                 }
-
-                                NavigationLink("", destination: FeedPostView(viewmodel: viewmodel), isActive: $performNavigation)
-                                    .hidden()
-
+                                .navigationDestination(isPresented: $performNavigation, destination: { FeedPostView(viewmodel: viewmodel) })
                             }
                             .frame(maxWidth: .infinity)
                             Spacer()

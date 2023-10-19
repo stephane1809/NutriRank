@@ -101,11 +101,11 @@ public struct GroupView: View {
 //                                Text("Link")
 //                                    .foregroundColor(.blue)
                                 Button {
-                                    guard let url = URL(string: "nutrirank://enter?id=\(viewmodel.group.id)") else { return }
-                                    UIPasteboard.general.url = url
-                                    print("link copiado")
+                                    let groupID = viewmodel.group.id
+                                    UIPasteboard.general.string = groupID
+                                    print("ID copiado")
                                 } label: {
-                                    Text("Copiar link")
+                                    Text("Copiar ID")
                                         .font(.headline)
                                         .frame(width: 110, height: 22)
                                         .foregroundColor(.white)

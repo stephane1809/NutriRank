@@ -10,9 +10,13 @@ import Foundation
 import SwiftUI
 
 public struct EmptyStateView: View {
-
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewmodel: FeedGroupViewModel
     @State var performNavigation: Bool = false
+    @State var showSheet: Bool = false
+    @State var groupID: String = ""
+    @State var showAlert: Bool = false
+    @State var message: String = ""
 
     public init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
@@ -43,7 +47,7 @@ public struct EmptyStateView: View {
                                 Text ("Crie um grupo")
                                     .font(.headline)
                             }
-                            Text("Você não possui grupos no momento. Crie num novo grupo e inicie novos hábitos alimentares com seus amigos!")
+                            Text("Você não possui grupos no momento. Crie um novo grupo, ou entre em um existente, e inicie novos hábitos alimentares com seus amigos!")
                         }
                         .padding(.horizontal, 15)
                         .padding(.vertical, 12)
@@ -52,26 +56,83 @@ public struct EmptyStateView: View {
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
                         VStack {
+                            HStack {
+                                NavigationLink(destination: CreateGroupView(viewmodel: viewmodel)) {
+                                    HStack (alignment: .center) {
+                                        Image(systemName: "person.crop.circle.fill.badge.plus")
+                                            .foregroundColor(.white)
+                                        Text("Criar grupo")
+                                            .font(.headline)
 
-                            NavigationLink(destination: CreateGroupView(viewmodel: viewmodel)) {
-                                HStack (alignment: .center){
-                                    Image(systemName: "person.crop.circle.fill.badge.plus")
-                                        .foregroundColor(.white)
-
-                                    Text("Criar grupo")
-                                        .font(.headline)
-
-                                        .foregroundColor(.white)
+                                            .foregroundColor(.white)
+                                    }
+                                    .frame(width: 150, height: 35)
                                 }
-                                .frame(width: 150, height: 35)
+                                .background(Color("FirstPlaceRanking"))
+                                .cornerRadius(10)
+                                .buttonStyle(.bordered)
+                                Button {
+                                    self.showSheet.toggle()
+                                } label: {
+                                    HStack(alignment: .center) {
+                                        Image(systemName: "person.3.fill")
+                                            .foregroundStyle(.white)
+                                        Text("Entrar")
+                                            .font(.headline)
+                                            .foregroundStyle(.white)
+                                    }
+                                    .frame(width: 150, height: 35)
+                                }
+                                .background(.firstPlaceRanking)
+                                .clipShape(.rect(cornerRadius: 10))
+                                .buttonStyle(.bordered)
+                                .sheet(isPresented: $showSheet, content: {
+                                    Form {
+                                        VStack(alignment: .center) {
+                                            Section("Entre em um grupo") {
+                                                    TextField("ID do grupo", text: $groupID)
+                                            }
+                                            Button {
+                                                Task {
+                                                    if !(self.groupID == "") {
+                                                        await viewmodel.fetchGroupByID(id: self.groupID)
+                                                        if await viewmodel.addMemberToGroup(member: viewmodel.member, group: viewmodel.group) {
+                                                            dismiss()
+                                                        } else {
+                                                            self.message = "Erro ao entrar no grupo."
+                                                            self.showAlert.toggle()
+                                                        }
+                                                    } else {
+                                                        print(self.groupID)
+                                                        self.message = "ID mal formatado."
+                                                        self.showAlert.toggle()
+                                                    }
+                                                }
+                                            } label: {
+                                                HStack(alignment: .center) {
+                                                    Text("Entrar")
+                                                        .font(.headline)
+                                                        .foregroundStyle(.white)
+                                                }
+                                                    .frame(width: 100, height: 35)
+                                            }
+                                            .background(.firstPlaceRanking)
+                                            .clipShape(.rect(cornerRadius: 10))
+                                            .buttonStyle(.bordered)
+                                            .alert("Erro ao entrar", isPresented: $showAlert) {
+                                                Text(self.message)
+                                                Button("Cancelar", role: .cancel){}
+                                            }
+                                        }
+                                    }
+                                    .presentationDetents([.medium, .large])
+                                })
+
                             }
-                            .background(Color("FirstPlaceRanking"))
-                            .cornerRadius(10)
-                            .buttonStyle(.bordered)
                         }
                     }
                 }
-                .navigationDestination(isPresented: $performNavigation, destination: {FeedPostView(viewmodel: viewmodel)})
+                                .navigationDestination(isPresented: $performNavigation, destination: {FeedPostView(viewmodel: viewmodel)})
             }
             .navigationBarBackButtonHidden(true)
         }
