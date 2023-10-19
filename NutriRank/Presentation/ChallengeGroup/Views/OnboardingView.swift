@@ -35,13 +35,11 @@ public struct OnboardingView: View {
                             }
 
                             VStack {
-
                                 NavigationLink(destination: CreateProfileView(viewModel: viewModel)){
                                     Text("Começar")
                                         .font(.headline)
                                         .frame(width: 250, height: 35)
                                         .foregroundColor(.white)
-
                                 }
                                 .background(Color("FirstPlaceRanking"))
                                 .cornerRadius(10)

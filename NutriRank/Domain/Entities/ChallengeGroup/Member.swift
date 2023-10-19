@@ -25,6 +25,4 @@ public struct Member: CKModel {
     @CKAssetField("avatar")
     var avatar: UIImage?
 
-    @CKReferenceField("group")
-    var group: ChallengeGroup?
 }

@@ -17,10 +17,8 @@ public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
     public func addMemberToGroup(member: Member, group: ChallengeGroup) async -> Result<AddMemberRequestedValues, Error> {
         do {
             var groupToSave = group
-            var memberToSave = member
             try await groupToSave.save(on: database)
-            try await memberToSave.save(on: database)
-            let values = AddMemberRequestedValues(memberToSave, groupToSave)
+            let values = AddMemberRequestedValues(member, groupToSave)
             return .success(values)
         } catch {
             return .failure(error)
