@@ -13,7 +13,7 @@ struct LoadingView: View {
             Color.black.opacity(0.7)
                 .edgesIgnoringSafeArea(.all)
 
-            ProgressView("Carregando...")
+            ProgressView()
                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
         }
     }

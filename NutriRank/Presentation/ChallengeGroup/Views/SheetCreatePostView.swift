@@ -17,6 +17,11 @@ public struct SheetCreatePostView: View {
     @State private var description = ""
     @State private var showAlert: Bool = false
 
+    @State private var isLoading: Bool = false
+    @State private var showPermissionAlert: Bool = false
+    @State private var isPostButtonHidden: Bool = false
+    @State private var isCancelButtonHidden: Bool = false
+
     public init(viewmodel: FeedGroupViewModel, selectedImage: Binding<UIImage?>) {
         self.viewmodel = viewmodel
         self._selectedImage = selectedImage
@@ -26,6 +31,12 @@ public struct SheetCreatePostView: View {
 
         NavigationStack {
             ZStack (alignment: .top) {
+
+                if isLoading {
+                    LoadingView()
+                        .zIndex(1.0)
+                }
+
                 Color(.defaultBackground)
                     .ignoresSafeArea()
                 VStack (spacing: 20) {
@@ -85,21 +96,34 @@ public struct SheetCreatePostView: View {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Postar") {
                             Task {
-                                let result = await viewmodel.createPost(title: self.title, description: self.description, postImage: self.selectedImage)
-                                if !result {
-                                    showAlert.toggle()
+                                if title == "" || description == "" || selectedImage == nil {
+                                    self.showPermissionAlert = true
+                                } else {
+                                    self.isLoading = true
+                                    self.isPostButtonHidden = true
+                                    self.isCancelButtonHidden = true
+                                    let result = await viewmodel.createPost(title: self.title, description: self.description, postImage: self.selectedImage)
+                                    if !result {
+                                        showAlert.toggle()
+                                    }
+                                    await viewmodel.updateChallengeMember()
+                                    dismiss()
                                 }
-                                await viewmodel.updateChallengeMember()
-                                dismiss()
                             }
-                        }.alert("Erro ao criar post!", isPresented: $showAlert) {
+                        }
+                        .opacity(isPostButtonHidden ? 0 : 1)
+                        .alert("Erro ao criar post!", isPresented: $showAlert) {
                             Button("cancelar", role: .cancel){}
+                        }
+                        .alert("Preencha todos os campos para criar seu post", isPresented: $showPermissionAlert){
+                            Button("ok", role: .cancel){}
                         }
                     }
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Cancelar") {
                             dismiss()
                         }
+                        .opacity(isCancelButtonHidden ? 0 : 1)
                     }
                 }
             }
