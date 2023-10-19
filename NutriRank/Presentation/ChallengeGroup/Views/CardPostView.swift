@@ -13,6 +13,8 @@ public struct CardPostView: View {
     @State var title: String
     @State var memberName: String
     @State var createdDate: Date
+    @State var postImage: UIImage
+    @State var userAvatar: UIImage?
 
     public var body: some View {
 
@@ -22,9 +24,13 @@ public struct CardPostView: View {
                         .foregroundColor(.black)
                         .bold()
                     HStack {
-                        Circle()
-                            .foregroundColor(Color("FirstPlaceRanking"))
+                        Image(uiImage: userAvatar!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .scaledToFill()
                             .frame(width: 27, height: 27)
+
                         Text(memberName)
                             .foregroundColor(.black)
                         Text(createdDate.description)
@@ -32,9 +38,13 @@ public struct CardPostView: View {
                     }
                 }
                 Spacer()
-                Circle()
-                    .foregroundColor(Color("FirstPlaceRanking"))
+                Image(uiImage: postImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Circle())
+                    .scaledToFill()
                     .frame(width: 60, height: 60)
+
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
@@ -46,4 +56,9 @@ public struct CardPostView: View {
 
     }
 
+}
+struct CardPostView_Previews: PreviewProvider {
+    static var previews: some View {
+        CardPostView(title: "Grupo massa", memberName: "comida", createdDate: Date(), postImage: UIImage(), userAvatar: UIImage())
+    }
 }

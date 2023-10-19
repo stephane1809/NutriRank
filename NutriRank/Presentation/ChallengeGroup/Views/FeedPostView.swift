@@ -114,7 +114,7 @@ public struct FeedPostView: View {
                                     Button {
                                         self.isPostCardDisplay.toggle()
                                     } label: {
-                                        CardPostView(title: post.title, memberName: post.owner!.name, createdDate: post.creationDate!)
+                                        CardPostView(title: post.title, memberName: post.owner!.name, createdDate: post.creationDate!, postImage: selectedImage!, userAvatar: viewmodel.member.avatar)
                                     }.sheet(isPresented: $isPostCardDisplay){
                                         SheetPostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage, post: post)
                                     }
