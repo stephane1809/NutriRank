@@ -15,11 +15,11 @@ public struct PostComment: CKModel {
 
     public init() {}
 
-    @CKReferenceField("commenter")
-    var commenter: Member?
-
     @CKField("comment")
     var comment: String
+
+    @CKReferenceField("commenter")
+    var commenter: Member?
 
     @CKReferenceField("post")
     var post: Post?

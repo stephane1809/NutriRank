@@ -9,12 +9,12 @@
 import Foundation
 import Nuvem
 import CloudKit
+import UIKit
 
 public struct Member: CKModel {
     public var record: CKRecord!
 
     public init() {}
-
 
     @CKField("name")
     var name: String
@@ -22,9 +22,7 @@ public struct Member: CKModel {
     @CKField("score")
     var score: Int
 
-    @CKField("avatar")
-    var avatar: String
+    @CKAssetField("avatar")
+    var avatar: UIImage?
 
-    @CKReferenceField("challengeGroup")
-    var challengeGroup: ChallengeGroup?
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol FetchChallengePostsUseCaseProtocol {
-    func execute() async -> Result<[Post], Error>
+    func execute(requestValue: String) async -> Result<[Post], Error>
 }
 
 public class DefaultFetchChallengePostsUseCase: FetchChallengePostsUseCaseProtocol {
@@ -19,8 +19,8 @@ public class DefaultFetchChallengePostsUseCase: FetchChallengePostsUseCaseProtoc
         self.repository = repository
     }
 
-    public func execute() async -> Result<[Post], Error> {
-        let result = await repository.fetchAllPosts()
+    public func execute(requestValue: String) async -> Result<[Post], Error> {
+        let result = await repository.fetchPostsByGroup(requestValue)
         switch result {
         case .success(let posts):
             return .success(posts)

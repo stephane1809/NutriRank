@@ -22,7 +22,6 @@ public class DefaultFetchGroupsUseCase: FetchChallengeGroupsUseCase {
     }
     
     public func execute() async -> Result<[ChallengeGroup], Error> {
-        print("chegou no UseCase")
         let result = await challengeGroupRepository.fetchChallengeGroups()
         switch result{
             case .success(let groupList):

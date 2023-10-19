@@ -11,39 +11,45 @@ import SwiftUI
 
 public struct OnboardingView: View {
 
-    public init() {}
+
+    let viewModel: FeedGroupViewModel
 
     public var body: some View {
-        GeometryReader { metrics in
-            NavigationView {
-                VStack (spacing: 110) {
-                    VStack {
-                        Image("logo")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Rectangle())
-                            .scaledToFill()
-                            .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.25)
-                        Text("O desafio perfeito para sua saúde.")
 
-                    }
+            GeometryReader { metrics in
+                NavigationView {
+                    ZStack {
+                        Color(.defaultBackground)
+                            .ignoresSafeArea()
 
-                    VStack {
-                        Button {
+                        VStack (spacing: 110) {
+                            VStack {
+                                Image("logo")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(Rectangle())
+                                    .scaledToFill()
+                                    .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.25)
+                                Text("O desafio perfeito para sua saúde.")
 
-                        } label: {
-                            Text("Começar")
-                                .font(.headline)
-                                .frame(width: 250, height: 35)
-                                .foregroundColor(.white)
+                            }
+
+                            VStack {
+                                NavigationLink(destination: CreateProfileView(viewModel: viewModel)){
+                                    Text("Começar")
+                                        .font(.headline)
+                                        .frame(width: 250, height: 35)
+                                        .foregroundColor(.white)
+                                }
+                                .background(Color("FirstPlaceRanking"))
+                                .cornerRadius(10)
+                                .buttonStyle(.bordered)
+
+                            }
                         }
-                        .background(Color("Red"))
-                        .cornerRadius(10)
-                        .buttonStyle(.bordered)
                     }
                 }
-
             }
-        }
+
     }
 }
