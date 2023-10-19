@@ -37,12 +37,12 @@ public struct GroupView: View {
 //                        Text(viewmodel.group.description)
 //                            .lineLimit(1...10)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 12)
-                    .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                    .background(Color("DefaultCardColor"))
-                    .cornerRadius(10)
-                    .shadow(radius: 1, x: 0, y: 1)
+//                    .padding(.horizontal, 20)
+//                    .padding(.vertical, 12)
+//                    .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
+//                    .background(Color("DefaultCardColor"))
+//                    .cornerRadius(10)
+//                    .shadow(radius: 1, x: 0, y: 1)
 
                     VStack (alignment: .leading, spacing: 3){
 
@@ -110,7 +110,7 @@ public struct GroupView: View {
                                         .frame(width: 110, height: 22)
                                         .foregroundColor(.white)
                                 }
-                                .background(.blue)
+                                .background(Color("FirstPlaceRanking"))
                                 .cornerRadius(10)
                                 .buttonStyle(.bordered)
                                 Spacer()
@@ -125,20 +125,17 @@ public struct GroupView: View {
                     .shadow(radius: 1, x: 0, y: 1)
 
                     VStack {
-                        Button {
-
-                        } label: {
-
+                        NavigationLink(destination: RankingView(viewmodel: viewmodel)) {
                             Image(systemName: "trophy.fill").font(.system(size: 23, weight: .regular))
                                 .foregroundColor(.white)
                             Text("Ranking")
                                 .font(.title2)
                                 .foregroundColor(.white)
-
                         }
                         .background(Color("FirstPlaceRanking"))
                         .cornerRadius(10)
                         .buttonStyle(.bordered)
+
                     }
                     .padding(.vertical,20)
 

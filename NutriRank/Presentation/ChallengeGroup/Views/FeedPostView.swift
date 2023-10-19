@@ -38,7 +38,7 @@ public struct FeedPostView: View {
 
     public var body: some View {
         GeometryReader { metrics in
-            NavigationView  {
+            NavigationView {
                 ZStack {
                     Color(.defaultBackground)
                         .ignoresSafeArea()
@@ -52,9 +52,9 @@ public struct FeedPostView: View {
                                             .frame(width: 350, height: 137)
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 7)
-                                                    .stroke(Color.black, lineWidth: 1.5)
+//                                                    .stroke(Color.black, lineWidth: 1.5)
                                             )
-                                            .foregroundColor(.clear)
+                                            .foregroundColor(Color("DefaultRankingCellColor"))
                                             .shadow(radius: 1, x: 0, y: 1)
 
                                         HStack{
@@ -124,6 +124,7 @@ public struct FeedPostView: View {
 
                         NavigationLink("", destination: GroupView(viewmodel: viewmodel), isActive: $performNavigation)
                             .hidden()
+                        Spacer()
                     }
                     .actionSheet(isPresented: $isImagePickerDisplay) {
                         ActionSheet(
@@ -162,9 +163,9 @@ public struct FeedPostView: View {
                             ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
                         }
                     }
-
                 }
-            }.navigationBarBackButtonHidden(true)
+            }
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
