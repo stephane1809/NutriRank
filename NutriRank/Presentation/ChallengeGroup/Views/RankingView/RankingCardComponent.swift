@@ -37,10 +37,14 @@ struct RankingCardComponent: View {
             .frame(width: 310)
             .offset(x: -16, y:-55)
 
-            Text(challengeDescription)
-                .offset(x:0,y:4)
-                .frame(width: 350, height:90)
-                .lineLimit(3)
+            HStack {
+                Text(challengeDescription)
+                Spacer()
+            }
+            .offset(x:0,y:4)
+            .frame(width: 350, height:90)
+            .lineLimit(3)
+
             Text("Duração: \(challengeSpan) dias")
                 .offset(x:-107, y:64)
 
@@ -50,6 +54,6 @@ struct RankingCardComponent: View {
 
 struct GroupHeaderComponent_Previews: PreviewProvider {
     static var previews: some View {
-        RankingCardComponent(challengeSpan: 28, challengeDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis mauris tellus. Nulla sed venenatis enim. Sed aliquam dapibus nulla ut rhoncus. Donec et ornare nunc, non ultricies ipsum. Sed auctor est ut pretium egestas. Nunc pretium ex id tortor tempor, at efficitur elit placerat.", groupTitle: "Abcdefghijklmnopqrsaa")
+        RankingCardComponent(challengeSpan: 28, challengeDescription: "Lorem ipsum ejndiu3", groupTitle: "Abcde")
     }
 }
