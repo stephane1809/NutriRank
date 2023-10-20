@@ -142,8 +142,8 @@ public struct EmptyStateView: View {
         }
         .task {
             await viewmodel.fetchChallengeMember()
+            await viewmodel.fetchGroupByMember()
             if viewmodel.group.record != nil {
-                await viewmodel.fetchGroupByMember()
                 self.performNavigation.toggle()
             }
         }

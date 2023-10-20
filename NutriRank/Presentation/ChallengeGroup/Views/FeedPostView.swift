@@ -114,7 +114,7 @@ public struct FeedPostView: View {
                                     Button {
                                         self.isPostCardDisplay.toggle()
                                     } label: {
-                                        CardPostView(title: post.title, memberName: post.owner!.name, createdDate: post.creationDate!, postImage: selectedImage!, userAvatar: viewmodel.member.avatar)
+                                        CardPostView(title: post.title, memberName: post.owner!.name, createdDate: post.creationDate!, postImage: post.postImage!, userAvatar: post.owner!.avatar)
                                     }.sheet(isPresented: $isPostCardDisplay){
                                         SheetPostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage, post: post)
                                     }
@@ -126,30 +126,38 @@ public struct FeedPostView: View {
                             .hidden()
                         Spacer()
                     }
-                    .actionSheet(isPresented: $isImagePickerDisplay) {
-                        ActionSheet(
-                            title: Text("Escolha uma opção"),
-                            buttons:[
-                                .default(
-                                    Text("Câmera"),
-                                    action: {
-                                        self.sourceType = .camera
-                                        self.sheet = .selection
-                                    }
-                                ),
-                                .default(
-                                    Text("Galeria"),
-                                    action: {
-                                        self.sourceType = .photoLibrary
-                                        self.sheet = .selection
-                                    }
-                                ),
-                                .cancel()
-                            ]
-                        )
-                    }.onAppear {
-                        print(viewmodel.group.groupName)
+                    .confirmationDialog("Escolha uma opção", isPresented: $isImagePickerDisplay) {
+                        Button("Câmera") {
+                            self.sourceType = .camera
+                            self.sheet = .selection
+                        }
+                        Button("Galeria") {
+                            self.sourceType = .photoLibrary
+                            self.sheet = .selection
+                        }
                     }
+//                    .actionSheet(isPresented: $isImagePickerDisplay) {
+//                        ActionSheet(
+//                            title: Text("Escolha uma opção"),
+//                            buttons:[
+//                                .default(
+//                                    Text("Câmera"),
+//                                    action: {
+//                                        self.sourceType = .camera
+//                                        self.sheet = .selection
+//                                    }
+//                                ),
+//                                .default(
+//                                    Text("Galeria"),
+//                                    action: {
+//                                        self.sourceType = .photoLibrary
+//                                        self.sheet = .selection
+//                                    }
+//                                ),
+//                                .cancel()
+//                            ]
+//                        )
+//                    }
                     .onChange(of: selectedImage) { selectedImage in
                         if selectedImage != nil {
                             sheet = .image
@@ -161,6 +169,11 @@ public struct FeedPostView: View {
                             SheetCreatePostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage)
                             case .selection:
                             ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
+                        }
+                    }
+                    .task {
+                        if self.viewmodel.group.record != nil {
+                            await viewmodel.fetchPosts()
                         }
                     }
                 }
