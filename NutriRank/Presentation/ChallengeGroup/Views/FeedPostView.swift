@@ -147,8 +147,6 @@ public struct FeedPostView: View {
                                 .cancel()
                             ]
                         )
-                    }.onAppear {
-                        print(viewmodel.group.groupName)
                     }
                     .onChange(of: selectedImage) { selectedImage in
                         if selectedImage != nil {
@@ -161,6 +159,11 @@ public struct FeedPostView: View {
                             SheetCreatePostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage)
                             case .selection:
                             ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
+                        }
+                    }
+                    .task {
+                        if self.viewmodel.group.record != nil {
+                            await viewmodel.fetchPosts()
                         }
                     }
                 }
