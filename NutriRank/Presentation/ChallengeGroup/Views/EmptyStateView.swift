@@ -96,8 +96,12 @@ public struct EmptyStateView: View {
                                                 Task {
                                                     if !(self.groupID == "") {
                                                         await viewmodel.fetchGroupByID(id: self.groupID)
-                                                        if await viewmodel.addMemberToGroup(member: viewmodel.member, group: viewmodel.group) {
-                                                            dismiss()
+                                                        if await viewmodel.addMemberToGroup(member: self.viewmodel.member, group: self.viewmodel.group) {
+                                                            showSheet.toggle()
+                                                            if viewmodel.group.record != nil {
+                                                                await viewmodel.fetchGroupByMember()
+                                                                self.performNavigation.toggle()
+                                                            }
                                                         } else {
                                                             self.message = "Erro ao entrar no grupo."
                                                             self.showAlert.toggle()
@@ -132,14 +136,14 @@ public struct EmptyStateView: View {
                         }
                     }
                 }
-                                .navigationDestination(isPresented: $performNavigation, destination: {FeedPostView(viewmodel: viewmodel)})
+                .navigationDestination(isPresented: $performNavigation, destination: {FeedPostView(viewmodel: viewmodel)})
             }
             .navigationBarBackButtonHidden(true)
         }
-        .onAppear {
-            Task {
-                await viewmodel.fetchChallengeMember()
-                await viewmodel.fetchGroupByMember()
+        .task {
+            await viewmodel.fetchChallengeMember()
+            await viewmodel.fetchGroupByMember()
+            if viewmodel.group.record != nil {
                 self.performNavigation.toggle()
             }
         }
