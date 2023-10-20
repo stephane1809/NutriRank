@@ -139,8 +139,10 @@ public struct EmptyStateView: View {
         .onAppear {
             Task {
                 await viewmodel.fetchChallengeMember()
-                await viewmodel.fetchGroupByMember()
-                self.performNavigation.toggle()
+                if viewmodel.group.record != nil {
+                    await viewmodel.fetchGroupByMember()
+                    self.performNavigation.toggle()
+                }
             }
         }
         .onOpenURL(perform: { url in
