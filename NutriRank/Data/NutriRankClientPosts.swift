@@ -66,7 +66,7 @@ public class NutriRankClientPosts: ChallengePostRepositoryProtocol {
         let database = CKContainer(identifier: identifier).publicCloudDatabase
         do {
             let group = try await ChallengeGroup.find(id: groupCKID, on: database)
-            let posts = try await Post.query(on: database).filter(\.$challengeGroup == group).all()
+            let posts = try await Post.query(on: database).with(\.$owner).filter(\.$challengeGroup == group).all()
             return .success(posts)
         } catch {
             return .failure(error)
