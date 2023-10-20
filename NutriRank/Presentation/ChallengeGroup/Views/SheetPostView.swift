@@ -27,21 +27,8 @@ public struct SheetPostView: View {
                 Color(.defaultBackground)
                     .ignoresSafeArea()
                 VStack (alignment: .leading, spacing: 20) {
-    //                HStack (spacing: 48) {
-    //                    Button {
-    //                        dismiss()
-    //                    } label: {
-    //                        Text("Cancelar")
-    //                    }
-    //
-    //                    Text("Postagem")
-    //                        .fontWeight(.bold)
-    //                        .font(.system(size: 20))
-    //                }
-    //                .padding(.vertical, 18)
-
-                    if selectedImage != nil {
-                        Image(uiImage: selectedImage!)
+                    if post.postImage != nil {
+                        Image(uiImage: post.postImage!)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .clipShape(Rectangle())

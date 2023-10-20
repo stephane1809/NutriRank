@@ -53,6 +53,7 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
             guard let result = try await ChallengeGroup.query(on: self.database)
                 .with(\.$members)
                 .filter(.predicate(format: "members contains %@", reference)).first() else { return .failure(SaveErrors.guardError)}
+            print(result)
             return .success(result)
         } catch {
             return .failure(error)

@@ -271,6 +271,7 @@ public class FeedGroupViewModel: ObservableObject {
         let result = await fetchGroupByMember.execute(requestValue: self.member)
         switch result {
         case .success(let group):
+            print(group)
             DispatchQueue.main.async {
                 self.group = group
             }
