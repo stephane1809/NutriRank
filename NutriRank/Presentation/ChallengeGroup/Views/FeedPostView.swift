@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import PhotosUI
 
 public struct FeedPostView: View {
 
@@ -132,32 +133,19 @@ public struct FeedPostView: View {
                             self.sheet = .selection
                         }
                         Button("Galeria") {
-                            self.sourceType = .photoLibrary
-                            self.sheet = .selection
+                            if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .authorized {
+                                self.sourceType = .photoLibrary
+                                self.sheet = .selection
+                            } else {
+                                PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                                    if status == .authorized {
+                                        self.sourceType = .photoLibrary
+                                        self.sheet = .selection
+                                    }
+                                }
+                            }
                         }
                     }
-//                    .actionSheet(isPresented: $isImagePickerDisplay) {
-//                        ActionSheet(
-//                            title: Text("Escolha uma opção"),
-//                            buttons:[
-//                                .default(
-//                                    Text("Câmera"),
-//                                    action: {
-//                                        self.sourceType = .camera
-//                                        self.sheet = .selection
-//                                    }
-//                                ),
-//                                .default(
-//                                    Text("Galeria"),
-//                                    action: {
-//                                        self.sourceType = .photoLibrary
-//                                        self.sheet = .selection
-//                                    }
-//                                ),
-//                                .cancel()
-//                            ]
-//                        )
-//                    }
                     .onChange(of: selectedImage) { selectedImage in
                         if selectedImage != nil {
                             sheet = .image

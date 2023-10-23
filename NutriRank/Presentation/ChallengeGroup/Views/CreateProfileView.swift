@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import PhotosUI
 
 public struct CreateProfileView: View {
 
@@ -83,8 +84,17 @@ public struct CreateProfileView: View {
                                         .default(
                                             Text("Galeria"),
                                             action: {
-                                                self.sourceType = .photoLibrary
-                                                self.isImagePickerDisplay2 = true
+                                                if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .authorized {
+                                                    self.sourceType = .photoLibrary
+                                                    self.isImagePickerDisplay2 = true
+                                                } else {
+                                                    PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                                                        if status == .authorized {
+                                                            self.sourceType = .photoLibrary
+                                                            self.isImagePickerDisplay2 = true
+                                                        }
+                                                    }
+                                                }
                                             }
                                         ),
                                         .cancel()
