@@ -83,7 +83,7 @@ public struct EmptyStateView: View {
                                     }
                                     .frame(width: 150, height: 35)
                                 }
-                                .background(.firstPlaceRanking)
+                                .background(Color("FirstPlaceRanking"))
                                 .clipShape(.rect(cornerRadius: 10))
                                 .buttonStyle(.bordered)
                                 .sheet(isPresented: $showSheet, content: {

@@ -3,4 +3,162 @@
    uuid = "8664D702-D3B4-4B44-9F53-101B88701E63"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DFF7D9DF-874F-4D12-85AA-27F32C22B189"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NutriRank/Data/NutriRankMemberClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "createChallengeMember(member:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DFF7D9DF-874F-4D12-85AA-27F32C22B189 - 3b1da29541657287"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for NutriRank.NutriRankMemberClient.createChallengeMember(member: NutriRank.Member) async -&gt; Swift.Result&lt;NutriRank.Member, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephanegiraolinhares/Documents/NutriRank/NutriRank/Data/NutriRankMemberClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "256">
+               </Location>
+               <Location
+                  uuid = "DFF7D9DF-874F-4D12-85AA-27F32C22B189 - 1c0ae263bece6bfa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for NutriRank.NutriRankMemberClient.createChallengeMember(member: NutriRank.Member) async -&gt; Swift.Result&lt;NutriRank.Member, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephanegiraolinhares/Documents/NutriRank/NutriRank/Data/NutriRankMemberClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "DFF7D9DF-874F-4D12-85AA-27F32C22B189 - f312914b3f5e56c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for NutriRank.NutriRankMemberClient.createChallengeMember(member: NutriRank.Member) async -&gt; Swift.Result&lt;NutriRank.Member, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephanegiraolinhares/Documents/NutriRank/NutriRank/Data/NutriRankMemberClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "DFF7D9DF-874F-4D12-85AA-27F32C22B189 - f312914b3f5e5685"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for NutriRank.NutriRankMemberClient.createChallengeMember(member: NutriRank.Member) async -&gt; Swift.Result&lt;NutriRank.Member, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephanegiraolinhares/Documents/NutriRank/NutriRank/Data/NutriRankMemberClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "DFF7D9DF-874F-4D12-85AA-27F32C22B189 - 172d682e1a4b28c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for NutriRank.NutriRankMemberClient.createChallengeMember(member: NutriRank.Member) async -&gt; Swift.Result&lt;NutriRank.Member, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephanegiraolinhares/Documents/NutriRank/NutriRank/Data/NutriRankMemberClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "DFF7D9DF-874F-4D12-85AA-27F32C22B189 - 172d682e1a4b2884"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for NutriRank.NutriRankMemberClient.createChallengeMember(member: NutriRank.Member) async -&gt; Swift.Result&lt;NutriRank.Member, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stephanegiraolinhares/Documents/NutriRank/NutriRank/Data/NutriRankMemberClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3FEF2D61-C31A-497A-B11A-34725219A26F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "createChallengeMember(member:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5296C06B-D1B3-4564-B11A-7F725ECCF2E3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NutriRank/Domain/UseCases/Member/CreateChallengeMemberUseCase.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "execute(requestValue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "817E66EA-9C7A-4B73-98BA-1FBA39D55F31"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NutriRank/Presentation/ChallengeGroup/Views/CreateProfileView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
