@@ -121,9 +121,6 @@ public struct FeedPostView: View {
                                 }
                             }
                         }
-
-                        NavigationLink("", destination: GroupView(viewmodel: viewmodel), isActive: $performNavigation)
-                            .hidden()
                         Spacer()
                     }
                     .confirmationDialog("Escolha uma opção", isPresented: $isImagePickerDisplay) {
@@ -136,28 +133,6 @@ public struct FeedPostView: View {
                             self.sheet = .selection
                         }
                     }
-//                    .actionSheet(isPresented: $isImagePickerDisplay) {
-//                        ActionSheet(
-//                            title: Text("Escolha uma opção"),
-//                            buttons:[
-//                                .default(
-//                                    Text("Câmera"),
-//                                    action: {
-//                                        self.sourceType = .camera
-//                                        self.sheet = .selection
-//                                    }
-//                                ),
-//                                .default(
-//                                    Text("Galeria"),
-//                                    action: {
-//                                        self.sourceType = .photoLibrary
-//                                        self.sheet = .selection
-//                                    }
-//                                ),
-//                                .cancel()
-//                            ]
-//                        )
-//                    }
                     .onChange(of: selectedImage) { selectedImage in
                         if selectedImage != nil {
                             sheet = .image
@@ -176,7 +151,7 @@ public struct FeedPostView: View {
                             await viewmodel.fetchPosts()
                         }
                     }
-                }
+                }.navigationDestination(isPresented: $performNavigation, destination: { GroupView(viewmodel: viewmodel) })
             }
             .navigationBarBackButtonHidden(true)
         }
