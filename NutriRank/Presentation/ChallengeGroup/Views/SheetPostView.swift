@@ -57,9 +57,9 @@ public struct SheetPostView: View {
                             .foregroundColor(Color("FirstPlaceRanking"))
                             .frame(width: 27, height: 27)
                         Text(post.owner!.name)
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                         Text(post.creationDate!.description)
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                     }
 
                 }

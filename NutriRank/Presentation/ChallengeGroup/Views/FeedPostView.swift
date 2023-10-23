@@ -54,7 +54,7 @@ public struct FeedPostView: View {
                                                 RoundedRectangle(cornerRadius: 7)
 //                                                    .stroke(Color.black, lineWidth: 1.5)
                                             )
-                                            .foregroundColor(Color("DefaultRankingCellColor"))
+                                            .foregroundColor(Color("FeedGroupHeaderColor"))
                                             .shadow(radius: 1, x: 0, y: 1)
 
                                         HStack{
@@ -98,7 +98,7 @@ public struct FeedPostView: View {
                         } label: {
                             Text("+ Nova Postagem")
                                 .font(.headline)
-                                .frame(width: 250, height: 35)
+                                .frame(width: 327, height: 35)
                                 .foregroundColor(.white)
                         }
                         .background(Color("FirstPlaceRanking"))

@@ -99,17 +99,20 @@ public struct CreateProfileView: View {
 
                                 HStack {
                                     Image(systemName: "person.fill")
+                                        .foregroundColor(.primary)
                                     Text("Nome")
+                                        .foregroundColor(.primary)
                                     Spacer()
                                 }
 
                                 TextField("Nome de usuário", text: $nickName)
+                                    .foregroundColor(.gray)
                             }
 
                             .padding(.horizontal, 20)
                             .padding(.vertical, 12)
                             .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                            .background(.white)
+                            .background(Color("TextFieldBoxColor"))
                             .cornerRadius(10)
                             .shadow(radius: 1, x: 0, y: 1)
                         }

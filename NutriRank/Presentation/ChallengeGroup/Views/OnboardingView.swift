@@ -31,6 +31,7 @@ public struct OnboardingView: View {
                                     .scaledToFill()
                                     .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.25)
                                 Text("O desafio perfeito para sua saúde.")
+                                
 
                             }
 
