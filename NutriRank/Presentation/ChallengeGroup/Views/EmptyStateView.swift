@@ -25,7 +25,6 @@ public struct EmptyStateView: View {
 
     public var body: some View {
         GeometryReader { metrics in
-            NavigationStack {
                 ZStack {
 
                     if Isloading{
@@ -146,7 +145,6 @@ public struct EmptyStateView: View {
                     }
                 }
                 .navigationDestination(isPresented: $performNavigation, destination: { FeedPostView(viewmodel: viewmodel) })
-            }
             .navigationBarBackButtonHidden(true)
         }
         .task {
