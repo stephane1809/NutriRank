@@ -61,7 +61,7 @@ public struct SheetPostView: View {
                             .frame(width: 27, height: 27)
                         Text(post.owner!.name)
                             .foregroundColor(.black)
-                        Text(post.creationDate!.description)
+                        Text(post.creationDate!.formatted())
                             .foregroundColor(.black)
                     }
 

@@ -45,7 +45,7 @@ public struct GroupView: View {
                             Spacer()
                         }
 
-                        Text(viewmodel.formatedDate(startDate: viewmodel.group.startDate, endDate: viewmodel.group.endDate))
+                        Text(viewmodel.formatedIntervalDates(startDate: viewmodel.group.startDate, endDate: viewmodel.group.endDate))
                             .lineLimit(1...10)
 
                     }
