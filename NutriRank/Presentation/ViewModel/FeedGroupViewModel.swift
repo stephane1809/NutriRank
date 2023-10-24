@@ -279,4 +279,9 @@ public class FeedGroupViewModel: ObservableObject {
             print(error)
         }
     }
+
+    func formatedIntervalDates(startDate: Date, endDate: Date) -> Date.IntervalFormatStyle.FormatOutput {
+        var dates = (startDate..<endDate).formatted(.interval.day().month().year())
+        return dates
+    }
 }

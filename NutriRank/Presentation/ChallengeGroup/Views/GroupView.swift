@@ -34,15 +34,7 @@ public struct GroupView: View {
                         Text (viewmodel.group.groupName)
                             .font(.title2)
                             .bold()
-//                        Text(viewmodel.group.description)
-//                            .lineLimit(1...10)
                     }
-//                    .padding(.horizontal, 20)
-//                    .padding(.vertical, 12)
-//                    .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-//                    .background(Color("DefaultCardColor"))
-//                    .cornerRadius(10)
-//                    .shadow(radius: 1, x: 0, y: 1)
 
                     VStack (alignment: .leading, spacing: 3){
 
@@ -55,10 +47,9 @@ public struct GroupView: View {
                             Spacer()
                         }
 
-                        Text("De \(viewmodel.group.startDate) a \(viewmodel.group.endDate)")
+                        Text(viewmodel.formatedIntervalDates(startDate: viewmodel.group.startDate, endDate: viewmodel.group.endDate))
                             .foregroundColor(.black)
                             .lineLimit(1...10)
-
 
                     }
                     .padding(.horizontal, 20)
@@ -107,8 +98,7 @@ public struct GroupView: View {
                         Spacer()
 
                             HStack {
-//                                Text("Link")
-//                                    .foregroundColor(.blue)
+
                                 Button {
                                     let groupID = viewmodel.group.id
                                     UIPasteboard.general.string = groupID

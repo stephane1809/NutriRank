@@ -53,13 +53,18 @@ public struct SheetPostView: View {
                         .lineLimit(1...10)
 
                     HStack {
-                        Circle()
-                            .foregroundColor(Color("FirstPlaceRanking"))
+                        Image(uiImage: post.owner!.avatar!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .scaledToFill()
                             .frame(width: 27, height: 27)
                         Text(post.owner!.name)
+
                             .foregroundColor(.primary)
-                        Text(post.creationDate!.description)
+                        Text(post.creationDate!.formatted())
                             .foregroundColor(.primary)
+
                     }
 
                 }
