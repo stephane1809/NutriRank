@@ -122,9 +122,6 @@ public struct FeedPostView: View {
                                 }
                             }
                         }
-
-                        NavigationLink("", destination: GroupView(viewmodel: viewmodel), isActive: $performNavigation)
-                            .hidden()
                         Spacer()
                     }
                     .confirmationDialog("Escolha uma opção", isPresented: $isImagePickerDisplay) {
@@ -164,7 +161,7 @@ public struct FeedPostView: View {
                             await viewmodel.fetchPosts()
                         }
                     }
-                }
+                }.navigationDestination(isPresented: $performNavigation, destination: { GroupView(viewmodel: viewmodel) })
             }
             .navigationBarBackButtonHidden(true)
         }

@@ -157,10 +157,10 @@ public struct CreateProfileView: View {
                             Button("Ok", role: .cancel) {}
                         }
 
-                        NavigationLink("", destination: EmptyStateView(viewmodel: viewModel), isActive: $performNavigation)
-                            .hidden()
+//                        NavigationLink("", destination: EmptyStateView(viewmodel: viewModel), isActive: $performNavigation)
+//                            .hidden()
                     }
-                }
+                }.navigationDestination(isPresented: $performNavigation, destination: { EmptyStateView(viewmodel: viewModel) })
             }
             .navigationBarBackButtonHidden(true)
         }
