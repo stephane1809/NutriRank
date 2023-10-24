@@ -40,12 +40,15 @@ public struct GroupView: View {
 
                         HStack {
                             Image(systemName: "stopwatch.fill")
+                                .foregroundColor(.black)
                             Text("Duração")
+                                .foregroundColor(.black)
                                 .bold()
                             Spacer()
                         }
 
                         Text(viewmodel.formatedIntervalDates(startDate: viewmodel.group.startDate, endDate: viewmodel.group.endDate))
+                            .foregroundColor(.black)
                             .lineLimit(1...10)
 
                     }
@@ -60,12 +63,15 @@ public struct GroupView: View {
 
                         HStack {
                             Image(systemName: "flame.fill")
+                                .foregroundColor(.black)
                             Text("Regras")
+                                .foregroundColor(.black)
                                 .bold()
                             Spacer()
                         }
 
                         Text("\(viewmodel.group.description)")
+                            .foregroundColor(.black)
                             .lineLimit(1...10)
 
                     }
@@ -80,11 +86,14 @@ public struct GroupView: View {
 
                         HStack {
                             Image(systemName: "paperplane.fill")
+                                .foregroundColor(.black)
                             Text("Compartilhar")
+                                .foregroundColor(.black)
                             Spacer()
                         }
 
                         Text("Convide seus amigos para participar de seu grupo novo e comecei o desafio!")
+                            .foregroundColor(.black)
                             .lineLimit(1...10)
                         Spacer()
 

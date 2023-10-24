@@ -39,14 +39,14 @@ public struct FeedPostView: View {
 
     public var body: some View {
         GeometryReader { metrics in
-            NavigationView {
+            NavigationStack {
                 ZStack {
                     Color(.defaultBackground)
                         .ignoresSafeArea()
                     VStack (alignment: .center, spacing: 20) {
 
                         Button {
-                            self.performNavigation = true
+                            self.performNavigation.toggle()
                         } label: {
                             ZStack{
                                         RoundedRectangle(cornerRadius: 10)
@@ -55,7 +55,7 @@ public struct FeedPostView: View {
                                                 RoundedRectangle(cornerRadius: 7)
 //                                                    .stroke(Color.black, lineWidth: 1.5)
                                             )
-                                            .foregroundColor(Color("DefaultRankingCellColor"))
+                                            .foregroundColor(Color("FeedGroupHeaderColor"))
                                             .shadow(radius: 1, x: 0, y: 1)
 
                                         HStack{
@@ -99,7 +99,7 @@ public struct FeedPostView: View {
                         } label: {
                             Text("+ Nova Postagem")
                                 .font(.headline)
-                                .frame(width: 250, height: 35)
+                                .frame(width: 327, height: 35)
                                 .foregroundColor(.white)
                         }
                         .background(Color("FirstPlaceRanking"))
@@ -122,9 +122,6 @@ public struct FeedPostView: View {
                                 }
                             }
                         }
-
-                        NavigationLink("", destination: GroupView(viewmodel: viewmodel), isActive: $performNavigation)
-                            .hidden()
                         Spacer()
                     }
                     .confirmationDialog("Escolha uma opção", isPresented: $isImagePickerDisplay) {
@@ -164,7 +161,7 @@ public struct FeedPostView: View {
                             await viewmodel.fetchPosts()
                         }
                     }
-                }
+                }.navigationDestination(isPresented: $performNavigation, destination: { GroupView(viewmodel: viewmodel) })
             }
             .navigationBarBackButtonHidden(true)
         }

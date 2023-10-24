@@ -17,7 +17,7 @@ public struct OnboardingView: View {
     public var body: some View {
 
             GeometryReader { metrics in
-                NavigationView {
+                NavigationStack {
                     ZStack {
                         Color(.defaultBackground)
                             .ignoresSafeArea()
@@ -31,6 +31,7 @@ public struct OnboardingView: View {
                                     .scaledToFill()
                                     .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.25)
                                 Text("O desafio perfeito para sua saúde.")
+                                
 
                             }
 

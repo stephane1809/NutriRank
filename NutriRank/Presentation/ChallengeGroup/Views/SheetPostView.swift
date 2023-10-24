@@ -60,9 +60,11 @@ public struct SheetPostView: View {
                             .scaledToFill()
                             .frame(width: 27, height: 27)
                         Text(post.owner!.name)
-                            .foregroundColor(.black)
+
+                            .foregroundColor(.primary)
                         Text(post.creationDate!.formatted())
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
+
                     }
 
                 }

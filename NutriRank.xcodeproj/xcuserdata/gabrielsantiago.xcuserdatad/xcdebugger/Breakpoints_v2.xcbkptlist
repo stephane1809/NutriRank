@@ -64,8 +64,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "body"
-            landmarkType = "24">
+            landmarkName = "init(viewmodel:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "C019655E-5F3F-4CD3-B27F-D7EF25FBC179 - ea52284029dc05f"
@@ -96,6 +96,100 @@
                   startingLineNumber = "23"
                   endingLineNumber = "23"
                   offsetFromSymbolStart = "296">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D6FE2C5E-0FE4-48E5-88E4-B84A5FD9895C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NutriRank/Presentation/ViewModel/FeedGroupViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "sortedRankingGroup"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF654189-5A5E-4851-82B0-6FB9D000D6D1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/NutriRank-bhhklxedruualkdnbizdarnjcxtl/SourcePackages/checkouts/nuvem/Sources/Nuvem/CKQueryBuilder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "all()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DF654189-5A5E-4851-82B0-6FB9D000D6D1 - c31c1ca9fb80c4c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Nuvem.CKQueryBuilder.all() async throws -&gt; Swift.Array&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrielsantiago/Library/Developer/Xcode/DerivedData/NutriRank-bhhklxedruualkdnbizdarnjcxtl/SourcePackages/checkouts/nuvem/Sources/Nuvem/CKQueryBuilder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "DF654189-5A5E-4851-82B0-6FB9D000D6D1 - a6e4aede4c391e52"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for Nuvem.CKQueryBuilder.all() async throws -&gt; Swift.Array&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrielsantiago/Library/Developer/Xcode/DerivedData/NutriRank-bhhklxedruualkdnbizdarnjcxtl/SourcePackages/checkouts/nuvem/Sources/Nuvem/CKQueryBuilder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "DF654189-5A5E-4851-82B0-6FB9D000D6D1 - f284a3de9c830901"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Nuvem.CKQueryBuilder.all() async throws -&gt; Swift.Array&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrielsantiago/Library/Developer/Xcode/DerivedData/NutriRank-bhhklxedruualkdnbizdarnjcxtl/SourcePackages/checkouts/nuvem/Sources/Nuvem/CKQueryBuilder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "DF654189-5A5E-4851-82B0-6FB9D000D6D1 - 7f736ec22a35640a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(10) suspend resume partial function for Nuvem.CKQueryBuilder.all() async throws -&gt; Swift.Array&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrielsantiago/Library/Developer/Xcode/DerivedData/NutriRank-bhhklxedruualkdnbizdarnjcxtl/SourcePackages/checkouts/nuvem/Sources/Nuvem/CKQueryBuilder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>

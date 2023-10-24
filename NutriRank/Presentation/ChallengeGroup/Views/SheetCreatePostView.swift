@@ -61,17 +61,20 @@ public struct SheetCreatePostView: View {
                     VStack (spacing: 2) {
                         HStack {
                             Image(systemName: "person.fill")
+                                .foregroundColor(.black)
                             Text("Título")
+                                .foregroundColor(.black)
                             Spacer()
                         }
 
                         TextField("Título da postagem", text: $title)
+                            .foregroundColor(.black)
                     }
 
                     .padding(.horizontal, 20)
                     .padding(.vertical, 12)
                     .frame(maxWidth: 330, minHeight: 50)
-                    .background(.white)
+                    .background(Color("FeedGroupHeaderColor"))
                     .cornerRadius(10)
                     .shadow(radius: 1, x: 0, y: 1)
 
@@ -79,17 +82,20 @@ public struct SheetCreatePostView: View {
 
                         HStack {
                             Image(systemName: "person.fill")
+                                .foregroundColor(.black)
                             Text("Descrição")
+                                .foregroundColor(.black)
                             Spacer()
                         }
 
                         TextField("Descrição da postagem", text: $description)
+                            .foregroundColor(.black)
                     }
 
                     .padding(.horizontal, 20)
                     .padding(.vertical, 12)
                     .frame(maxWidth: 330, minHeight: 50)
-                    .background(.white)
+                    .background(Color("FeedGroupHeaderColor"))
                     .cornerRadius(10)
                     .shadow(radius: 1, x: 0, y: 1)
                 }.toolbar {
