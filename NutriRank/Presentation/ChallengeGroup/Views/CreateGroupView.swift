@@ -65,6 +65,8 @@ public struct CreateGroupView: View {
                                         .cornerRadius(10)
                                 } else {
                                     Image(systemName: "camera.fill").font(.system(size: 37, weight: .regular))
+                                        .foregroundColor(.black)
+                                        .foregroundColor(.primary)
                                         .aspectRatio(contentMode: .fit)
                                         .scaledToFill()
                                         .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
@@ -131,7 +133,7 @@ public struct CreateGroupView: View {
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                                .background(.background)
+                                .background(Color("TextFieldBoxColor"))
                                 .cornerRadius(10)
                                 .shadow(radius: 1, x: 0, y: 1)
 
@@ -148,7 +150,7 @@ public struct CreateGroupView: View {
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                                .background(.background)
+                                .background(Color("TextFieldBoxColor"))
                                 .cornerRadius(10)
                                 .shadow(radius: 1, x: 0, y: 1)
 
@@ -167,7 +169,7 @@ public struct CreateGroupView: View {
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                                .background(.background)
+                                .background(Color("TextFieldBoxColor"))
                                 .cornerRadius(10)
                                 .shadow(radius: 1, x: 0, y: 1)
 

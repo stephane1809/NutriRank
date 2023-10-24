@@ -17,6 +17,7 @@ public struct EmptyStateView: View {
     @State var groupID: String = ""
     @State var showAlert: Bool = false
     @State var message: String = ""
+    @State var Isloading: Bool = false
 
     public init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
@@ -26,6 +27,13 @@ public struct EmptyStateView: View {
         GeometryReader { metrics in
             NavigationStack {
                 ZStack {
+
+                    if Isloading{
+                        LoadingView()
+                            .zIndex(1.0)
+                    }
+
+
                     Color(.defaultBackground)
                         .ignoresSafeArea()
 
@@ -48,11 +56,12 @@ public struct EmptyStateView: View {
                                     .font(.headline)
                             }
                             Text("Você não possui grupos no momento. Crie um novo grupo, ou entre em um existente, e inicie novos hábitos alimentares com seus amigos!")
+                                .foregroundColor(.primary)
                         }
                         .padding(.horizontal, 15)
                         .padding(.vertical, 12)
                         .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(.white)
+                        .background(Color("TextFieldBoxColor"))
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
                         VStack {
@@ -141,10 +150,13 @@ public struct EmptyStateView: View {
             .navigationBarBackButtonHidden(true)
         }
         .task {
+            self.Isloading = true
             await viewmodel.fetchChallengeMember()
             await viewmodel.fetchGroupByMember()
             if viewmodel.group.record != nil {
                 self.performNavigation.toggle()
+            } else {
+                self.Isloading = false
             }
         }
         .onOpenURL(perform: { url in
