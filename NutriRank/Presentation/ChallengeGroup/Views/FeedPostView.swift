@@ -34,12 +34,21 @@ public struct FeedPostView: View {
     @State private var calendar: Calendar = Calendar(identifier: .gregorian)
     @State private var todayDate = Date.now
     @State private var performNavigation: Bool = false
-
+    @State private var arePostsLoading = true
+    
     @State private var sheet: Sheet?
 
     public var body: some View {
         GeometryReader { metrics in
             ZStack {
+
+                if arePostsLoading {
+                    ProgressView()
+                        .controlSize(.large)
+                        .offset(y:100)
+                        .zIndex(1.0)
+                }
+
                 Color(.defaultBackground)
                     .ignoresSafeArea()
                 VStack (alignment: .center, spacing: 20) {
@@ -108,7 +117,10 @@ public struct FeedPostView: View {
                     VStack {
                         Text("Postagens")
                         if viewmodel.posts.isEmpty {
-                            Text("Não existem postagens no grupo.")
+                            if arePostsLoading == false {
+                                Text("Não existem postagens no grupo.")
+                                    .offset(y:230)
+                            }
                         } else {
                             List(viewmodel.posts) { post in
                                 Button {
@@ -158,6 +170,7 @@ public struct FeedPostView: View {
                 .task {
                     if self.viewmodel.group.record != nil {
                         await viewmodel.fetchPosts()
+                        self.arePostsLoading = false
                     }
                 }
             }.navigationDestination(isPresented: $performNavigation, destination: { GroupView(viewmodel: viewmodel) })
