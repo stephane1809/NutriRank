@@ -33,7 +33,6 @@ public struct CreateProfileView: View {
     public var body: some View {
 
         GeometryReader { metrics in
-            NavigationStack {
                 ZStack {
 
                     if isLoading{
@@ -162,7 +161,6 @@ public struct CreateProfileView: View {
                     }
                 }
                 .navigationDestination(isPresented: $performNavigation, destination: { EmptyStateView(viewmodel: viewModel) })
-            }
             .navigationBarBackButtonHidden(true)
         }
     }
