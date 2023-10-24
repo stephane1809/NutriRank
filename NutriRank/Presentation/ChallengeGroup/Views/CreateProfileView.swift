@@ -33,14 +33,13 @@ public struct CreateProfileView: View {
     public var body: some View {
 
         GeometryReader { metrics in
-            NavigationView {
+            NavigationStack {
                 ZStack {
 
                     if isLoading{
                         LoadingView()
                             .zIndex(1.0)
                     }
-
 
                     Color(.defaultBackground)
                         .ignoresSafeArea()
@@ -137,7 +136,8 @@ public struct CreateProfileView: View {
                                     self.isLoading = true
                                     if await viewModel.createChallengeMember(name:nickName,avatar: selectedImageProfile!,score:0) {
                                         UserDefaults.standard.set(true, forKey: "isFirstTimeUsingApp")
-                                        self.performNavigation = true
+                                        self.isLoading.toggle()
+                                        self.performNavigation.toggle()
                                     } else {
                                         self.isLoading = false
                                         self.showCloudPermissionAlert = true
@@ -159,11 +159,9 @@ public struct CreateProfileView: View {
                         .alert("Entre com sua conta Apple nas configurações do seu aparelho para prosseguir com a criação de usuário", isPresented: $showCloudPermissionAlert) {
                             Button("Ok", role: .cancel) {}
                         }
-
-//                        NavigationLink("", destination: EmptyStateView(viewmodel: viewModel), isActive: $performNavigation)
-//                            .hidden()
                     }
-                }.navigationDestination(isPresented: $performNavigation, destination: { EmptyStateView(viewmodel: viewModel) })
+                }
+                .navigationDestination(isPresented: $performNavigation, destination: { EmptyStateView(viewmodel: viewModel) })
             }
             .navigationBarBackButtonHidden(true)
         }

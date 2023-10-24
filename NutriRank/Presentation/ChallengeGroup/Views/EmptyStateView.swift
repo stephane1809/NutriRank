@@ -145,7 +145,7 @@ public struct EmptyStateView: View {
                         }
                     }
                 }
-                .navigationDestination(isPresented: $performNavigation, destination: {FeedPostView(viewmodel: viewmodel)})
+                .navigationDestination(isPresented: $performNavigation, destination: { FeedPostView(viewmodel: viewmodel) })
             }
             .navigationBarBackButtonHidden(true)
         }

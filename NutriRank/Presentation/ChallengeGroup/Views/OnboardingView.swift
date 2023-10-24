@@ -17,7 +17,7 @@ public struct OnboardingView: View {
     public var body: some View {
 
             GeometryReader { metrics in
-                NavigationView {
+                NavigationStack {
                     ZStack {
                         Color(.defaultBackground)
                             .ignoresSafeArea()

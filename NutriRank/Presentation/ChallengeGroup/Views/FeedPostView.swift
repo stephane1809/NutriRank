@@ -39,14 +39,14 @@ public struct FeedPostView: View {
 
     public var body: some View {
         GeometryReader { metrics in
-            NavigationView {
+            NavigationStack {
                 ZStack {
                     Color(.defaultBackground)
                         .ignoresSafeArea()
                     VStack (alignment: .center, spacing: 20) {
 
                         Button {
-                            self.performNavigation = true
+                            self.performNavigation.toggle()
                         } label: {
                             ZStack{
                                         RoundedRectangle(cornerRadius: 10)
