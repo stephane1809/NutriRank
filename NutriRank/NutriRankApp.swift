@@ -11,10 +11,12 @@ import SwiftUI
 struct NutriRankApp: App {
     var body: some Scene {
         WindowGroup {
-            if UserDefaults.standard.bool(forKey: "isFirstTimeUsingApp") == false {
-                FirstTimeUsingAppFactory.make()
-            } else {
-                ChallengeGroupFactory.make()
+            NavigationStack {
+                if UserDefaults.standard.bool(forKey: "isFirstTimeUsingApp") == false {
+                    FirstTimeUsingAppFactory.make()
+                } else {
+                    ChallengeGroupFactory.make()
+                }
             }
         }
     }

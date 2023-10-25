@@ -23,7 +23,6 @@ struct RankingCellComponent: View {
         self.mealCount = mealCount
     }
 
-
     var body: some View {
 
         ZStack{
@@ -50,8 +49,10 @@ struct RankingCellComponent: View {
                     .font(.system(size: 18))
                     .padding(.trailing, 7)
                     .padding(.leading, 10)
+                    .foregroundColor(.black)
                 Image(uiImage: profileAvatar)
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
                     .padding(.trailing, 26)
@@ -59,8 +60,9 @@ struct RankingCellComponent: View {
                     Text(userName)
                         .fontWeight(.semibold)
                         .font(.system(size: 18))
-
-                    Text("\(mealCount) refeiçoes")
+                        .foregroundColor(.black)
+                    Text("\(mealCount) refeições")
+                        .foregroundColor(.black)
                 }
                 Spacer()
             }
@@ -69,9 +71,3 @@ struct RankingCellComponent: View {
         }
     }
 }
-
-//struct RankingCellComponent_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RankingCellComponent(rankingPosition: 1, profileAvatar: "UserMockImage", userName: "Drake", mealCount: 26)
-//    }
-//}

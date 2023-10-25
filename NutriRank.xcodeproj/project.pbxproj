@@ -194,6 +194,14 @@
 			path = Member;
 			sourceTree = "<group>";
 		};
+		4B7E4B812AE94E650024146E /* PostsView */ = {
+			isa = PBXGroup;
+			children = (
+				4B5478BB2AD42C060029AF65 /* CardPostView.swift */,
+			);
+			path = PostsView;
+			sourceTree = "<group>";
+		};
 		B98EEE422ACB4503001B1DD3 = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +323,7 @@
 		B98EEE8B2ACB4686001B1DD3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4B7E4B812AE94E650024146E /* PostsView */,
 				363300EB2ACF46070083D5B8 /* RankingView */,
 				B9EF0C1B2ACEEB7900CA8CF6 /* EmptyStateView.swift */,
 				B9EF0C212ACEEB9300CA8CF6 /* CreateGroupView.swift */,
@@ -324,7 +333,6 @@
 				B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */,
 				B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */,
 				4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */,
-				4B5478BB2AD42C060029AF65 /* CardPostView.swift */,
 				4B5478BD2AD42D510029AF65 /* FeedPostView.swift */,
 				4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */,
 				4B5478C42ADE2A210029AF65 /* SheetPostView.swift */,
@@ -780,7 +788,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NutriRank/NutriRank.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"NutriRank/Preview Content\"";
 				DEVELOPMENT_TEAM = 949BRFMFQG;
 				ENABLE_PREVIEWS = YES;
@@ -819,7 +827,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NutriRank/NutriRank.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"NutriRank/Preview Content\"";
 				DEVELOPMENT_TEAM = 949BRFMFQG;
 				ENABLE_PREVIEWS = YES;
