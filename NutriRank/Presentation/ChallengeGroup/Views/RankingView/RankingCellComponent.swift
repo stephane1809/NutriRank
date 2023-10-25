@@ -50,8 +50,10 @@ struct RankingCellComponent: View {
                     .font(.system(size: 18))
                     .padding(.trailing, 7)
                     .padding(.leading, 10)
+                    .foregroundColor(.black)
                 Image(uiImage: profileAvatar)
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
                     .padding(.trailing, 26)
@@ -59,8 +61,9 @@ struct RankingCellComponent: View {
                     Text(userName)
                         .fontWeight(.semibold)
                         .font(.system(size: 18))
-
-                    Text("\(mealCount) refeiçoes")
+                        .foregroundColor(.black)
+                    Text("\(mealCount) refeições")
+                        .foregroundColor(.black)
                 }
                 Spacer()
             }
