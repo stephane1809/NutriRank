@@ -11,15 +11,7 @@ import SwiftUI
 public struct SheetPostView: View {
 
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var viewmodel: FeedGroupViewModel
-    @Binding var selectedImage: UIImage?
     @State var post: Post
-
-    init(viewmodel: FeedGroupViewModel, selectedImage: Binding<UIImage?>, post: Post) {
-        self.viewmodel = viewmodel
-        self._selectedImage = selectedImage
-        self._post = State<Post>(initialValue: post)
-    }
 
     public var body: some View {
         NavigationStack {
