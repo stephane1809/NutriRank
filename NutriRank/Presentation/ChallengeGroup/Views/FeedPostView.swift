@@ -122,13 +122,15 @@ public struct FeedPostView: View {
                                     .offset(y:230)
                             }
                         } else {
-                            List(viewmodel.posts) { post in
-                                Button {
-                                    self.isPostCardDisplay.toggle()
-                                } label: {
-                                    CardPostView(title: post.title, memberName: post.owner!.name, createdDate: post.creationDate!, postImage: post.postImage!, userAvatar: post.owner!.avatar)
-                                }.sheet(isPresented: $isPostCardDisplay){
-                                    SheetPostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage, post: post)
+                            ScrollView {
+                                ForEach(Array(viewmodel.sortedPostForDate)) { post in
+                                    Button {
+                                        self.isPostCardDisplay.toggle()
+                                    } label: {
+                                        CardPostView(title: post.title, memberName: post.owner!.name, createdDate: post.creationDate!, postImage: post.postImage!, userAvatar: post.owner!.avatar)
+                                    }.sheet(isPresented: $isPostCardDisplay){
+                                        SheetPostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage, post: post)
+                                    }
                                 }
                             }
                         }
