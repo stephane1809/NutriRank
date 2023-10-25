@@ -23,17 +23,23 @@ public class FeedGroupViewModel: ObservableObject {
         return unpackedSortedArray
     }
 
+    var sortedPostForDate: [Post] {
+        let postsArray = posts
+
+        let sortedPostsArray = postsArray.sorted {$0.creationDate! > $1.creationDate!}
+        return sortedPostsArray
+    }
+
     func getNamePersonRanking(index: Int) -> String {
             var personRanking: String
-            var numberOfMembers: Int = sortedRankingGroup.count
-            var maxIndexPossible: Int = numberOfMembers - 1
+            let numberOfMembers: Int = sortedRankingGroup.count
+            let maxIndexPossible: Int = numberOfMembers - 1
 
             if index <= maxIndexPossible {
                 personRanking = sortedRankingGroup[index].name
             } else {
                 personRanking = "*"
             }
-
             return personRanking
     }
 

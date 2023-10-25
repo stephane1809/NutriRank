@@ -23,7 +23,6 @@ struct RankingCellComponent: View {
         self.mealCount = mealCount
     }
 
-
     var body: some View {
 
         ZStack{
@@ -72,9 +71,3 @@ struct RankingCellComponent: View {
         }
     }
 }
-
-//struct RankingCellComponent_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RankingCellComponent(rankingPosition: 1, profileAvatar: "UserMockImage", userName: "Drake", mealCount: 26)
-//    }
-//}
