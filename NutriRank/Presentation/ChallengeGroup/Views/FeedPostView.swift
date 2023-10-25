@@ -34,6 +34,7 @@ public struct FeedPostView: View {
     @State private var calendar: Calendar = Calendar(identifier: .gregorian)
     @State private var todayDate = Date.now
     @State private var performNavigation: Bool = false
+    @State private var postToShow: Post?
 
     @State private var sheet: Sheet?
 
@@ -110,14 +111,15 @@ public struct FeedPostView: View {
                         if viewmodel.posts.isEmpty {
                             Text("Não existem postagens no grupo.")
                         } else {
-                            List(viewmodel.posts) { post in
-                                Button {
-                                    self.isPostCardDisplay.toggle()
-                                } label: {
-                                    CardPostView(title: post.title, memberName: post.owner!.name, createdDate: post.creationDate!, postImage: post.postImage!, userAvatar: post.owner!.avatar)
-                                }.sheet(isPresented: $isPostCardDisplay){
-                                    SheetPostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage, post: post)
+                            ScrollView {
+                                ForEach(viewmodel.posts) { post in
+                                    CardPostView(post: post)
+                                        .onTapGesture {
+                                            self.postToShow = post
+                                        }
                                 }
+                            }.sheet(item: $postToShow) { post in
+                                SheetPostView(post: post)
                             }
                         }
                     }

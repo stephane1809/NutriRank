@@ -10,35 +10,31 @@ import SwiftUI
 
 public struct CardPostView: View {
 
-    @State var title: String
-    @State var memberName: String
-    @State var createdDate: Date
-    @State var postImage: UIImage
-    @State var userAvatar: UIImage?
+    @State var post: Post
 
     public var body: some View {
 
             HStack {
                 VStack (alignment: .leading) {
-                    Text(title)
+                    Text(post.title)
                         .foregroundColor(.black)
                         .bold()
                     HStack {
-                        Image(uiImage: userAvatar!)
+                        Image(uiImage: (post.owner?.avatar)!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .clipShape(Circle())
                             .scaledToFill()
                             .frame(width: 27, height: 27)
 
-                        Text(memberName)
+                        Text(post.owner!.name)
                             .foregroundColor(.black)
-                        Text(createdDate.description)
+                        Text((post.creationDate?.formatted())!)
                             .foregroundColor(.black)
                     }
                 }
                 Spacer()
-                Image(uiImage: postImage)
+                Image(uiImage: post.postImage!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .clipShape(Circle())
@@ -56,9 +52,4 @@ public struct CardPostView: View {
 
     }
 
-}
-struct CardPostView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardPostView(title: "Grupo massa", memberName: "comida", createdDate: Date(), postImage: UIImage(), userAvatar: UIImage())
-    }
 }
