@@ -12,10 +12,10 @@
     {
       "identity" : "nuvem",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mtsrodrigues/nuvem",
+      "location" : "https://github.com/mateusrodriguesxyz/nuvem",
       "state" : {
         "branch" : "main",
-        "revision" : "43e31c26bfb541c89391bca2cc4aafb8f863ceb8"
+        "revision" : "159babbb44b67c2a2f59434f379cb981f1a5e533"
       }
     }
   ],

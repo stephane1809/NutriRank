@@ -11,6 +11,7 @@
 		363300EF2ACF4BB50083D5B8 /* RankingCellComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363300EE2ACF4BB50083D5B8 /* RankingCellComponent.swift */; };
 		363300F12ACF4DBF0083D5B8 /* RankingCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363300F02ACF4DBF0083D5B8 /* RankingCardComponent.swift */; };
 		363300F32ACF4EE70083D5B8 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363300F22ACF4EE70083D5B8 /* RankingView.swift */; };
+		3642ABD42AF916CC0010BBCF /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = 3642ABD32AF916CC0010BBCF /* Nuvem */; };
 		365B121F2AD41C2B00FD6713 /* NutriRankMemberClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B121E2AD41C2B00FD6713 /* NutriRankMemberClient.swift */; };
 		365B12212AD41CE100FD6713 /* ChallengeMemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12202AD41CE100FD6713 /* ChallengeMemberRepository.swift */; };
 		365B12242AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B12232AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift */; };
@@ -54,7 +55,6 @@
 		B98EEEDA2ACC62A7001B1DD3 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */; };
 		B98EEEDC2ACC62A7001B1DD3 /* CoordinatorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED82ACC62A6001B1DD3 /* CoordinatorPicker.swift */; };
 		B98EEEDD2ACC62A7001B1DD3 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */; };
-		B9ACFB6C2AE1754900D45B7F /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = B9ACFB6B2AE1754900D45B7F /* Nuvem */; };
 		B9ACFB6F2AE1755600D45B7F /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = B9ACFB6E2AE1755600D45B7F /* Mixpanel */; };
 		B9B319022AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B319012AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift */; };
 		B9B319042AD6D93A003F6E11 /* AddMemberToGroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B319032AD6D93A003F6E11 /* AddMemberToGroupUseCase.swift */; };
@@ -150,8 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3642ABD42AF916CC0010BBCF /* Nuvem in Frameworks */,
 				B9ACFB6F2AE1755600D45B7F /* Mixpanel in Frameworks */,
-				B9ACFB6C2AE1754900D45B7F /* Nuvem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,8 +454,8 @@
 			);
 			name = NutriRank;
 			packageProductDependencies = (
-				B9ACFB6B2AE1754900D45B7F /* Nuvem */,
 				B9ACFB6E2AE1755600D45B7F /* Mixpanel */,
+				3642ABD32AF916CC0010BBCF /* Nuvem */,
 			);
 			productName = NutriRank;
 			productReference = B98EEE4B2ACB4503001B1DD3 /* NutriRank.app */;
@@ -531,8 +531,8 @@
 			);
 			mainGroup = B98EEE422ACB4503001B1DD3;
 			packageReferences = (
-				B9ACFB6A2AE1754900D45B7F /* XCRemoteSwiftPackageReference "nuvem" */,
 				B9ACFB6D2AE1755600D45B7F /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+				3642ABD22AF916CC0010BBCF /* XCRemoteSwiftPackageReference "nuvem" */,
 			);
 			productRefGroup = B98EEE4C2ACB4503001B1DD3 /* Products */;
 			projectDirPath = "";
@@ -977,9 +977,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B9ACFB6A2AE1754900D45B7F /* XCRemoteSwiftPackageReference "nuvem" */ = {
+		3642ABD22AF916CC0010BBCF /* XCRemoteSwiftPackageReference "nuvem" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mtsrodrigues/nuvem";
+			repositoryURL = "https://github.com/mateusrodriguesxyz/nuvem";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -996,9 +996,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B9ACFB6B2AE1754900D45B7F /* Nuvem */ = {
+		3642ABD32AF916CC0010BBCF /* Nuvem */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B9ACFB6A2AE1754900D45B7F /* XCRemoteSwiftPackageReference "nuvem" */;
+			package = 3642ABD22AF916CC0010BBCF /* XCRemoteSwiftPackageReference "nuvem" */;
 			productName = Nuvem;
 		};
 		B9ACFB6E2AE1755600D45B7F /* Mixpanel */ = {
