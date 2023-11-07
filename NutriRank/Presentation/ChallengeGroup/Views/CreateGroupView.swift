@@ -18,7 +18,7 @@ public struct CreateGroupView: View {
     @ObservedObject var viewmodel: FeedGroupViewModel
 
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @State private var selectedImage: UIImage?
+    @State private var selectedImage: UIImage? = UIImage(named: "avatar3")
     @State private var isImagePickerDisplay = false
     @State private var isImagePickerDisplay2 = false
     @State private var groupName: String = ""
@@ -55,24 +55,13 @@ public struct CreateGroupView: View {
                         VStack (spacing: 30) {
 
                             VStack(spacing: 1) {
-                                if selectedImage != nil {
-                                    Image(uiImage: selectedImage!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .clipShape(Rectangle())
-                                        .scaledToFill()
-                                        .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
-                                        .cornerRadius(10)
-                                } else {
-                                    Image(systemName: "camera.fill").font(.system(size: 37, weight: .regular))
-                                        .foregroundColor(.black)
-                                        .foregroundColor(.primary)
-                                        .aspectRatio(contentMode: .fit)
-                                        .scaledToFill()
-                                        .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
-                                        .background(Color("DefaultCardColor"))
-                                        .cornerRadius(10)
-                                }
+                                Image(uiImage: selectedImage!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(Rectangle())
+                                    .scaledToFill()
+                                    .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
+                                    .cornerRadius(10)
 
                                 Button("Adicionar imagem") {
                                     self.isImagePickerDisplay.toggle()
