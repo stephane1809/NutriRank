@@ -41,8 +41,6 @@
 		B98EEEC82ACC5F0F001B1DD3 /* NutriRankClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE852ACB4665001B1DD3 /* NutriRankClient.swift */; };
 		B98EEEC92ACC5F11001B1DD3 /* FeedGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE8F2ACB46BB001B1DD3 /* FeedGroupView.swift */; };
 		B98EEECA2ACC5F14001B1DD3 /* FeedGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE8D2ACB46BB001B1DD3 /* FeedGroupViewModel.swift */; };
-		B98EEECB2ACC5F18001B1DD3 /* ChallengeGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE882ACB4686001B1DD3 /* ChallengeGroupViewModel.swift */; };
-		B98EEECC2ACC5F1A001B1DD3 /* ChallengeGroupUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEE8A2ACB4686001B1DD3 /* ChallengeGroupUIModel.swift */; };
 		B98EEECD2ACC5F24001B1DD3 /* ChallengeGroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEB82ACC5C94001B1DD3 /* ChallengeGroupRepository.swift */; };
 		B98EEECE2ACC5F27001B1DD3 /* ChallengePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEB92ACC5C94001B1DD3 /* ChallengePostRepository.swift */; };
 		B98EEECF2ACC5F2A001B1DD3 /* DeleteChallengePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEBC2ACC5C94001B1DD3 /* DeleteChallengePostUseCase.swift */; };
@@ -114,8 +112,6 @@
 		B98EEE782ACB4530001B1DD3 /* NutriRank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NutriRank.entitlements; sourceTree = "<group>"; };
 		B98EEE842ACB4665001B1DD3 /* NutriRankClientPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankClientPosts.swift; sourceTree = "<group>"; };
 		B98EEE852ACB4665001B1DD3 /* NutriRankClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriRankClient.swift; sourceTree = "<group>"; };
-		B98EEE882ACB4686001B1DD3 /* ChallengeGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGroupViewModel.swift; sourceTree = "<group>"; };
-		B98EEE8A2ACB4686001B1DD3 /* ChallengeGroupUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGroupUIModel.swift; sourceTree = "<group>"; };
 		B98EEE8D2ACB46BB001B1DD3 /* FeedGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGroupViewModel.swift; sourceTree = "<group>"; };
 		B98EEE8F2ACB46BB001B1DD3 /* FeedGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGroupView.swift; sourceTree = "<group>"; };
 		B98EEEA82ACC5C53001B1DD3 /* ChallengeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGroup.swift; sourceTree = "<group>"; };
@@ -172,15 +168,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		363300EB2ACF46070083D5B8 /* RankingView */ = {
+		363300EB2ACF46070083D5B8 /* ChallengeRanking */ = {
 			isa = PBXGroup;
 			children = (
-				363300F22ACF4EE70083D5B8 /* RankingView.swift */,
-				363300F02ACF4DBF0083D5B8 /* RankingCardComponent.swift */,
-				363300EE2ACF4BB50083D5B8 /* RankingCellComponent.swift */,
-				363300EC2ACF4B7A0083D5B8 /* RankingMockedViewModel.swift */,
+				B9FD8C632AFA6460000A1C8A /* Views */,
 			);
-			path = RankingView;
+			path = ChallengeRanking;
 			sourceTree = "<group>";
 		};
 		365B12222AD420F900FD6713 /* Member */ = {
@@ -194,12 +187,12 @@
 			path = Member;
 			sourceTree = "<group>";
 		};
-		4B7E4B812AE94E650024146E /* PostsView */ = {
+		4B7E4B812AE94E650024146E /* ChallengePost */ = {
 			isa = PBXGroup;
 			children = (
-				4B5478BB2AD42C060029AF65 /* CardPostView.swift */,
+				B9FD8C642AFA646F000A1C8A /* Views */,
 			);
-			path = PostsView;
+			path = ChallengePost;
 			sourceTree = "<group>";
 		};
 		B98EEE422ACB4503001B1DD3 = {
@@ -277,8 +270,10 @@
 		B98EEE822ACB45D8001B1DD3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				B98EEE8E2ACB46BB001B1DD3 /* View */,
-				B98EEE8C2ACB46BB001B1DD3 /* ViewModel */,
+				B9FD8C652AFA6519000A1C8A /* ChallengeComponents */,
+				363300EB2ACF46070083D5B8 /* ChallengeRanking */,
+				4B7E4B812AE94E650024146E /* ChallengePost */,
+				B9FD8C612AFA6427000A1C8A /* ChallengeMember */,
 				B98EEE862ACB4686001B1DD3 /* ChallengeGroup */,
 			);
 			path = Presentation;
@@ -298,7 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				B98EEE872ACB4686001B1DD3 /* ViewModels */,
-				B98EEE892ACB4686001B1DD3 /* Models */,
 				B98EEE8B2ACB4686001B1DD3 /* Views */,
 			);
 			path = ChallengeGroup;
@@ -307,55 +301,20 @@
 		B98EEE872ACB4686001B1DD3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				B98EEE882ACB4686001B1DD3 /* ChallengeGroupViewModel.swift */,
+				B98EEE8D2ACB46BB001B1DD3 /* FeedGroupViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		B98EEE892ACB4686001B1DD3 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				B98EEE8A2ACB4686001B1DD3 /* ChallengeGroupUIModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		B98EEE8B2ACB4686001B1DD3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4B7E4B812AE94E650024146E /* PostsView */,
-				363300EB2ACF46070083D5B8 /* RankingView */,
+				B98EEE8F2ACB46BB001B1DD3 /* FeedGroupView.swift */,
 				B9EF0C1B2ACEEB7900CA8CF6 /* EmptyStateView.swift */,
 				B9EF0C212ACEEB9300CA8CF6 /* CreateGroupView.swift */,
 				B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */,
-				B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */,
-				B98EEED82ACC62A6001B1DD3 /* CoordinatorPicker.swift */,
-				B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */,
-				B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */,
-				4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */,
-				4B5478BD2AD42D510029AF65 /* FeedPostView.swift */,
-				4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */,
-				4B5478C42ADE2A210029AF65 /* SheetPostView.swift */,
-				4B5478C92ADEC9D60029AF65 /* ExtensionCalendar.swift */,
-				36D489A12ADFF98800A0144F /* LoadingView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		B98EEE8C2ACB46BB001B1DD3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				B98EEE8D2ACB46BB001B1DD3 /* FeedGroupViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		B98EEE8E2ACB46BB001B1DD3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B98EEE8F2ACB46BB001B1DD3 /* FeedGroupView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		B98EEEB12ACC5C94001B1DD3 /* Entities */ = {
@@ -435,6 +394,65 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9FD8C612AFA6427000A1C8A /* ChallengeMember */ = {
+			isa = PBXGroup;
+			children = (
+				B9FD8C622AFA6439000A1C8A /* Views */,
+			);
+			path = ChallengeMember;
+			sourceTree = "<group>";
+		};
+		B9FD8C622AFA6439000A1C8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B5478B92AD03EDC0029AF65 /* CreateProfileView.swift */,
+				B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B9FD8C632AFA6460000A1C8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				363300F22ACF4EE70083D5B8 /* RankingView.swift */,
+				363300F02ACF4DBF0083D5B8 /* RankingCardComponent.swift */,
+				363300EE2ACF4BB50083D5B8 /* RankingCellComponent.swift */,
+				363300EC2ACF4B7A0083D5B8 /* RankingMockedViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B9FD8C642AFA646F000A1C8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B5478BD2AD42D510029AF65 /* FeedPostView.swift */,
+				4B5478BB2AD42C060029AF65 /* CardPostView.swift */,
+				4B5478BF2AD5710D0029AF65 /* SheetCreatePostView.swift */,
+				4B5478C42ADE2A210029AF65 /* SheetPostView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B9FD8C652AFA6519000A1C8A /* ChallengeComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B9FD8C662AFA6526000A1C8A /* Views */,
+			);
+			path = ChallengeComponents;
+			sourceTree = "<group>";
+		};
+		B9FD8C662AFA6526000A1C8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B98EEED82ACC62A6001B1DD3 /* CoordinatorPicker.swift */,
+				B98EEED92ACC62A6001B1DD3 /* ExtensionView.swift */,
+				B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */,
+				4B5478C92ADEC9D60029AF65 /* ExtensionCalendar.swift */,
+				36D489A12ADFF98800A0144F /* LoadingView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -591,7 +609,6 @@
 				365B12242AD4210A00FD6713 /* CreateChallengeMemberUseCase.swift in Sources */,
 				B9B319022AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift in Sources */,
 				4B5478C52ADE2A210029AF65 /* SheetPostView.swift in Sources */,
-				B98EEECB2ACC5F18001B1DD3 /* ChallengeGroupViewModel.swift in Sources */,
 				B98EEEAC2ACC5C53001B1DD3 /* ChallengeGroup.swift in Sources */,
 				B98EEEC82ACC5F0F001B1DD3 /* NutriRankClient.swift in Sources */,
 				B9DDA8522AE0005E002BA0B6 /* FeedPostViewFactory.swift in Sources */,
@@ -620,7 +637,6 @@
 				B98EEECE2ACC5F27001B1DD3 /* ChallengePostRepository.swift in Sources */,
 				B98EEED42ACC5F37001B1DD3 /* DeleteChallengeGroupUseCase.swift in Sources */,
 				B98EEED12ACC5F2F001B1DD3 /* GetChallengePostsByOwnerUseCase.swift in Sources */,
-				B98EEECC2ACC5F1A001B1DD3 /* ChallengeGroupUIModel.swift in Sources */,
 				B9DDA8542AE023B8002BA0B6 /* FetchGroupByMemberUseCase.swift in Sources */,
 				363300F32ACF4EE70083D5B8 /* RankingView.swift in Sources */,
 				B98EEED52ACC5F3A001B1DD3 /* FetchGroupsUseCase.swift in Sources */,
