@@ -15,6 +15,7 @@ public class FeedGroupViewModel: ObservableObject {
     @Published var posts: [Post] = []
     @Published var members: [Member] = []
     @Published var member: Member = Member()
+    @Published var linkWasCopied: Bool = false
 
     var sortedRankingGroup: [Member] {
         guard let unpackedArray = group.members else {return []}
