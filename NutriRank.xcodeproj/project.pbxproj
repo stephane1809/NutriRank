@@ -62,6 +62,7 @@
 		B9EF0C1F2ACEEB7900CA8CF6 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */; };
 		B9EF0C202ACEEB7900CA8CF6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */; };
 		B9EF0C222ACEEB9300CA8CF6 /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF0C212ACEEB9300CA8CF6 /* CreateGroupView.swift */; };
+		B9FD8C682AFA74D6000A1C8A /* CopyToClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FD8C672AFA74D6000A1C8A /* CopyToClipboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		B9EF0C1C2ACEEB7900CA8CF6 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		B9EF0C1D2ACEEB7900CA8CF6 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B9EF0C212ACEEB9300CA8CF6 /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
+		B9FD8C672AFA74D6000A1C8A /* CopyToClipboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyToClipboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +453,7 @@
 				B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */,
 				4B5478C92ADEC9D60029AF65 /* ExtensionCalendar.swift */,
 				36D489A12ADFF98800A0144F /* LoadingView.swift */,
+				B9FD8C672AFA74D6000A1C8A /* CopyToClipboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				B98EEECE2ACC5F27001B1DD3 /* ChallengePostRepository.swift in Sources */,
 				B98EEED42ACC5F37001B1DD3 /* DeleteChallengeGroupUseCase.swift in Sources */,
 				B98EEED12ACC5F2F001B1DD3 /* GetChallengePostsByOwnerUseCase.swift in Sources */,
+				B9FD8C682AFA74D6000A1C8A /* CopyToClipboardView.swift in Sources */,
 				B9DDA8542AE023B8002BA0B6 /* FetchGroupByMemberUseCase.swift in Sources */,
 				363300F32ACF4EE70083D5B8 /* RankingView.swift in Sources */,
 				B98EEED52ACC5F3A001B1DD3 /* FetchGroupsUseCase.swift in Sources */,
