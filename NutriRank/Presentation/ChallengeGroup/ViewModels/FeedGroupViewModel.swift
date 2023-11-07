@@ -39,7 +39,7 @@ public class FeedGroupViewModel: ObservableObject {
             if index <= maxIndexPossible {
                 personRanking = sortedRankingGroup[index].name
             } else {
-                personRanking = "*"
+                personRanking = "-"
             }
             return personRanking
     }
