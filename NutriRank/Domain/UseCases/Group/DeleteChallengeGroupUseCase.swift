@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol  DeleteChallengeGroupUseCase {
-    func execute(group: ChallengeGroup) async -> Result<Bool, Error>
+    func execute(group: ChallengeGroup, member: Member) async -> Result<Bool, Error>
 }
 
 public class DefaultDeleteChallengeGroupUseCase: DeleteChallengeGroupUseCase {
@@ -20,9 +20,9 @@ public class DefaultDeleteChallengeGroupUseCase: DeleteChallengeGroupUseCase {
         self.challengeGroupRepository = challengeGroupRepository
     }
 
-    public func execute(group: ChallengeGroup) async -> Result<Bool, Error> {
+    public func execute(group: ChallengeGroup, member: Member) async -> Result<Bool, Error> {
         print("delete chegou no usecase")
-        let result = await challengeGroupRepository.deleteChallengeRepository(group: group)
+        let result = await challengeGroupRepository.deleteChallengeRepository(group: group, member: member)
         switch result {
             case .success(let bool):
                 return .success(bool)

@@ -102,8 +102,8 @@ public struct EmptyStateView: View {
                                             }
                                             Button {
                                                 Task {
-                                                    if !(self.groupID == "") {
-                                                        await viewmodel.fetchGroupByID(id: self.groupID)
+                                                    if let uuid = UUID(uuidString: self.groupID) {
+                                                        await viewmodel.fetchGroupByID(id: uuid.uuidString)
                                                         if await viewmodel.addMemberToGroup(member: self.viewmodel.member, group: self.viewmodel.group) {
                                                             showSheet.toggle()
                                                             if viewmodel.group.record != nil {
@@ -115,7 +115,6 @@ public struct EmptyStateView: View {
                                                             self.showAlert.toggle()
                                                         }
                                                     } else {
-                                                        print(self.groupID)
                                                         self.message = "ID mal formatado."
                                                         self.showAlert.toggle()
                                                     }
@@ -146,6 +145,9 @@ public struct EmptyStateView: View {
                 }
                 .navigationDestination(isPresented: $performNavigation, destination: { FeedPostView(viewmodel: viewmodel) })
             .navigationBarBackButtonHidden(true)
+        }
+        .onDisappear {
+            self.performNavigation.toggle()
         }
         .task {
             self.Isloading = true

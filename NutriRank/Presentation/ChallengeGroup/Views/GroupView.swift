@@ -11,6 +11,8 @@ import SwiftUI
 
 public struct GroupView: View {
 
+    @Environment(\.dismiss) var dismiss
+
     @ObservedObject var viewmodel: FeedGroupViewModel
 
     public init(viewmodel: FeedGroupViewModel) {
@@ -132,10 +134,20 @@ public struct GroupView: View {
                             .background(Color("FirstPlaceRanking"))
                             .cornerRadius(10)
                             .buttonStyle(.bordered)
+                            Button("Sair do grupo") {
+                                Task {
+                                    let result = await viewmodel.leaveGroup()
+                                    if result {
+                                        dismiss()
+                                    }
+                                }
+                            }
+                            .foregroundStyle(.firstPlaceRanking)
+                            .underline()
+                            .padding()
 
                         }
                         .padding(.vertical,20)
-
                         CopyToClipboardView(enabled: $viewmodel.linkWasCopied)
                     }
                 }
@@ -144,7 +156,6 @@ public struct GroupView: View {
             .frame(maxWidth: .infinity)
             .background(Color(.defaultBackground))
             .navigationTitle("Grupo")
-
         }
     }
 }

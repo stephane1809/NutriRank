@@ -23,7 +23,7 @@ public struct FeedPostView: View {
         self.viewmodel = viewmodel
     }
 
-    //    public init() {}
+    @Environment(\.dismiss) var dismiss
 
     @State private var isImagePickerDisplay = false
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary

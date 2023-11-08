@@ -61,37 +61,6 @@ struct NutriRankGroupButton: ButtonStyle {
     }
 }
 
-//struct GroupView: View {
-//
-//    @ObservedObject var viewmodel: FeedGroupViewModel
-//
-//    @State var title: String = ""
-//    @State var description: String = ""
-//
-//    init(viewmodel: FeedGroupViewModel) {
-//        self.viewmodel = viewmodel
-//    }
-//
-//    var body: some View {
-//        if viewmodel.posts.isEmpty {
-//            Button {
-//                Task {
-//                    await viewmodel.createPost(title: title, description: description)
-//                }
-//            } label: {
-//                Text("Criar post")
-//            }
-//        } else {
-//            List(viewmodel.posts) { post in
-//                Text(post.title)
-//                Text(post.description)
-//            }
-//        }
-//    }
-//}
-
-
-
 struct CreateGroupSheet: View {
     @Environment(\.dismiss) var dismiss
 

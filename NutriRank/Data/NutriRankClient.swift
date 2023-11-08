@@ -38,9 +38,10 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
         }
     }
 
-    public func deleteChallengeRepository(group: ChallengeGroup) async -> Result<Bool, Error> {
+    public func deleteChallengeRepository(group: ChallengeGroup, member: Member) async -> Result<Bool, Error> {
         do {
-            try await group.delete(on: self.database)
+            var groupToSave = group
+            try await groupToSave.save(on: self.database)
             return .success(true)
         } catch {
             return .failure(error)
@@ -56,7 +57,7 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
 
             try await result.$members.load(on: self.database)
             
-            print(result)
+//            print(result)
             return .success(result)
         } catch {
             return .failure(error)

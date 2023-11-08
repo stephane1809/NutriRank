@@ -144,6 +144,17 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
+    func leaveGroup() async -> Bool {
+        let result = await deleteUseCase.execute(group: self.group, member: self.member)
+        switch result {
+        case .success(let bool):
+            return bool
+        case .failure(let error):
+            print(error)
+            return false
+        }
+    }
+
     func fetchPosts() async {
         let result = await fetchPostsByGroup.execute(requestValue: self.group.id)
         switch result {
@@ -177,17 +188,6 @@ public class FeedGroupViewModel: ObservableObject {
             }
         case .failure(let error):
             print(error)
-        }
-    }
-
-    func deleteGroup(group: ChallengeGroup) async {
-        print("o delete chegou na viewmodel")
-        let result = await deleteUseCase.execute(group: group)
-        switch result {
-            case .success(let bool):
-                print(bool)
-            case .failure(let error):
-                print(error)
         }
     }
 
@@ -278,7 +278,7 @@ public class FeedGroupViewModel: ObservableObject {
         let result = await fetchGroupByMember.execute(requestValue: self.member)
         switch result {
         case .success(let group):
-            print(group)
+//            print(group)
             DispatchQueue.main.async {
                 self.group = group
             }
