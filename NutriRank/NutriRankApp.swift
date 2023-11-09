@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import Mixpanel
 
 @main
 struct NutriRankApp: App {
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
+
         WindowGroup {
             NavigationStack {
                 if UserDefaults.standard.bool(forKey: "isFirstTimeUsingApp") == false {
@@ -19,5 +24,11 @@ struct NutriRankApp: App {
                 }
             }
         }
+    }
+
+    init() {
+        Mixpanel.initialize(
+            token: "5dc6bcad6e4d2114ee9f8aa59235e242",
+            trackAutomaticEvents: true)
     }
 }

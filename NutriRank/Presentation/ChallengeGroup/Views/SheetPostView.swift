@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Mixpanel
 
 public struct SheetPostView: View {
 
@@ -69,9 +68,6 @@ public struct SheetPostView: View {
             }
             .navigationTitle("Postagem")
             .navigationBarTitleDisplayMode(.inline)
-            .onAppear{
-                Mixpanel.mainInstance().track(event: "Post View", properties: MixpanelProductionIndicator.Production.retrieveDict())
-            }
         }
     }
 }

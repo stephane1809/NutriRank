@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 import PhotosUI
-import Mixpanel
 
 public struct CreateProfileView: View {
 
@@ -19,7 +18,7 @@ public struct CreateProfileView: View {
         self.viewModel = viewModel
     }
 
-    @State private var selectedImageProfile: UIImage? = UIImage(named: "avatar1")
+    @State private var selectedImageProfile: UIImage?
     @State private var isImagePickerDisplay = false
     @State private var isImagePickerDisplay2 = false
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -48,11 +47,20 @@ public struct CreateProfileView: View {
 
                         VStack {
                             VStack {
-                                Image(uiImage: selectedImageProfile!)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .clipShape(Circle())
-                                    .frame(width: 200, height: 200)
+                                if selectedImageProfile != nil {
+                                    Image(uiImage: selectedImageProfile!)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .clipShape(Circle())
+                                        .frame(width: 200, height: 200)
+
+
+                                } else {
+                                    Circle()
+                                        .foregroundColor(Color("FirstPlaceRanking"))
+                                        .frame(width: 200, height: 200)
+
+                                }
 
                                 Button("Adicionar foto") {
                                     self.isImagePickerDisplay.toggle()
@@ -153,9 +161,6 @@ public struct CreateProfileView: View {
                     }
                 }
                 .navigationDestination(isPresented: $performNavigation, destination: { EmptyStateView(viewmodel: viewModel) })
-                .onAppear{
-                    Mixpanel.mainInstance().track(event: "Create User View", properties: MixpanelProductionIndicator.Production.retrieveDict())
-                }
             .navigationBarBackButtonHidden(true)
         }
     }
