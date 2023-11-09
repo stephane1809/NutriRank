@@ -19,7 +19,7 @@ public struct CreateProfileView: View {
         self.viewModel = viewModel
     }
 
-    @State private var selectedImageProfile: UIImage?
+    @State private var selectedImageProfile: UIImage? = UIImage(named: "avatar1")
     @State private var isImagePickerDisplay = false
     @State private var isImagePickerDisplay2 = false
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -48,20 +48,11 @@ public struct CreateProfileView: View {
 
                         VStack {
                             VStack {
-                                if selectedImageProfile != nil {
-                                    Image(uiImage: selectedImageProfile!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .clipShape(Circle())
-                                        .frame(width: 200, height: 200)
-
-
-                                } else {
-                                    Circle()
-                                        .foregroundColor(Color("FirstPlaceRanking"))
-                                        .frame(width: 200, height: 200)
-
-                                }
+                                Image(uiImage: selectedImageProfile!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Circle())
+                                    .frame(width: 200, height: 200)
 
                                 Button("Adicionar foto") {
                                     self.isImagePickerDisplay.toggle()
