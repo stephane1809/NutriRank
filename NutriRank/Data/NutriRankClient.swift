@@ -38,7 +38,7 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
         }
     }
 
-    public func deleteChallengeRepository(group: ChallengeGroup, member: Member) async -> Result<Bool, Error> {
+    public func leaveGroupRepository(group: ChallengeGroup, member: Member) async -> Result<Bool, Error> {
         do {
             var groupToSave = group
             try await groupToSave.save(on: self.database)

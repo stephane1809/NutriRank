@@ -47,7 +47,7 @@ public class FeedGroupViewModel: ObservableObject {
     let createUseCase: CreateChallengeGroupUseCase
     let createPostUseCase: CreateChallengePostUseCase
     let fetchUseCase: FetchChallengeGroupsUseCase
-    let deleteUseCase: DeleteChallengeGroupUseCase
+    let deleteUseCase: LeaveGroupUseCaseProtocol
     let createMemberUseCase: CreateChallengeMemberUseCase
     let updateMemberUseCase: UpdateChallengeMemberUseCase
     let fetchMemberUseCase: FetchChallengeMemberUseCase
@@ -59,7 +59,7 @@ public class FeedGroupViewModel: ObservableObject {
     public init(createUseCase: CreateChallengeGroupUseCase, 
                 createPostUseCase: CreateChallengePostUseCase,
                 fetchUseCase: FetchChallengeGroupsUseCase,
-                deleteUseCase: DeleteChallengeGroupUseCase,
+                deleteUseCase: LeaveGroupUseCaseProtocol,
                 createMemberUseCase: CreateChallengeMemberUseCase,
                 updateMemberUseCase: UpdateChallengeMemberUseCase,
                 fetchMemberUseCase: FetchChallengeMemberUseCase,
