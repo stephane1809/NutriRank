@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import Mixpanel
 
 public struct EmptyStateView: View {
     @Environment(\.dismiss) var dismiss
@@ -18,6 +19,7 @@ public struct EmptyStateView: View {
     @State var showAlert: Bool = false
     @State var message: String = ""
     @State var Isloading: Bool = false
+    @State var entenringGroup: Bool = false
 
     public init(viewmodel: FeedGroupViewModel) {
         self.viewmodel = viewmodel
@@ -101,6 +103,8 @@ public struct EmptyStateView: View {
                                                     TextField("ID do grupo", text: $groupID)
                                             }
                                             Button {
+                                                self.entenringGroup = true
+                                                Mixpanel.mainInstance().track(event: "Attempted to enter group", properties: MixpanelProductionIndicator.Production.retrieveDict())
                                                 Task {
                                                     if !(self.groupID == "") {
                                                         await viewmodel.fetchGroupByID(id: self.groupID)
@@ -111,10 +115,12 @@ public struct EmptyStateView: View {
                                                                 self.performNavigation.toggle()
                                                             }
                                                         } else {
+                                                            self.entenringGroup = false
                                                             self.message = "Erro ao entrar no grupo."
                                                             self.showAlert.toggle()
                                                         }
                                                     } else {
+                                                        self.entenringGroup = false
                                                         print(self.groupID)
                                                         self.message = "ID mal formatado."
                                                         self.showAlert.toggle()
@@ -122,9 +128,15 @@ public struct EmptyStateView: View {
                                                 }
                                             } label: {
                                                 HStack(alignment: .center) {
-                                                    Text("Entrar")
-                                                        .font(.headline)
-                                                        .foregroundStyle(.white)
+
+                                                    if entenringGroup {
+                                                        ProgressView()
+                                                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                                    } else {
+                                                        Text("Entrar")
+                                                            .font(.headline)
+                                                            .foregroundStyle(.white)
+                                                    }
                                                 }
                                                     .frame(width: 100, height: 35)
                                             }
@@ -145,6 +157,9 @@ public struct EmptyStateView: View {
                     }
                 }
                 .navigationDestination(isPresented: $performNavigation, destination: { FeedPostView(viewmodel: viewmodel) })
+                .onAppear{
+                    Mixpanel.mainInstance().track(event: "Empty State View", properties: MixpanelProductionIndicator.Production.retrieveDict())
+                }
             .navigationBarBackButtonHidden(true)
         }
         .task {

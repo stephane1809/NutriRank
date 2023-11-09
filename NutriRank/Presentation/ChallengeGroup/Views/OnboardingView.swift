@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import Mixpanel
 
 public struct OnboardingView: View {
 
@@ -47,6 +48,9 @@ public struct OnboardingView: View {
 
                             }
                         }
+                    }
+                    .onAppear {
+                        Mixpanel.mainInstance().track(event: "Onboarding View", properties: MixpanelProductionIndicator.Production.retrieveDict())
                     }
             }
 

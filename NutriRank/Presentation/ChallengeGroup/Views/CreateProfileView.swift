@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import PhotosUI
+import Mixpanel
 
 public struct CreateProfileView: View {
 
@@ -161,6 +162,9 @@ public struct CreateProfileView: View {
                     }
                 }
                 .navigationDestination(isPresented: $performNavigation, destination: { EmptyStateView(viewmodel: viewModel) })
+                .onAppear{
+                    Mixpanel.mainInstance().track(event: "Create User View", properties: MixpanelProductionIndicator.Production.retrieveDict())
+                }
             .navigationBarBackButtonHidden(true)
         }
     }

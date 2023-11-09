@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import UIKit
 import PhotosUI
+import Mixpanel
 
 
 
@@ -217,10 +218,12 @@ public struct CreateGroupView: View {
 
                     }
                     .frame(maxWidth: .infinity)
-
                     .background(Color(.defaultBackground))
                     .onTapGesture {
                         self.hideKeyboard()
+                    }
+                    .onAppear{
+                        Mixpanel.mainInstance().track(event: "Create Group View", properties: MixpanelProductionIndicator.Production.retrieveDict())
                     }
 
             .navigationTitle("Criar grupo")

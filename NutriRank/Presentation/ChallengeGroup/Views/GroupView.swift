@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import Mixpanel
 
 public struct GroupView: View {
 
@@ -134,7 +135,12 @@ public struct GroupView: View {
                         .background(Color("FirstPlaceRanking"))
                         .cornerRadius(10)
                         .buttonStyle(.bordered)
-
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    Mixpanel.mainInstance().track(event: "Tapped Ranking Button", properties: MixpanelProductionIndicator.Production.retrieveDict())
+                                }
+                        )
                     }
                     .padding(.vertical,20)
 
@@ -143,6 +149,9 @@ public struct GroupView: View {
             .frame(maxWidth: .infinity)
             .background(Color(.defaultBackground))
             .navigationTitle("Grupo")
+            .onAppear{
+                Mixpanel.mainInstance().track(event: "Group View", properties: MixpanelProductionIndicator.Production.retrieveDict())
+            }
 
         }
     }

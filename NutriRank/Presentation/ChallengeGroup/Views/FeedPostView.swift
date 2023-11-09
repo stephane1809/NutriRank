@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import PhotosUI
+import Mixpanel
 
 public struct FeedPostView: View {
 
@@ -56,6 +57,7 @@ public struct FeedPostView: View {
 
                     Button {
                         self.performNavigation.toggle()
+                        Mixpanel.mainInstance().track(event: "Taped Group Card", properties: MixpanelProductionIndicator.Production.retrieveDict())
                     } label: {
                         ZStack{
                                     RoundedRectangle(cornerRadius: 10)
@@ -104,6 +106,7 @@ public struct FeedPostView: View {
 
                     Button {
                         self.isImagePickerDisplay.toggle()
+                        Mixpanel.mainInstance().track(event: "Tapped new post button", properties: MixpanelProductionIndicator.Production.retrieveDict())
 //                            sheet = .selection
                     } label: {
                         Text("+ Nova Postagem")
@@ -177,6 +180,9 @@ public struct FeedPostView: View {
                 }
             }.navigationDestination(isPresented: $performNavigation, destination: { GroupView(viewmodel: viewmodel) })
             .navigationBarBackButtonHidden(true)
+            .onAppear{
+                Mixpanel.mainInstance().track(event: "Group Feed View", properties: MixpanelProductionIndicator.Production.retrieveDict())
+            }
         }
     }
 }

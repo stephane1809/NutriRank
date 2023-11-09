@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+
+
+enum MixpanelProductionIndicator {
+    case Production
+    case NotProduction
+
+    func retrieveDict() -> [String : Bool] {
+        switch self{
+            case .Production:
+                return ["Production": true]
+            case .NotProduction:
+                return ["Production": false]
+        }
+    }
+}
