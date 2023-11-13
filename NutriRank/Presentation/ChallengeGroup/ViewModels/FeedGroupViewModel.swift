@@ -56,6 +56,7 @@ public class FeedGroupViewModel: ObservableObject {
     let addMemberUseCase: AddMemberToGroupUseCaseProtocol
     let fetchPostsByGroup: FetchChallengePostsUseCaseProtocol
     let fetchGroupByMember: FetchGroupByMemberUseCaseProtocol
+    let deletePostUseCase: DeleteChallengePostUseCaseProtocol
 
     public init(createUseCase: CreateChallengeGroupUseCase, 
                 createPostUseCase: CreateChallengePostUseCase,
@@ -67,7 +68,8 @@ public class FeedGroupViewModel: ObservableObject {
                 fetchGroupByIDUseCase: FetchGroupByIdUseCaseProtocol,
                 addMemberUseCase: AddMemberToGroupUseCaseProtocol,
                 fetchPostsByGroup: FetchChallengePostsUseCaseProtocol,
-                fetchGroupByMember: FetchGroupByMemberUseCaseProtocol) {
+                fetchGroupByMember: FetchGroupByMemberUseCaseProtocol,
+                deletePostUseCase: DeleteChallengePostUseCaseProtocol) {
         self.createUseCase = createUseCase
         self.createPostUseCase = createPostUseCase
         self.fetchUseCase = fetchUseCase
@@ -79,6 +81,7 @@ public class FeedGroupViewModel: ObservableObject {
         self.addMemberUseCase = addMemberUseCase
         self.fetchPostsByGroup = fetchPostsByGroup
         self.fetchGroupByMember = fetchGroupByMember
+        self.deletePostUseCase = deletePostUseCase
         group.groupName = ""
         group.description = ""
         group.members = []
@@ -296,6 +299,17 @@ public class FeedGroupViewModel: ObservableObject {
         group.members = []
         self.group = group
         self.leavedGroup = false
+    }
+
+    func deletePost(post: Post) async -> Bool {
+        let result = await deletePostUseCase.execute(post)
+        switch result {
+        case .success(let bool):
+            return bool
+        case .failure(let error):
+            print(error)
+            return false
+        }
     }
 
     func formatedIntervalDates(startDate: Date, endDate: Date) -> Date.IntervalFormatStyle.FormatOutput {

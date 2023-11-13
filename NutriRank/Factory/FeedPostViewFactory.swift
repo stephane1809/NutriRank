@@ -30,8 +30,9 @@ struct FeedPostViewFactory {
         let fetchGroupByIDUseCase = DefaultFetchGroupByIdUsecase(repository: repository)
         let fetchPostsByGroupUseCase = DefaultFetchChallengePostsUseCase(repository: postRepository)
         let fetchGroupByMember = DefaultFetchGroupByMemberUseCase(repository: repository)
+        let deletePostUseCase = DefaultDeleteChallengePostUseCase(repository: postRepository)
 
-        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase, fetchGroupByIDUseCase: fetchGroupByIDUseCase, addMemberUseCase: addMemberUseCase, fetchPostsByGroup: fetchPostsByGroupUseCase, fetchGroupByMember: fetchGroupByMember)
+        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase, fetchGroupByIDUseCase: fetchGroupByIDUseCase, addMemberUseCase: addMemberUseCase, fetchPostsByGroup: fetchPostsByGroupUseCase, fetchGroupByMember: fetchGroupByMember, deletePostUseCase: deletePostUseCase)
 
         return FeedPostView(viewmodel: viewmodel)
     }
