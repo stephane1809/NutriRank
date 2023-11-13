@@ -16,6 +16,7 @@ public class FeedGroupViewModel: ObservableObject {
     @Published var members: [Member] = []
     @Published var member: Member = Member()
     @Published var linkWasCopied: Bool = false
+    var leavedGroup: Bool = false
 
     var sortedRankingGroup: [Member] {
         guard let unpackedArray = group.members else {return []}
@@ -47,7 +48,7 @@ public class FeedGroupViewModel: ObservableObject {
     let createUseCase: CreateChallengeGroupUseCase
     let createPostUseCase: CreateChallengePostUseCase
     let fetchUseCase: FetchChallengeGroupsUseCase
-    let deleteUseCase: DeleteChallengeGroupUseCase
+    let deleteUseCase: LeaveGroupUseCaseProtocol
     let createMemberUseCase: CreateChallengeMemberUseCase
     let updateMemberUseCase: UpdateChallengeMemberUseCase
     let fetchMemberUseCase: FetchChallengeMemberUseCase
@@ -59,7 +60,7 @@ public class FeedGroupViewModel: ObservableObject {
     public init(createUseCase: CreateChallengeGroupUseCase, 
                 createPostUseCase: CreateChallengePostUseCase,
                 fetchUseCase: FetchChallengeGroupsUseCase,
-                deleteUseCase: DeleteChallengeGroupUseCase,
+                deleteUseCase: LeaveGroupUseCaseProtocol,
                 createMemberUseCase: CreateChallengeMemberUseCase,
                 updateMemberUseCase: UpdateChallengeMemberUseCase,
                 fetchMemberUseCase: FetchChallengeMemberUseCase,
@@ -144,6 +145,17 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
+    func leaveGroup() async -> Bool {
+        let result = await deleteUseCase.execute(group: self.group, member: self.member)
+        switch result {
+        case .success(let bool):
+            return bool
+        case .failure(let error):
+            print(error)
+            return false
+        }
+    }
+
     func fetchPosts() async {
         let result = await fetchPostsByGroup.execute(requestValue: self.group.id)
         switch result {
@@ -177,17 +189,6 @@ public class FeedGroupViewModel: ObservableObject {
             }
         case .failure(let error):
             print(error)
-        }
-    }
-
-    func deleteGroup(group: ChallengeGroup) async {
-        print("o delete chegou na viewmodel")
-        let result = await deleteUseCase.execute(group: group)
-        switch result {
-            case .success(let bool):
-                print(bool)
-            case .failure(let error):
-                print(error)
         }
     }
 
@@ -274,17 +275,27 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func fetchGroupByMember() async {
+    func fetchGroupByMember() async -> Bool {
         let result = await fetchGroupByMember.execute(requestValue: self.member)
         switch result {
         case .success(let group):
-            print(group)
             DispatchQueue.main.async {
                 self.group = group
             }
+            return true
         case .failure(let error):
             print(error)
+            return false
         }
+    }
+
+    func resetGroup() {
+        var group = ChallengeGroup()
+        group.groupName = ""
+        group.description = ""
+        group.members = []
+        self.group = group
+        self.leavedGroup = false
     }
 
     func formatedIntervalDates(startDate: Date, endDate: Date) -> Date.IntervalFormatStyle.FormatOutput {
