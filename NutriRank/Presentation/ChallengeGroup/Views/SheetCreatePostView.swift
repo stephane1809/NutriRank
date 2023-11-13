@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Mixpanel
 
 public struct SheetCreatePostView: View {
 
@@ -103,7 +102,6 @@ public struct SheetCreatePostView: View {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Postar") {
                             Task {
-                                Mixpanel.mainInstance().track(event: "Created a Post", properties: MixpanelProductionIndicator.Production.retrieveDict())
                                 if title == "" || description == "" || selectedImage == nil {
                                     self.showPermissionAlert = true
                                 } else {
@@ -134,9 +132,6 @@ public struct SheetCreatePostView: View {
                         .opacity(isCancelButtonHidden ? 0 : 1)
                     }
                 }
-            }
-            .onAppear{
-                Mixpanel.mainInstance().track(event: "Create Post View", properties: MixpanelProductionIndicator.Production.retrieveDict())
             }
         }
     }

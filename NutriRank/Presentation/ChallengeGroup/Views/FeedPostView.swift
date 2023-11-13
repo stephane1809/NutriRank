@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 import PhotosUI
-import Mixpanel
 
 public struct FeedPostView: View {
 
@@ -24,7 +23,7 @@ public struct FeedPostView: View {
         self.viewmodel = viewmodel
     }
 
-    @Environment(\.dismiss) var dismiss
+//    public init() {}
 
     @State private var isImagePickerDisplay = false
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -37,8 +36,7 @@ public struct FeedPostView: View {
     @State private var performNavigation: Bool = false
     @State private var postToShow: Post?
     @State private var arePostsLoading = true
-    @State var leavedGroup = false
-
+    
     @State private var sheet: Sheet?
 
     public var body: some View {
@@ -58,7 +56,6 @@ public struct FeedPostView: View {
 
                     Button {
                         self.performNavigation.toggle()
-                        Mixpanel.mainInstance().track(event: "Taped Group Card", properties: MixpanelProductionIndicator.Production.retrieveDict())
                     } label: {
                         ZStack{
                                     RoundedRectangle(cornerRadius: 10)
@@ -99,9 +96,6 @@ public struct FeedPostView: View {
                                         Text("\(calendar.numberOfDaysBetween(start: todayDate, end: viewmodel.group.endDate)) dias restantes")
                                             .foregroundColor(.black)
                                         Spacer()
-                                        Text("Ver grupo >")
-                                            .foregroundStyle(Color("FirstPlaceRanking"))
-                                            .underline()
                                     }
                                     .frame(width: 320)
                                     .offset(x: 0, y: 28)
@@ -110,8 +104,7 @@ public struct FeedPostView: View {
 
                     Button {
                         self.isImagePickerDisplay.toggle()
-                        Mixpanel.mainInstance().track(event: "Tapped new post button", properties: MixpanelProductionIndicator.Production.retrieveDict())
-                        //                            sheet = .selection
+//                            sheet = .selection
                     } label: {
                         Text("+ Nova Postagem")
                             .font(.headline)
@@ -163,11 +156,6 @@ public struct FeedPostView: View {
                         }
                     }
                 }
-                .onChange(of: leavedGroup) { leavedGroup in
-                    if leavedGroup {
-                        dismiss()
-                    }
-                }
                 .onChange(of: selectedImage) { selectedImage in
                     if selectedImage != nil {
                         sheet = .image
@@ -175,9 +163,9 @@ public struct FeedPostView: View {
                 }
                 .sheet(item: $sheet) { sheet in
                     switch sheet {
-                    case .image:
+                        case .image:
                         SheetCreatePostView(viewmodel: self.viewmodel, selectedImage: self.$selectedImage)
-                    case .selection:
+                        case .selection:
                         ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
                     }
                 }
@@ -187,11 +175,8 @@ public struct FeedPostView: View {
                         self.arePostsLoading = false
                     }
                 }
-            }.navigationDestination(isPresented: $performNavigation, destination: { GroupView(viewmodel: viewmodel, self.$leavedGroup) })
-                .navigationBarBackButtonHidden(true)
-            .onAppear{
-                Mixpanel.mainInstance().track(event: "Group Feed View", properties: MixpanelProductionIndicator.Production.retrieveDict())
-            }
+            }.navigationDestination(isPresented: $performNavigation, destination: { GroupView(viewmodel: viewmodel) })
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

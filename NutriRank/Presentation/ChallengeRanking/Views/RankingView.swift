@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Mixpanel
 
 struct RankingView: View {
 
@@ -24,5 +25,9 @@ struct RankingView: View {
             }
         }
         .background(Color(.defaultBackground))
+        .onAppear{
+            Mixpanel.mainInstance().track(event: "Ranking View", properties: MixpanelProductionIndicator.Production.retrieveDict())
+
+        }
     }
 }
