@@ -37,6 +37,7 @@ public struct FeedPostView: View {
     @State private var performNavigation: Bool = false
     @State private var postToShow: Post?
     @State private var arePostsLoading = true
+    @State private var performRankingNavigation = false
 
     @State private var sheet: Sheet?
 
@@ -92,6 +93,7 @@ public struct FeedPostView: View {
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
                     }
+                    .padding(.top, 13)
 
                     Button {
                         self.isImagePickerDisplay.toggle()
@@ -171,6 +173,7 @@ public struct FeedPostView: View {
             .onAppear{
                 Mixpanel.mainInstance().track(event: "Group Feed View", properties: MixpanelProductionIndicator.Production.retrieveDict())
             }
+            .navigationDestination(isPresented: $performRankingNavigation, destination: {RankingView(viewmodel: viewmodel)})
             .navigationTitle(viewmodel.group.groupName)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -178,16 +181,24 @@ public struct FeedPostView: View {
 
                     }) {
                         Image(systemName: "person.fill")
+                            .resizable()
+                            .frame(width: 23, height: 23)
                             .foregroundStyle(Color("FirstPlaceRanking"))
                             .padding(.leading, 7)
+
                     }
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
+
                     Button(action: {
+                        self.performRankingNavigation = true
+                        Mixpanel.mainInstance().track(event: "Tapped Ranking Button", properties: MixpanelProductionIndicator.Production.retrieveDict())
 
                     }) {
                         Image(systemName: "trophy.fill")
+                            .resizable()
+                            .frame(width: 23, height: 23)
                             .foregroundStyle(Color("FirstPlaceRanking"))
                             .padding(.trailing, 7)
                     }
