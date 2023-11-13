@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "mixpanel-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mixpanel/mixpanel-swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "1ce27d937009d5ecce74dad97d69898ffea49c75"
+      }
+    },
+    {
+      "identity" : "nuvem",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mateusrodriguesxyz/nuvem",
+      "state" : {
+        "branch" : "main",
+        "revision" : "159babbb44b67c2a2f59434f379cb981f1a5e533"
+      }
+    }
+  ],
+  "version" : 2
+}
