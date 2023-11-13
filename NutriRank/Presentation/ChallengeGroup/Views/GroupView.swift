@@ -13,10 +13,13 @@ public struct GroupView: View {
 
     @Environment(\.dismiss) var dismiss
 
+    @Binding var leavedGroup: Bool
+
     @ObservedObject var viewmodel: FeedGroupViewModel
 
-    public init(viewmodel: FeedGroupViewModel) {
+    public init(viewmodel: FeedGroupViewModel, _ performNavigation: Binding<Bool>) {
         self.viewmodel = viewmodel
+        self._leavedGroup = performNavigation
     }
 
     public var body: some View {
@@ -138,6 +141,7 @@ public struct GroupView: View {
                                 Task {
                                     let result = await viewmodel.leaveGroup()
                                     if result {
+                                        self.leavedGroup = true
                                         dismiss()
                                     }
                                 }
@@ -151,7 +155,7 @@ public struct GroupView: View {
                         CopyToClipboardView(enabled: $viewmodel.linkWasCopied)
                     }
                 }
-
+                .navigationDestination(isPresented: $leavedGroup, destination: { EmptyStateView(viewmodel: viewmodel) })
             }
             .frame(maxWidth: .infinity)
             .background(Color(.defaultBackground))

@@ -108,7 +108,7 @@ public struct EmptyStateView: View {
                                                             showSheet.toggle()
                                                             if viewmodel.group.record != nil {
                                                                 await viewmodel.fetchGroupByMember()
-                                                                self.performNavigation.toggle()
+                                                                self.performNavigation = true
                                                             }
                                                         } else {
                                                             self.message = "Erro ao entrar no grupo."
@@ -146,14 +146,14 @@ public struct EmptyStateView: View {
                 .navigationDestination(isPresented: $performNavigation, destination: { FeedPostView(viewmodel: viewmodel) })
             .navigationBarBackButtonHidden(true)
         }
-        .onDisappear {
-            self.performNavigation.toggle()
-        }
         .task {
+            if viewmodel.leavedGroup {
+                viewmodel.resetGroup()
+            }
             self.Isloading = true
             await viewmodel.fetchChallengeMember()
-            await viewmodel.fetchGroupByMember()
-            if viewmodel.group.record != nil {
+            let result = await viewmodel.fetchGroupByMember()
+            if result {
                 self.performNavigation.toggle()
             } else {
                 self.Isloading = false

@@ -16,6 +16,7 @@ public class FeedGroupViewModel: ObservableObject {
     @Published var members: [Member] = []
     @Published var member: Member = Member()
     @Published var linkWasCopied: Bool = false
+    var leavedGroup: Bool = false
 
     var sortedRankingGroup: [Member] {
         guard let unpackedArray = group.members else {return []}
@@ -274,17 +275,27 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func fetchGroupByMember() async {
+    func fetchGroupByMember() async -> Bool {
         let result = await fetchGroupByMember.execute(requestValue: self.member)
         switch result {
         case .success(let group):
-//            print(group)
             DispatchQueue.main.async {
                 self.group = group
             }
+            return true
         case .failure(let error):
             print(error)
+            return false
         }
+    }
+
+    func resetGroup() {
+        var group = ChallengeGroup()
+        group.groupName = ""
+        group.description = ""
+        group.members = []
+        self.group = group
+        self.leavedGroup = false
     }
 
     func formatedIntervalDates(startDate: Date, endDate: Date) -> Date.IntervalFormatStyle.FormatOutput {

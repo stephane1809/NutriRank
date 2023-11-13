@@ -57,15 +57,17 @@ public class DefaultChallengeMemberRepository: ChallengeMemberRepositoryProtocol
     public func addMemberToGroup(member: Member, group: ChallengeGroup) async -> Result<AddMemberRequestedValues, Error> {
         var groupToSave = group
         var memberToSave = member
-        if var members = group.members {
-            members.append(memberToSave)
-            groupToSave.members = members
-        } else {
+        guard var members = groupToSave.members else {
+            return .failure(SaveErrors.guardError)
+        }
+        if members.isEmpty {
             var members = [member]
             members.append(memberToSave)
             groupToSave.members = members
+        } else if !(members.contains(where: { $0.id == member.id })) {
+            members.append(memberToSave)
+            groupToSave.members = members
         }
-//        print(groupToSave.members)
         let result = await data.addMemberToGroup(member: memberToSave, group: groupToSave)
         switch result {
         case .success(let values):

@@ -36,6 +36,7 @@ public struct FeedPostView: View {
     @State private var performNavigation: Bool = false
     @State private var postToShow: Post?
     @State private var arePostsLoading = true
+    @State var leavedGroup = false
 
     @State private var sheet: Sheet?
 
@@ -159,6 +160,11 @@ public struct FeedPostView: View {
                         }
                     }
                 }
+                .onChange(of: leavedGroup) { leavedGroup in
+                    if leavedGroup {
+                        dismiss()
+                    }
+                }
                 .onChange(of: selectedImage) { selectedImage in
                     if selectedImage != nil {
                         sheet = .image
@@ -178,7 +184,7 @@ public struct FeedPostView: View {
                         self.arePostsLoading = false
                     }
                 }
-            }.navigationDestination(isPresented: $performNavigation, destination: { GroupView(viewmodel: viewmodel) })
+            }.navigationDestination(isPresented: $performNavigation, destination: { GroupView(viewmodel: viewmodel, self.$leavedGroup) })
                 .navigationBarBackButtonHidden(true)
         }
     }

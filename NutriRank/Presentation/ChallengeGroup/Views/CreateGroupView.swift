@@ -211,10 +211,8 @@ public struct CreateGroupView: View {
                     .onTapGesture {
                         self.hideKeyboard()
                     }
-
             .navigationTitle("Criar grupo")
         }
-
         .navigationViewStyle(.stack)
 
     }
