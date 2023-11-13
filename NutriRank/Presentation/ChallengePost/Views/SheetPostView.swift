@@ -29,7 +29,7 @@ public struct SheetPostView: View {
                             .aspectRatio(contentMode: .fill)
                             .clipShape(Rectangle())
                             .scaledToFill()
-                            .frame(width: 330, height: 150)
+                            .frame(width: 330, height: 300)
                             .cornerRadius(10)
 
                     } else {
