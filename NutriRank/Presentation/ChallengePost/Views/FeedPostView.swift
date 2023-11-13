@@ -37,6 +37,7 @@ public struct FeedPostView: View {
     @State private var performNavigation: Bool = false
     @State private var postToShow: Post?
     @State private var arePostsLoading = true
+    @State private var performRankingNavigation = false
     @State var leavedGroup = false
 
     @State private var sheet: Sheet?
@@ -61,24 +62,6 @@ public struct FeedPostView: View {
                         Mixpanel.mainInstance().track(event: "Taped Group Card", properties: MixpanelProductionIndicator.Production.retrieveDict())
                     } label: {
                         ZStack{
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .frame(width: 350, height: 137)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 7)
-//                                                    .stroke(Color.black, lineWidth: 1.5)
-                                        )
-                                        .foregroundColor(Color("FeedGroupHeaderColor"))
-                                        .shadow(radius: 1, x: 0, y: 1)
-
-                                    HStack{
-                                        Text(viewmodel.group.groupName)
-                                            .fontWeight(.bold)
-                                            .lineLimit(1)
-                                            .foregroundColor(.black)
-                                        Spacer()
-                                    }
-                                    .frame(width: 320)
-                                    .offset(x: 0, y: -40)
 
                                     HStack{
                                         Image(systemName: "flame.fill")
@@ -91,7 +74,7 @@ public struct FeedPostView: View {
                                         Spacer()
                                     }
                                     .frame(width: 320)
-                                    .offset(x: 0, y: -3)
+                                    .padding(.bottom, 30)
 
                                     HStack{
                                         Image(systemName: "clock")
@@ -104,9 +87,14 @@ public struct FeedPostView: View {
                                             .underline()
                                     }
                                     .frame(width: 320)
-                                    .offset(x: 0, y: 28)
+                                    .padding(.top, 30)
                                 }
+                        .frame(width: 365, height: 98)
+                        .background(Color("FeedGroupHeaderColor"))
+                        .cornerRadius(10)
+                        .shadow(radius: 1, x: 0, y: 1)
                     }
+                    .padding(.top, 13)
 
                     Button {
                         self.isImagePickerDisplay.toggle()
@@ -123,7 +111,6 @@ public struct FeedPostView: View {
                     .buttonStyle(.bordered)
 
                     VStack {
-                        Text("Postagens")
                         if viewmodel.posts.isEmpty {
                             if arePostsLoading == false {
                                 Text("Não existem postagens no grupo.")
@@ -191,6 +178,37 @@ public struct FeedPostView: View {
                 .navigationBarBackButtonHidden(true)
             .onAppear{
                 Mixpanel.mainInstance().track(event: "Group Feed View", properties: MixpanelProductionIndicator.Production.retrieveDict())
+            }
+            .navigationDestination(isPresented: $performRankingNavigation, destination: {RankingView(viewmodel: viewmodel)})
+            .navigationTitle(viewmodel.group.groupName)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+
+                    }) {
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .frame(width: 23, height: 23)
+                            .foregroundStyle(Color("FirstPlaceRanking"))
+                            .padding(.leading, 7)
+
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+
+                    Button(action: {
+                        self.performRankingNavigation = true
+                        Mixpanel.mainInstance().track(event: "Tapped Ranking Button", properties: MixpanelProductionIndicator.Production.retrieveDict())
+
+                    }) {
+                        Image(systemName: "trophy.fill")
+                            .resizable()
+                            .frame(width: 23, height: 23)
+                            .foregroundStyle(Color("FirstPlaceRanking"))
+                            .padding(.trailing, 7)
+                    }
+                }
             }
         }
     }
