@@ -12,10 +12,15 @@ import Mixpanel
 
 public struct GroupView: View {
 
+    @Environment(\.dismiss) var dismiss
+
+    @Binding var leavedGroup: Bool
+
     @ObservedObject var viewmodel: FeedGroupViewModel
 
-    public init(viewmodel: FeedGroupViewModel) {
+    public init(viewmodel: FeedGroupViewModel, _ performNavigation: Binding<Bool>) {
         self.viewmodel = viewmodel
+        self._leavedGroup = performNavigation
     }
 
     public var body: some View {
@@ -133,19 +138,30 @@ public struct GroupView: View {
                             .background(Color("FirstPlaceRanking"))
                             .cornerRadius(10)
                             .buttonStyle(.bordered)
-                        .simultaneousGesture(
+                            .simultaneousGesture(
                             TapGesture()
                                 .onEnded {
                                     Mixpanel.mainInstance().track(event: "Tapped Ranking Button", properties: MixpanelProductionIndicator.Production.retrieveDict())
                                 }
                         )
+                            Button("Sair do grupo") {
+                                Task {
+                                    let result = await viewmodel.leaveGroup()
+                                    if result {
+                                        self.leavedGroup = true
+                                        dismiss()
+                                    }
+                                }
+                            }
+                            .foregroundStyle(.firstPlaceRanking)
+                            .underline()
+                            .padding()
                         }
                         .padding(.vertical,20)
-
                         CopyToClipboardView(enabled: $viewmodel.linkWasCopied)
                     }
                 }
-
+                .navigationDestination(isPresented: $leavedGroup, destination: { EmptyStateView(viewmodel: viewmodel) })
             }
             .frame(maxWidth: .infinity)
             .background(Color(.defaultBackground))
@@ -153,7 +169,6 @@ public struct GroupView: View {
             .onAppear{
                 Mixpanel.mainInstance().track(event: "Group View", properties: MixpanelProductionIndicator.Production.retrieveDict())
             }
-
         }
     }
 }

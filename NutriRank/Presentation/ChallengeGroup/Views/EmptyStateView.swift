@@ -106,13 +106,13 @@ public struct EmptyStateView: View {
                                                 self.entenringGroup = true
                                                 Mixpanel.mainInstance().track(event: "Attempted to enter group", properties: MixpanelProductionIndicator.Production.retrieveDict())
                                                 Task {
-                                                    if !(self.groupID == "") {
-                                                        await viewmodel.fetchGroupByID(id: self.groupID)
+                                                    if let uuid = UUID(uuidString: self.groupID) {
+                                                        await viewmodel.fetchGroupByID(id: uuid.uuidString)
                                                         if await viewmodel.addMemberToGroup(member: self.viewmodel.member, group: self.viewmodel.group) {
                                                             showSheet.toggle()
                                                             if viewmodel.group.record != nil {
                                                                 await viewmodel.fetchGroupByMember()
-                                                                self.performNavigation.toggle()
+                                                                self.performNavigation = true
                                                             }
                                                         } else {
                                                             self.entenringGroup = false
@@ -121,7 +121,6 @@ public struct EmptyStateView: View {
                                                         }
                                                     } else {
                                                         self.entenringGroup = false
-                                                        print(self.groupID)
                                                         self.message = "ID mal formatado."
                                                         self.showAlert.toggle()
                                                     }
@@ -163,10 +162,13 @@ public struct EmptyStateView: View {
             .navigationBarBackButtonHidden(true)
         }
         .task {
+            if viewmodel.leavedGroup {
+                viewmodel.resetGroup()
+            }
             self.Isloading = true
             await viewmodel.fetchChallengeMember()
-            await viewmodel.fetchGroupByMember()
-            if viewmodel.group.record != nil {
+            let result = await viewmodel.fetchGroupByMember()
+            if result {
                 self.performNavigation.toggle()
             } else {
                 self.Isloading = false

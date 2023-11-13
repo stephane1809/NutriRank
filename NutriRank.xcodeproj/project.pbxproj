@@ -50,7 +50,7 @@
 		B98EEED12ACC5F2F001B1DD3 /* GetChallengePostsByOwnerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEBE2ACC5C94001B1DD3 /* GetChallengePostsByOwnerUseCase.swift */; };
 		B98EEED22ACC5F31001B1DD3 /* FetchChallengePostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEBF2ACC5C94001B1DD3 /* FetchChallengePostsUseCase.swift */; };
 		B98EEED32ACC5F34001B1DD3 /* CreateChallengeGroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEC12ACC5C94001B1DD3 /* CreateChallengeGroupUseCase.swift */; };
-		B98EEED42ACC5F37001B1DD3 /* DeleteChallengeGroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEC22ACC5C94001B1DD3 /* DeleteChallengeGroupUseCase.swift */; };
+		B98EEED42ACC5F37001B1DD3 /* LeaveGroupUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEC22ACC5C94001B1DD3 /* LeaveGroupUseCaseProtocol.swift */; };
 		B98EEED52ACC5F3A001B1DD3 /* FetchGroupsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEEC32ACC5C94001B1DD3 /* FetchGroupsUseCase.swift */; };
 		B98EEEDA2ACC62A7001B1DD3 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */; };
 		B98EEEDC2ACC62A7001B1DD3 /* CoordinatorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98EEED82ACC62A6001B1DD3 /* CoordinatorPicker.swift */; };
@@ -130,7 +130,7 @@
 		B98EEEBE2ACC5C94001B1DD3 /* GetChallengePostsByOwnerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChallengePostsByOwnerUseCase.swift; sourceTree = "<group>"; };
 		B98EEEBF2ACC5C94001B1DD3 /* FetchChallengePostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChallengePostsUseCase.swift; sourceTree = "<group>"; };
 		B98EEEC12ACC5C94001B1DD3 /* CreateChallengeGroupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallengeGroupUseCase.swift; sourceTree = "<group>"; };
-		B98EEEC22ACC5C94001B1DD3 /* DeleteChallengeGroupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChallengeGroupUseCase.swift; sourceTree = "<group>"; };
+		B98EEEC22ACC5C94001B1DD3 /* LeaveGroupUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveGroupUseCaseProtocol.swift; sourceTree = "<group>"; };
 		B98EEEC32ACC5C94001B1DD3 /* FetchGroupsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGroupsUseCase.swift; sourceTree = "<group>"; };
 		B98EEEC52ACC5ED9001B1DD3 /* ChallengeGroupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGroupFactory.swift; sourceTree = "<group>"; };
 		B98EEED62ACC62A6001B1DD3 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
@@ -379,7 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				B98EEEC12ACC5C94001B1DD3 /* CreateChallengeGroupUseCase.swift */,
-				B98EEEC22ACC5C94001B1DD3 /* DeleteChallengeGroupUseCase.swift */,
+				B98EEEC22ACC5C94001B1DD3 /* LeaveGroupUseCaseProtocol.swift */,
 				B98EEEC32ACC5C94001B1DD3 /* FetchGroupsUseCase.swift */,
 				B9B319012AD6C4B1003F6E11 /* FetchGroupByIdUseCase.swift */,
 				B9DDA8532AE023B8002BA0B6 /* FetchGroupByMemberUseCase.swift */,
@@ -646,7 +646,7 @@
 				365B122C2AD44BE700FD6713 /* FetchChallengeMemberUseCase.swift in Sources */,
 				B98EEED32ACC5F34001B1DD3 /* CreateChallengeGroupUseCase.swift in Sources */,
 				B98EEECE2ACC5F27001B1DD3 /* ChallengePostRepository.swift in Sources */,
-				B98EEED42ACC5F37001B1DD3 /* DeleteChallengeGroupUseCase.swift in Sources */,
+				B98EEED42ACC5F37001B1DD3 /* LeaveGroupUseCaseProtocol.swift in Sources */,
 				B98EEED12ACC5F2F001B1DD3 /* GetChallengePostsByOwnerUseCase.swift in Sources */,
 				B9FD8C682AFA74D6000A1C8A /* CopyToClipboardView.swift in Sources */,
 				B9DDA8542AE023B8002BA0B6 /* FetchGroupByMemberUseCase.swift in Sources */,
@@ -695,6 +695,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -758,6 +759,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

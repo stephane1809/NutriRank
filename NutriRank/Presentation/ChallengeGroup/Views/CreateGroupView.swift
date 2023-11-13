@@ -214,10 +214,8 @@ public struct CreateGroupView: View {
                     .onAppear{
                         Mixpanel.mainInstance().track(event: "Create Group View", properties: MixpanelProductionIndicator.Production.retrieveDict())
                     }
-
             .navigationTitle("Criar grupo")
         }
-
         .navigationViewStyle(.stack)
 
     }

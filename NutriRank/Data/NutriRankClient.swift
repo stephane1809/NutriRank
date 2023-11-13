@@ -38,9 +38,10 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
         }
     }
 
-    public func deleteChallengeRepository(group: ChallengeGroup) async -> Result<Bool, Error> {
+    public func leaveGroupRepository(group: ChallengeGroup, member: Member) async -> Result<Bool, Error> {
         do {
-            try await group.delete(on: self.database)
+            var groupToSave = group
+            try await groupToSave.save(on: self.database)
             return .success(true)
         } catch {
             return .failure(error)
@@ -53,10 +54,7 @@ public class NutriRankNuvemClient: ChallengeGroupRepositoryProtocol {
             guard let result = try await ChallengeGroup.query(on: self.database)
                 .with(\.$members)
                 .filter(.predicate(format: "members contains %@", reference)).first() else { return .failure(SaveErrors.guardError)}
-
             try await result.$members.load(on: self.database)
-            
-            print(result)
             return .success(result)
         } catch {
             return .failure(error)

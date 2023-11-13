@@ -21,7 +21,7 @@ struct ChallengeGroupFactory {
         let memberRepository = DefaultChallengeMemberRepository(data: memberData)
 
         let fetchUseCase = DefaultFetchGroupsUseCase(challengeGroupRepository: repository)
-        let deleteUseCase = DefaultDeleteChallengeGroupUseCase(challengeGroupRepository: repository)
+        let deleteUseCase = DefaultLeaveGroupUseCase(challengeGroupRepository: repository)
         let postUseCase = DefaultCreateChallengePostUseCase(repository: postRepository)
         let createMemberUseCase = DefaultChallengeCreateMemberUseCase(challengeMemberRepository: memberRepository)
         let updateMemberUseCase = DefaultUpdateChallengeMemberUseCase(challengeMemberRepository: memberRepository)

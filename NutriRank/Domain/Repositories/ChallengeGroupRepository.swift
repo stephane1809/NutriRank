@@ -11,7 +11,7 @@ import Foundation
 public protocol ChallengeGroupRepositoryProtocol {
     func fetchChallengeGroups() async -> Result<[ChallengeGroup], Error>
     func createChallengeGroup(group: ChallengeGroup) async -> Result<ChallengeGroup, Error>
-    func deleteChallengeRepository(group: ChallengeGroup) async -> Result<Bool, Error>
+    func leaveGroupRepository(group: ChallengeGroup, member: Member) async -> Result<Bool, Error>
     func fetchGroupByMember(member: Member) async -> Result<ChallengeGroup, Error>
     func fetchGroupByID(id: String) async -> Result<ChallengeGroup, Error>
 }
@@ -46,9 +46,10 @@ public class DefaultChallengeGroupRepository: ChallengeGroupRepositoryProtocol {
             }
     }
 
-    public func deleteChallengeRepository(group: ChallengeGroup) async -> Result<Bool, Error> {
-        print("delete chegou no repository")
-        let result = await data.deleteChallengeRepository(group: group)
+    public func leaveGroupRepository(group: ChallengeGroup, member: Member) async -> Result<Bool, Error> {
+        var groupToSave = group
+        groupToSave.members?.removeAll { $0.id == member.id }
+        let result = await data.leaveGroupRepository(group: groupToSave, member: member)
         switch result {
             case .success(let bool):
                 return .success(bool)
