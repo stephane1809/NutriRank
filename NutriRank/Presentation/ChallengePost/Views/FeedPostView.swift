@@ -39,6 +39,7 @@ public struct FeedPostView: View {
     @State private var arePostsLoading = true
     @State private var performRankingNavigation = false
     @State var leavedGroup = false
+    @State var deletedPost = false
 
     @State private var sheet: Sheet?
 
@@ -125,7 +126,7 @@ public struct FeedPostView: View {
                                         }
                                 }
                             }.sheet(item: $postToShow) { post in
-                                SheetPostView(post: post)
+                                SheetPostView(viewmodel: viewmodel, post: post, deletedPost: $deletedPost)
                             }
                         }
                     }
@@ -147,6 +148,16 @@ public struct FeedPostView: View {
                                     self.sheet = .selection
                                 }
                             }
+                        }
+                    }
+                }
+                .onChange(of: deletedPost) { deletedPost in
+                    if deletedPost {
+                        Task {
+                            self.arePostsLoading = true
+                            await viewmodel.fetchPosts()
+                            self.arePostsLoading = false
+                            self.deletedPost = false
                         }
                     }
                 }

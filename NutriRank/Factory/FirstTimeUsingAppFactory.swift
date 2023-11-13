@@ -30,8 +30,9 @@ struct FirstTimeUsingAppFactory {
         let fetchGroupById = DefaultFetchGroupByIdUsecase(repository: repository)
         let fetchPostsUseCase = DefaultFetchChallengePostsUseCase(repository: postRepository)
         let fetchGroupByMember = DefaultFetchGroupByMemberUseCase(repository: repository)
+        let deletePostUseCase = DefaultDeleteChallengePostUseCase(repository: postRepository)
 
-        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase, fetchGroupByIDUseCase: fetchGroupById, addMemberUseCase: addMemberUseCase, fetchPostsByGroup: fetchPostsUseCase, fetchGroupByMember: fetchGroupByMember)
+        let viewmodel = FeedGroupViewModel(createUseCase: createUseCase, createPostUseCase: postUseCase, fetchUseCase: fetchUseCase, deleteUseCase: deleteUseCase, createMemberUseCase: createMemberUseCase, updateMemberUseCase: updateMemberUseCase, fetchMemberUseCase: fetchMemberUseCase, fetchGroupByIDUseCase: fetchGroupById, addMemberUseCase: addMemberUseCase, fetchPostsByGroup: fetchPostsUseCase, fetchGroupByMember: fetchGroupByMember, deletePostUseCase: deletePostUseCase)
 
         return OnboardingView(viewModel: viewmodel)
     }

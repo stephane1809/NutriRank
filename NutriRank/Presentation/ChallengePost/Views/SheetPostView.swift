@@ -11,8 +11,11 @@ import Mixpanel
 
 public struct SheetPostView: View {
 
+    @StateObject var viewmodel: FeedGroupViewModel
     @Environment(\.dismiss) var dismiss
     @State var post: Post
+    @Binding var deletedPost: Bool
+    @State var deletingPost: Bool = false
 
     public var body: some View {
         NavigationStack {
@@ -57,14 +60,32 @@ public struct SheetPostView: View {
                             .foregroundColor(.primary)
                         Text(post.creationDate!.formatted())
                             .foregroundColor(.primary)
-
                     }
-
                 }
 
             }.toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancelar") { dismiss() }
+                }
+                ToolbarItem(placement: .destructiveAction) {
+                    Button {
+                        Task {
+                            self.deletingPost = true
+                            let result = await viewmodel.deletePost(post: self.post)
+                            if result {
+                                self.deletingPost = false
+                                dismiss()
+                                self.deletedPost = true
+                            }
+                        }
+                    } label: {
+                        if deletingPost {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        } else {
+                            Text("Apagar")
+                        }
+                    }
                 }
             }
             .navigationTitle("Postagem")
