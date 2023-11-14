@@ -164,6 +164,7 @@ public struct FeedPostView: View {
                 .onChange(of: leavedGroup) { leavedGroup in
                     if leavedGroup {
                         dismiss()
+                        self.leavedGroup = false
                     }
                 }
                 .onChange(of: selectedImage) { selectedImage in

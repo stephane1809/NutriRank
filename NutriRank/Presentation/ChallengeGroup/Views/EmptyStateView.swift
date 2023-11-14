@@ -109,9 +109,8 @@ public struct EmptyStateView: View {
                                                     if let uuid = UUID(uuidString: self.groupID) {
                                                         await viewmodel.fetchGroupByID(id: uuid.uuidString)
                                                         if await viewmodel.addMemberToGroup(member: self.viewmodel.member, group: self.viewmodel.group) {
-                                                            showSheet.toggle()
-                                                            if viewmodel.group.record != nil {
-                                                                await viewmodel.fetchGroupByMember()
+                                                            if await viewmodel.fetchGroupByMember() {
+                                                                showSheet.toggle()
                                                                 self.performNavigation = true
                                                             }
                                                         } else {
@@ -167,9 +166,8 @@ public struct EmptyStateView: View {
             }
             self.Isloading = true
             await viewmodel.fetchChallengeMember()
-            let result = await viewmodel.fetchGroupByMember()
-            if result {
-                self.performNavigation.toggle()
+            if await viewmodel.fetchGroupByMember() {
+                self.performNavigation = true
             } else {
                 self.Isloading = false
             }

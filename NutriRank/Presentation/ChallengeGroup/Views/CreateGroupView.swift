@@ -16,6 +16,8 @@ import Mixpanel
 
 public struct CreateGroupView: View {
 
+    @Environment(\.dismiss) var dismiss
+
     @ObservedObject var viewmodel: FeedGroupViewModel
 
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -168,16 +170,19 @@ public struct CreateGroupView: View {
                                 Spacer()
 
                                 Button {
-
                                     Task {
-
                                         duration = calendar.numberOfDaysBetween(start: startDate, end: endDate)
                                         if groupName == "" || description == "" || selectedImage == nil {
                                             self.showFailAlert = true
                                         } else{
                                             self.isLoading = true
-                                            if await viewmodel.createGroup(groupName: self.groupName, description: self.description, image: selectedImage, startDate: startDate, endDate: endDate, duration: duration) {
+                                            if await viewmodel.createGroup(groupName: self.groupName, 
+                                                                           description: self.description,
+                                                                           image: selectedImage, startDate: startDate,
+                                                                           endDate: endDate,
+                                                                           duration: duration) {
                                                 self.performNavigation = true
+                                                dismiss()
                                             } else {
                                                 self.isLoading = false
                                                 self.showCloudPermissionAlert = true
