@@ -19,7 +19,7 @@ public struct CreateGroupView: View {
     @ObservedObject var viewmodel: FeedGroupViewModel
 
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @State private var selectedImage: UIImage? = UIImage(named: "avatar3")
+    @State private var selectedImage: UIImage? = UIImage(named: "avatarGroup")
     @State private var isImagePickerDisplay = false
     @State private var isImagePickerDisplay2 = false
     @State private var groupName: String = ""
@@ -64,7 +64,7 @@ public struct CreateGroupView: View {
                                     .frame(width: metrics.size.width * 0.92, height: metrics.size.height * 0.20)
                                     .cornerRadius(10)
 
-                                Button("Adicionar imagem") {
+                                Button("Alterar imagem") {
                                     self.isImagePickerDisplay.toggle()
                                 }
                                 .padding()
@@ -190,7 +190,7 @@ public struct CreateGroupView: View {
                                         .frame(width: 125, height: 35)
                                         .foregroundColor(.white)
                                 }
-                                .background(Color("FirstPlaceRanking"))
+                                .background(Color("actionButton"))
                                 .cornerRadius(10)
                                 .buttonStyle(.bordered)
                                 .alert("Preencha todos os campos para criar seu grupo", isPresented: $showFailAlert) {
