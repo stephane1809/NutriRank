@@ -32,11 +32,11 @@ struct RankingCellComponent: View {
                 .cornerRadius(7)
                 .onAppear {
                     if rankingPosition == 0 {
-                        self.cellColor = "FirstPlaceRanking"
+                        self.cellColor = "placeRanking1"
                     } else if rankingPosition == 1 {
-                        self.cellColor = "SecondPlaceRanking"
+                        self.cellColor = "placeRanking2"
                     } else if rankingPosition == 2 {
-                        self.cellColor = "ThirdPlaceRanking"
+                        self.cellColor = "placeRanking3"
                     } else {
                         self.cellColor = "DefaultRankingCellColor"
                     }

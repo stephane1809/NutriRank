@@ -42,7 +42,7 @@ public struct OnboardingView: View {
                                         .frame(width: 250, height: 35)
                                         .foregroundColor(.white)
                                 }
-                                .background(Color("FirstPlaceRanking"))
+                                .background(Color("actionButton"))
                                 .cornerRadius(10)
                                 .buttonStyle(.bordered)
 

@@ -54,7 +54,7 @@ public struct CreateProfileView: View {
                                     .clipShape(Circle())
                                     .frame(width: 200, height: 200)
 
-                                Button("Adicionar foto") {
+                                Button("Alterar foto") {
                                     self.isImagePickerDisplay.toggle()
                                 }
                                 .padding()
@@ -141,7 +141,7 @@ public struct CreateProfileView: View {
                                 .frame(width: 125, height: 35)
                                 .foregroundColor(.white)
                         }
-                        .background(Color("FirstPlaceRanking"))
+                        .background(Color("actionButton"))
                         .cornerRadius(10)
                         .buttonStyle(.bordered)
                         .alert("Insira uma imagem e um nome para criar seu usuário", isPresented: $showFailAlert) {

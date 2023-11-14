@@ -84,7 +84,7 @@ public struct FeedPostView: View {
                                             .foregroundColor(.black)
                                         Spacer()
                                         Text("Ver grupo >")
-                                            .foregroundStyle(Color("FirstPlaceRanking"))
+                                            .foregroundStyle(Color("actionButton"))
                                             .underline()
                                     }
                                     .frame(width: 320)
@@ -107,7 +107,7 @@ public struct FeedPostView: View {
                             .frame(width: 327, height: 35)
                             .foregroundColor(.white)
                     }
-                    .background(Color("FirstPlaceRanking"))
+                    .background(Color("actionButton"))
                     .cornerRadius(10)
                     .buttonStyle(.bordered)
 
@@ -200,7 +200,7 @@ public struct FeedPostView: View {
                         Image(systemName: "person.fill")
                             .resizable()
                             .frame(width: 23, height: 23)
-                            .foregroundStyle(Color("FirstPlaceRanking"))
+                            .foregroundStyle(Color("actionButton"))
                             .padding(.leading, 7)
 
                     }
@@ -216,7 +216,7 @@ public struct FeedPostView: View {
                         Image(systemName: "trophy.fill")
                             .resizable()
                             .frame(width: 23, height: 23)
-                            .foregroundStyle(Color("FirstPlaceRanking"))
+                            .foregroundStyle(Color("actionButton"))
                             .padding(.trailing, 7)
                     }
                 }

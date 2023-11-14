@@ -78,7 +78,7 @@ public struct EmptyStateView: View {
                                     }
                                     .frame(width: 150, height: 35)
                                 }
-                                .background(Color("FirstPlaceRanking"))
+                                .background(Color("actionButton"))
                                 .cornerRadius(10)
                                 .buttonStyle(.bordered)
                                 Button {
@@ -93,7 +93,7 @@ public struct EmptyStateView: View {
                                     }
                                     .frame(width: 150, height: 35)
                                 }
-                                .background(Color("FirstPlaceRanking"))
+                                .background(Color("actionButton"))
                                 .clipShape(.rect(cornerRadius: 10))
                                 .buttonStyle(.bordered)
                                 .sheet(isPresented: $showSheet, content: {
@@ -139,7 +139,7 @@ public struct EmptyStateView: View {
                                                 }
                                                     .frame(width: 100, height: 35)
                                             }
-                                            .background(.firstPlaceRanking)
+                                            .background(.actionButton)
                                             .clipShape(.rect(cornerRadius: 10))
                                             .buttonStyle(.bordered)
                                             .alert("Erro ao entrar", isPresented: $showAlert) {

@@ -15,6 +15,7 @@ public struct GroupView: View {
     @Environment(\.dismiss) var dismiss
 
     @Binding var leavedGroup: Bool
+    @State private var showAlertLeaveGroup: Bool = false
 
     @ObservedObject var viewmodel: FeedGroupViewModel
 
@@ -42,6 +43,45 @@ public struct GroupView: View {
                                 .font(.title2)
                                 .bold()
                         }
+                        NavigationLink(destination: RankingView(viewmodel: viewmodel)) {
+                            Image(systemName: "trophy.fill").font(.system(size: 23, weight: .regular))
+                                .foregroundColor(.white)
+                            Text("Ranking")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                        }
+                        .background(Color("actionButton"))
+                        .cornerRadius(10)
+                        .buttonStyle(.bordered)
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    Mixpanel.mainInstance().track(event: "Tapped Ranking Button", properties: MixpanelProductionIndicator.Production.retrieveDict())
+                                }
+                        )
+
+                        VStack (alignment: .leading, spacing: 3){
+
+                            HStack {
+                                Image(systemName: "flame.fill")
+                                    .foregroundColor(.black)
+                                Text("Top 3")
+                                    .foregroundColor(.black)
+                                    .bold()
+                                Spacer()
+                            }
+
+                            Text("\(viewmodel.getNamePersonRanking(index: 0)), \(viewmodel.getNamePersonRanking(index: 1)), \(viewmodel.getNamePersonRanking(index: 2))")
+                                .foregroundColor(.black)
+                                .lineLimit(1...10)
+
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
+                        .background(Color("FeedGroupHeaderColor"))
+                        .cornerRadius(10)
+                        .shadow(radius: 1, x: 0, y: 1)
 
                         VStack (alignment: .leading, spacing: 3){
 
@@ -62,7 +102,7 @@ public struct GroupView: View {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
                         .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(Color("DefaultCardColor"))
+                        .background(Color("FeedGroupHeaderColor"))
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
 
@@ -85,7 +125,7 @@ public struct GroupView: View {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
                         .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(Color("DefaultCardColor"))
+                        .background(Color("FeedGroupHeaderColor"))
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
 
@@ -114,7 +154,7 @@ public struct GroupView: View {
                                         .frame(width: 110, height: 22)
                                         .foregroundColor(.white)
                                 }
-                                .background(Color("FirstPlaceRanking"))
+                                .background(Color("actionButton"))
                                 .cornerRadius(10)
                                 .buttonStyle(.bordered)
                                 Spacer()
@@ -123,39 +163,29 @@ public struct GroupView: View {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
                         .frame(maxWidth: metrics.size.width * 0.92, minHeight: metrics.size.height * 0.09)
-                        .background(Color("DefaultCardColor"))
+                        .background(Color("FeedGroupHeaderColor"))
                         .cornerRadius(10)
                         .shadow(radius: 1, x: 0, y: 1)
 
                         VStack {
-                            NavigationLink(destination: RankingView(viewmodel: viewmodel)) {
-                                Image(systemName: "trophy.fill").font(.system(size: 23, weight: .regular))
-                                    .foregroundColor(.white)
-                                Text("Ranking")
-                                    .font(.title2)
-                                    .foregroundColor(.white)
-                            }
-                            .background(Color("FirstPlaceRanking"))
-                            .cornerRadius(10)
-                            .buttonStyle(.bordered)
-                            .simultaneousGesture(
-                            TapGesture()
-                                .onEnded {
-                                    Mixpanel.mainInstance().track(event: "Tapped Ranking Button", properties: MixpanelProductionIndicator.Production.retrieveDict())
-                                }
-                        )
                             Button("Sair do grupo") {
-                                Task {
-                                    let result = await viewmodel.leaveGroup()
-                                    if result {
-                                        self.leavedGroup = true
-                                        dismiss()
-                                    }
-                                }
+                                showAlertLeaveGroup.toggle()
                             }
-                            .foregroundStyle(.firstPlaceRanking)
+                            .foregroundStyle(.actionButton)
                             .underline()
                             .padding()
+                            .alert("Você tem certeza que deseja sair de \(viewmodel.group.groupName)", isPresented: $showAlertLeaveGroup){
+                                Button("Sair", role: .destructive) {
+                                    Task {
+                                        let result = await viewmodel.leaveGroup()
+                                        if result {
+                                            self.leavedGroup = true
+                                            dismiss()
+                                        }
+                                    }
+                                }
+                                Button("Cancelar", role: .cancel) {}
+                            }
                         }
                         .padding(.vertical,20)
                         CopyToClipboardView(enabled: $viewmodel.linkWasCopied)
