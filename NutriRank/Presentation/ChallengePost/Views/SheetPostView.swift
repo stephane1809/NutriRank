@@ -16,6 +16,7 @@ public struct SheetPostView: View {
     @State var post: Post
     @Binding var deletedPost: Bool
     @State var deletingPost: Bool = false
+    @State var alertDeletPost: Bool = false
 
     public var body: some View {
         NavigationStack {
@@ -70,13 +71,7 @@ public struct SheetPostView: View {
                 ToolbarItem(placement: .destructiveAction) {
                     Button {
                         Task {
-                            self.deletingPost = true
-                            let result = await viewmodel.deletePost(post: self.post)
-                            if result {
-                                self.deletingPost = false
-                                dismiss()
-                                self.deletedPost = true
-                            }
+                            alertDeletPost.toggle()
                         }
                     } label: {
                         if deletingPost {
@@ -85,6 +80,21 @@ public struct SheetPostView: View {
                         } else {
                             Text("Apagar")
                         }
+                    }
+                }
+            }
+            .alert("Você tem certeza que deseja apagar postagem?", isPresented: $alertDeletPost) {
+                Button("Cancelar", role: .cancel) {}
+                Button("Apagar", role: .destructive) {
+                    Task {
+                        self.deletingPost = true
+                        let result = await viewmodel.deletePost(post: self.post)
+                        if result {
+                            self.deletingPost = false
+                            dismiss()
+                            self.deletedPost = true
+                        }
+
                     }
                 }
             }
