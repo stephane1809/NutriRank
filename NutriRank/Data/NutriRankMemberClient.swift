@@ -17,7 +17,7 @@ public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
     public func addMemberToGroup(member: Member, group: ChallengeGroup) async -> Result<AddMemberRequestedValues, Error> {
         do {
             var groupToSave = group
-            try await groupToSave.save(on: database)
+            try await groupToSave.save(on: self.database)
             let values = AddMemberRequestedValues(member, groupToSave)
             return .success(values)
         } catch {
@@ -27,9 +27,8 @@ public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
     
     public func createChallengeMember(member: Member) async -> Result<Member, Error> {
         var memberToSave = member
-        let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
         do {
-            try await memberToSave.save(on: database)
+            try await memberToSave.save(on: self.database)
             return .success(memberToSave)
         } catch {
             return .failure(error)
@@ -38,9 +37,8 @@ public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
 
     public func updateChallengeMember(member: Member) async -> Result<Member, Error> {
         var memberToUpdate = member
-        let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
         do {
-            try await memberToUpdate.save(on: database)
+            try await memberToUpdate.save(on: self.database)
             return .success(member)
         } catch {
             return .failure(error)
@@ -48,9 +46,8 @@ public class NutriRankMemberClient: ChallengeMemberRepositoryProtocol {
     }
 
     public func fetchChallengeMember(id: String) async -> Result<Member, Error> {
-        let database = CKContainer(identifier: "iCloud.NutriRankContainer").publicCloudDatabase
         do {
-            let fetchResult = try await Member.find(id: CKRecord.ID(recordName: id), on: database)
+            let fetchResult = try await Member.find(id: CKRecord.ID(recordName: id), on: self.database)
             return .success(fetchResult)
 
         } catch {

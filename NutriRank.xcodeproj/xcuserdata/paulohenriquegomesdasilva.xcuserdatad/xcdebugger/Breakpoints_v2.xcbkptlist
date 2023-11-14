@@ -23,64 +23,155 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E75CAE40-8AB0-4866-ADDD-7071811D415D"
-            shouldBeEnabled = "No"
+            uuid = "3234A38D-EEB6-4387-BD54-BDC0DF4C23B1"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NutriRank/Presentation/ChallengePost/Views/FeedPostView.swift"
+            filePath = "NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "addMemberToGroup(member:group:)"
+            landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E75CAE40-8AB0-4866-ADDD-7071811D415D - c52bc89426df5883"
+                  uuid = "3234A38D-EEB6-4387-BD54-BDC0DF4C23B1 - c4063b0262ec52c9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.task(priority: Swift.TaskPriority, _: @Sendable () async -&gt; ()) -&gt; some&gt;&gt;.0)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.navigationBarBackButtonHidden(Swift.Bool) -&gt; some&gt;&gt;.0 in NutriRank.FeedPostView.body.getter : some"
+                  symbolName = "(1) suspend resume partial function for NutriRank.DefaultChallengeMemberRepository.addMemberToGroup(member: NutriRank.Member, group: NutriRank.ChallengeGroup) async -&gt; Swift.Result&lt;NutriRank.AddMemberRequestedValues, Swift.Error&gt;"
                   moduleName = "NutriRank"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Presentation/ChallengePost/Views/FeedPostView.swift"
+                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "3204">
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "1072">
                </Location>
                <Location
-                  uuid = "E75CAE40-8AB0-4866-ADDD-7071811D415D - eaf7a8c4db85f152"
+                  uuid = "3234A38D-EEB6-4387-BD54-BDC0DF4C23B1 - 1ab11cfd6c4a454a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Button&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.task(priority: Swift.TaskPriority, _: @Sendable () async -&gt; ()) -&gt; some&gt;&gt;.0)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.navigationBarBackButtonHidden(Swift.Bool) -&gt; some&gt;&gt;.0 in NutriRank.FeedPostView.body.getter : some"
+                  symbolName = "(2) await resume partial function for NutriRank.DefaultChallengeMemberRepository.addMemberToGroup(member: NutriRank.Member, group: NutriRank.ChallengeGroup) async -&gt; Swift.Result&lt;NutriRank.AddMemberRequestedValues, Swift.Error&gt;"
                   moduleName = "NutriRank"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Presentation/ChallengePost/Views/FeedPostView.swift"
+                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "1076">
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "44">
                </Location>
                <Location
-                  uuid = "E75CAE40-8AB0-4866-ADDD-7071811D415D - 439f450177f68a44"
+                  uuid = "3234A38D-EEB6-4387-BD54-BDC0DF4C23B1 - 159eb8b1c3d20e0b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.task(priority: Swift.TaskPriority, _: @Sendable () async -&gt; ()) -&gt; some&gt;&gt;.0)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.navigationBarBackButtonHidden(Swift.Bool) -&gt; some&gt;&gt;.0 in NutriRank.FeedPostView.body.getter : some"
+                  symbolName = "(3) suspend resume partial function for NutriRank.DefaultChallengeMemberRepository.addMemberToGroup(member: NutriRank.Member, group: NutriRank.ChallengeGroup) async -&gt; Swift.Result&lt;NutriRank.AddMemberRequestedValues, Swift.Error&gt;"
                   moduleName = "NutriRank"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Presentation/ChallengePost/Views/FeedPostView.swift"
+                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "208">
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "3234A38D-EEB6-4387-BD54-BDC0DF4C23B1 - c4063b0262ec52c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for NutriRank.DefaultChallengeMemberRepository.addMemberToGroup(member: NutriRank.Member, group: NutriRank.ChallengeGroup) async -&gt; Swift.Result&lt;NutriRank.AddMemberRequestedValues, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "1496">
+               </Location>
+               <Location
+                  uuid = "3234A38D-EEB6-4387-BD54-BDC0DF4C23B1 - 159eb8b1c3d20e0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for NutriRank.DefaultChallengeMemberRepository.addMemberToGroup(member: NutriRank.Member, group: NutriRank.ChallengeGroup) async -&gt; Swift.Result&lt;NutriRank.AddMemberRequestedValues, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "3234A38D-EEB6-4387-BD54-BDC0DF4C23B1 - c4063b0262ec52ea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for NutriRank.DefaultChallengeMemberRepository.addMemberToGroup(member: NutriRank.Member, group: NutriRank.ChallengeGroup) async -&gt; Swift.Result&lt;NutriRank.AddMemberRequestedValues, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "1392">
+               </Location>
+               <Location
+                  uuid = "3234A38D-EEB6-4387-BD54-BDC0DF4C23B1 - 1ab11cfd6c4a4569"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for NutriRank.DefaultChallengeMemberRepository.addMemberToGroup(member: NutriRank.Member, group: NutriRank.ChallengeGroup) async -&gt; Swift.Result&lt;NutriRank.AddMemberRequestedValues, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "3234A38D-EEB6-4387-BD54-BDC0DF4C23B1 - 159eb8b1c3d20e28"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for NutriRank.DefaultChallengeMemberRepository.addMemberToGroup(member: NutriRank.Member, group: NutriRank.ChallengeGroup) async -&gt; Swift.Result&lt;NutriRank.AddMemberRequestedValues, Swift.Error&gt;"
+                  moduleName = "NutriRank"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulohenriquegomesdasilva/dev/NutriRank/NutriRank/Domain/Repositories/ChallengeMemberRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "128">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A06824BC-4749-4890-9561-5FB809DFB90C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NutriRank/Presentation/ChallengeGroup/ViewModels/FeedGroupViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "createGroup(groupName:description:image:startDate:endDate:duration:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
