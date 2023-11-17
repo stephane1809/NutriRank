@@ -109,7 +109,11 @@ public struct EmptyStateView: View {
                                                     if let uuid = UUID(uuidString: self.groupID) {
                                                         await viewmodel.fetchGroupByID(id: uuid.uuidString)
                                                         if await viewmodel.addMemberToGroup(member: self.viewmodel.member, group: self.viewmodel.group) {
+                                                            print("passou")
                                                             if await viewmodel.fetchGroupByMember() {
+                                                                showSheet.toggle()
+                                                                self.performNavigation = true
+                                                            } else if viewmodel.getCachedGroup() {
                                                                 showSheet.toggle()
                                                                 self.performNavigation = true
                                                             }
@@ -126,7 +130,6 @@ public struct EmptyStateView: View {
                                                 }
                                             } label: {
                                                 HStack(alignment: .center) {
-
                                                     if entenringGroup {
                                                         ProgressView()
                                                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
@@ -157,13 +160,13 @@ public struct EmptyStateView: View {
                 .navigationDestination(isPresented: $performNavigation, destination: { FeedPostView(viewmodel: viewmodel) })
                 .onAppear{
                     Mixpanel.mainInstance().track(event: "Empty State View", properties: MixpanelProductionIndicator.Production.retrieveDict())
+                    if viewmodel.leavedGroup {
+                        viewmodel.resetGroup()
+                    }
                 }
             .navigationBarBackButtonHidden(true)
         }
         .task {
-            if viewmodel.leavedGroup {
-                viewmodel.resetGroup()
-            }
             self.Isloading = true
             await viewmodel.fetchChallengeMember()
             if await viewmodel.fetchGroupByMember() {
