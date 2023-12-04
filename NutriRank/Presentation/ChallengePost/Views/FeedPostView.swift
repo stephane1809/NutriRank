@@ -38,6 +38,7 @@ public struct FeedPostView: View {
     @State private var postToShow: Post?
     @State private var arePostsLoading = true
     @State private var performRankingNavigation = false
+    @State private var performProfileNavigation = false
     @State var leavedGroup = false
     @State var deletedPost = false
 
@@ -192,10 +193,12 @@ public struct FeedPostView: View {
                 Mixpanel.mainInstance().track(event: "Group Feed View", properties: MixpanelProductionIndicator.Production.retrieveDict())
             }
             .navigationDestination(isPresented: $performRankingNavigation, destination: {RankingView(viewmodel: viewmodel)})
+            .navigationDestination(isPresented: $performProfileNavigation, destination: {ProfileView(viewModel: viewmodel)})
             .navigationTitle(viewmodel.group.groupName)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
+                        performProfileNavigation.toggle()
 
                     }) {
                         Image(systemName: "person.fill")
