@@ -17,7 +17,7 @@ public struct CardPostView: View {
             HStack {
                 VStack (alignment: .leading) {
                     Text(post.title)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .bold()
                     HStack {
                         Image(uiImage: (post.owner?.avatar)!)
@@ -28,9 +28,9 @@ public struct CardPostView: View {
                             .frame(width: 27, height: 27)
 
                         Text(post.owner!.name)
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                         Text((post.creationDate?.formatted())!)
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                     }
                 }
                 Spacer()

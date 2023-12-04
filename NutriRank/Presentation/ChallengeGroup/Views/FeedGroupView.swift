@@ -39,7 +39,6 @@ public struct FeedGroupView: View {
                     }
                 }
             }.navigationTitle("NUTRIRANK")
-
         }
     }
 }

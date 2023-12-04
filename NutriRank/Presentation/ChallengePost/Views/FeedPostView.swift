@@ -66,12 +66,12 @@ public struct FeedPostView: View {
 
                                     HStack{
                                         Image(systemName: "flame.fill")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.primary)
                                         Text("Top 3:")
                                             .bold()
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.primary)
                                         Text("\(viewmodel.getNamePersonRanking(index: 0)), \(viewmodel.getNamePersonRanking(index: 1)), \(viewmodel.getNamePersonRanking(index: 2))")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.primary)
                                         Spacer()
                                     }
                                     .frame(width: 320)
@@ -79,9 +79,9 @@ public struct FeedPostView: View {
 
                                     HStack{
                                         Image(systemName: "clock")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.primary)
                                         Text("\(calendar.numberOfDaysBetween(start: todayDate, end: viewmodel.group.endDate)) dias restantes")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.primary)
                                         Spacer()
                                         Text("Ver grupo >")
                                             .foregroundStyle(Color("actionButton"))
@@ -96,20 +96,6 @@ public struct FeedPostView: View {
                         .shadow(radius: 1, x: 0, y: 1)
                     }
                     .padding(.top, 13)
-
-                    Button {
-                        self.isImagePickerDisplay.toggle()
-                        Mixpanel.mainInstance().track(event: "Tapped new post button", properties: MixpanelProductionIndicator.Production.retrieveDict())
-                        //                            sheet = .selection
-                    } label: {
-                        Text("+ Nova Postagem")
-                            .font(.headline)
-                            .frame(width: 327, height: 35)
-                            .foregroundColor(.white)
-                    }
-                    .background(Color("actionButton"))
-                    .cornerRadius(10)
-                    .buttonStyle(.bordered)
 
                     VStack {
                         if viewmodel.posts.isEmpty {
@@ -128,7 +114,24 @@ public struct FeedPostView: View {
                             }.sheet(item: $postToShow) { post in
                                 SheetPostView(viewmodel: viewmodel, post: post, deletedPost: $deletedPost)
                             }
+
                         }
+                        Spacer()
+                        Button {
+                            self.isImagePickerDisplay.toggle()
+                            Mixpanel.mainInstance().track(event: "Tapped new post button", properties: MixpanelProductionIndicator.Production.retrieveDict())
+                            //                            sheet = .selection
+                        } label: {
+                            Text("+ Nova Postagem")
+                                .font(.headline)
+                                .frame(width: 327, height: 35)
+                                .foregroundColor(.white)
+                        }
+                        .background(Color("actionButton"))
+                        .cornerRadius(10)
+                        .buttonStyle(.bordered)
+
+
                     }
                     Spacer()
                 }
