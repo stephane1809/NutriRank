@@ -18,11 +18,11 @@ struct ProfileView: View {
     }
 
     @State private var editActive = false
-    @State private var selectedImageProfile: UIImage? = UIImage(named: "avatar1")
+    @State private var selectedImageProfile: UIImage?
     @State private var isImagePickerDisplay = false
     @State private var isImagePickerDisplay2 = false
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @State private var nickName = ""
+    @State private var nickName: String = ""
 
     @State private var showFailAlert = false
     @State private var showCloudPermissionAlert = false
@@ -42,7 +42,7 @@ struct ProfileView: View {
                             VStack (spacing: 10){
 
                                 if editActive == true {
-                                    Image(uiImage: selectedImageProfile!)
+                                    Image(uiImage: selectedImageProfile ?? viewModel.member.avatar!)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .clipShape(Circle())
@@ -106,7 +106,7 @@ struct ProfileView: View {
                                     Spacer()
                                 }
                                 if editActive == true {
-                                    TextField("nome de usuário", text: $viewModel.member.name)
+                                    TextField("nome de usuário", text: $nickName)
 
                                 } else {
                                     Text(viewModel.member.name)
@@ -160,26 +160,26 @@ struct ProfileView: View {
 
                     }
                 }
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button(action: {
-                            editActive.toggle()
-                        }) {
-                            if editActive == false{
-                                Text("Editar")
-                            } else {
-                                Button(action: {
-                                    editActive.toggle()
-                                    selectedImageProfile = viewModel.member.avatar
-                                    nickName = viewModel.member.name
-                                }){
-                                    Text("Cancelar")
-                                }
-
-                            }
-                        }
-                    }
-                }
+//                .toolbar {
+//                    ToolbarItem(placement: .topBarTrailing) {
+//                        Button(action: {
+//                            editActive.toggle()
+//                        }) {
+//                            if editActive == false{
+//                                Text("Editar")
+//                            } else {
+//                                Button(action: {
+//                                    editActive.toggle()
+//                                    selectedImageProfile = viewModel.member.avatar
+//                                    nickName = viewModel.member.name
+//                                }){
+//                                    Text("Cancelar")
+//                                }
+//
+//                            }
+//                        }
+//                    }
+//                }
                 .navigationDestination(isPresented: $performNavigation, destination: { EmptyStateView(viewmodel: viewModel) })
         }
     }
