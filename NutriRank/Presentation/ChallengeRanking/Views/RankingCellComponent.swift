@@ -15,6 +15,7 @@ struct RankingCellComponent: View {
     var mealCount: Int
 
     @State var cellColor: String = "DefaultRankingCellColor"
+    @State var indexColor: Color = Color(uiColor: .label)
 
     init(rankingPosition: Int, profileAvatar: UIImage, userName: String, mealCount: Int) {
         self.rankingPosition = rankingPosition
@@ -33,12 +34,16 @@ struct RankingCellComponent: View {
                 .onAppear {
                     if rankingPosition == 0 {
                         self.cellColor = "placeRanking1"
+                        self.indexColor = Color(.black)
                     } else if rankingPosition == 1 {
                         self.cellColor = "placeRanking2"
+                        self.indexColor = Color(.black)
                     } else if rankingPosition == 2 {
                         self.cellColor = "placeRanking3"
+                        self.indexColor = Color(.black)
                     } else {
                         self.cellColor = "DefaultRankingCellColor"
+                        self.indexColor = Color(uiColor: .label)
                     }
 
                 }
@@ -49,7 +54,7 @@ struct RankingCellComponent: View {
                     .font(.system(size: 18))
                     .padding(.trailing, 7)
                     .padding(.leading, 10)
-                    .foregroundColor(.black)
+                    .foregroundColor(indexColor)
                 Image(uiImage: profileAvatar)
                     .resizable()
                     .scaledToFill()
@@ -60,9 +65,9 @@ struct RankingCellComponent: View {
                     Text(userName)
                         .fontWeight(.semibold)
                         .font(.system(size: 18))
-                        .foregroundColor(.black)
+                        .foregroundColor(indexColor)
                     Text("\(mealCount) refeições")
-                        .foregroundColor(.black)
+                        .foregroundColor(indexColor)
                 }
                 Spacer()
             }

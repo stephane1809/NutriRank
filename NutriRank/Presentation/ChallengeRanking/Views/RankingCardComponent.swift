@@ -29,7 +29,7 @@ struct RankingCardComponent: View {
 
             HStack{
                 Text(groupTitle)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     .fontWeight(.bold)
                     .font(.system(size: 24))
                     .lineLimit(1)
@@ -40,7 +40,7 @@ struct RankingCardComponent: View {
 
             HStack {
                 Text(challengeDescription)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 Spacer()
             }
             .offset(x:0,y:4)
@@ -48,7 +48,7 @@ struct RankingCardComponent: View {
             .lineLimit(3)
 
             Text("Duração: \(challengeSpan) dias")
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .offset(x:-107, y:64)
 
         }
