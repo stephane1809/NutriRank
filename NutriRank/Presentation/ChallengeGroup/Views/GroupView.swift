@@ -64,15 +64,15 @@ public struct GroupView: View {
 
                             HStack {
                                 Image(systemName: "flame.fill")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                 Text("Top 3")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                     .bold()
                                 Spacer()
                             }
 
                             Text("\(viewmodel.getNamePersonRanking(index: 0)), \(viewmodel.getNamePersonRanking(index: 1)), \(viewmodel.getNamePersonRanking(index: 2))")
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .lineLimit(1...10)
 
                         }
@@ -87,15 +87,15 @@ public struct GroupView: View {
 
                             HStack {
                                 Image(systemName: "stopwatch.fill")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                 Text("Duração")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                     .bold()
                                 Spacer()
                             }
 
                             Text(viewmodel.formatedIntervalDates(startDate: viewmodel.group.startDate, endDate: viewmodel.group.endDate))
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .lineLimit(1...10)
 
                         }
@@ -110,15 +110,15 @@ public struct GroupView: View {
 
                             HStack {
                                 Image(systemName: "flame.fill")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                 Text("Regras")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                     .bold()
                                 Spacer()
                             }
 
                             Text("\(viewmodel.group.description)")
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .lineLimit(1...10)
 
                         }
@@ -133,14 +133,14 @@ public struct GroupView: View {
 
                             HStack {
                                 Image(systemName: "paperplane.fill")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                 Text("Compartilhar")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                 Spacer()
                             }
 
                             Text("Convide seus amigos para participar de seu grupo novo e comecei o desafio!")
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .lineLimit(1...10)
                             Spacer()
                             HStack {
