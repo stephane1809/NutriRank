@@ -17,6 +17,7 @@ public class FeedGroupViewModel: ObservableObject {
     @Published var member: Member = Member()
     @Published var linkWasCopied: Bool = false
     var leavedGroup: Bool = false
+    var cache = NSCache<NSString, ChallengeGroup>()
 
     var sortedRankingGroup: [Member] {
         guard let unpackedArray = group.members else {return []}
@@ -110,14 +111,14 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func addMemberToGroup(member: Member, group: ChallengeGroup) async -> Bool {
+    @MainActor func addMemberToGroup(member: Member, group: ChallengeGroup) async -> Bool {
         let result = await addMemberUseCase.execute(requestValue: AddMemberRequestedValues(member, group))
         switch result {
         case .success(let values):
-            DispatchQueue.main.async {
-                self.group = values.group
-                self.member = values.member
-            }
+            self.group = values.group
+            self.cache.setObject(values.group, forKey: NSString(string: values.group.id))
+            UserDefaults.standard.set(values.group.id, forKey: "IDGroup")
+            self.member = values.member
             return true
         case .failure(let error):
             print(error)
@@ -171,25 +172,25 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func fetchGroup() async {
+    @MainActor func fetchGroup() async {
         let result = await fetchUseCase.execute()
         switch result {
             case .success(let groupList):
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     self.groups = groupList
-                }
+//                }
             case .failure(let error):
                 print(error)
         }
     }
 
-    func fetchGroupByID(id: String) async {
+    @MainActor func fetchGroupByID(id: String) async {
         let result = await fetchGroupByIDUseCase.execute(requestValue: id)
         switch result {
         case .success(let group):
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.group = group
-            }
+//            }
         case .failure(let error):
             print(error)
         }
@@ -278,18 +279,25 @@ public class FeedGroupViewModel: ObservableObject {
         }
     }
 
-    func fetchGroupByMember() async -> Bool {
+    @MainActor func fetchGroupByMember() async -> Bool {
         let result = await fetchGroupByMember.execute(requestValue: self.member)
         switch result {
         case .success(let group):
-            DispatchQueue.main.async {
-                self.group = group
-            }
+            self.group = group
             return true
         case .failure(let error):
             print(error)
             return false
         }
+    }
+
+    func getCachedGroup() -> Bool {
+        guard let IDGroup = UserDefaults.standard.value(forKey: "IDGroup") else { return false }
+        guard let cachedGroup = self.cache.object(forKey: NSString(string: "\(IDGroup)")) else { return false }
+        self.group = cachedGroup
+        UserDefaults.standard.removeObject(forKey: "IDGroup")
+        self.cache.removeAllObjects()
+        return true
     }
 
     func resetGroup() {
